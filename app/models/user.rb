@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :user_categories
+  has_many :categories, through: :user_categories
   has_many :messages
   has_many :requests_as_creator, source: :requests, foreign_key: :creator_id
   has_many :requests_as_helper, source: :requests, foreign_key: :helper_id
