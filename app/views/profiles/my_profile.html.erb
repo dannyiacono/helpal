@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container profiles">
 
   <div class="user-info">
     <img class="rounded-circle mx-auto mb-3" src="https://kitt.lewagon.com/placeholder/users/ssaunier" alt="">
@@ -16,15 +16,17 @@ Lives in <%= @user.location %></p>
       </ul>
     </div>
   </div>
-  <div class="about-me">
-    <h3>About me</h3>
-    <p><%#= @user.bio %></p>
-  </div>
-  <div class="user-reviews">
-    <h3>Reviews</h3>
-    <%# @user.requests.reviews.each do |review| %>
-      <p><%#= review.content %></p>
-    <%# end %>
+  <div class="profile-right-side">
+    <div class="about-me">
+      <h3>About me</h3>
+      <p><%#= @user.bio %></p>
+    </div>
+    <div class="user-reviews">
+      <h3>Reviews</h3>
+      <%# @user.requests.reviews.each do |review| %>
+        <p><%#= review.content %></p>
+      <%# end %>
+    </div>
   </div>
 
 </div>
