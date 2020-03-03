@@ -3,6 +3,10 @@ class MessagesController < ApplicationController
    @conversation = Conversation.find(params[:conversation_id])
   end
 
+  def new
+    @message = @conversation.messages.new
+  end
+
   def create
     @message = @conversation.messages.new(message_params)
     @message.user_id = current_user.id
