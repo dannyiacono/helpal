@@ -1,0 +1,27 @@
+.user-info {
+  background-color: white;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  width: 35%;
+  margin-top: 20px;
+  padding: 15px 25px;
+}
+
+.user-info h3, a {
+  text-align: center;
+}
+
+.user-info a {
+  margin-bottom: 7px;
+}
+
+.user-reviews {
+  background-color: white;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  width: 65%;
+  margin-top: 20px;
+  padding: 15px 25px;
+}
