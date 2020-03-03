@@ -3,6 +3,10 @@ class MessagesController < ApplicationController
    @conversation = Conversation.find(params[:conversation_id])
   end
 
+  def index
+    @messages = @conversation.messages
+  end
+
   def new
     @message = @conversation.messages.new
   end
