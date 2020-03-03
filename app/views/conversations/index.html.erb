@@ -2,9 +2,9 @@
 <p>Find me in app/views/conversations/index.html.erb</p>
 
 <ul>
-  <%  @conversations.each do |conversation| %>
+  <%  @user_conversations.each do |conversation| %>
     <li>
-      conversation
+      <%= conversation %>
     </li>
   <% end %>
 </ul>
