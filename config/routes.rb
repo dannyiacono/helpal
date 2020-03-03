@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :conversations, only: [:index, :show, :create] do
-    resources :messages, only: [:index, :show, :create]
+    resources :messages, only: [:index, :show, :create, :new]
   end
   resources :categories, only: :index
   resources :requests, only: [:create, :new]
