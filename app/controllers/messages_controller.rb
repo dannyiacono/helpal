@@ -1,14 +1,16 @@
 class MessagesController < ApplicationController
   before_action do
-   @conversation = Conversation.find(params[:conversation_id])
+   @conversation = Conversation.find(params[:id])
   end
 
   def index
     @messages = @conversation.messages
+    authorize @messages
   end
 
   def new
     @message = @conversation.messages.new
+    authorize @authorize
   end
 
   def create

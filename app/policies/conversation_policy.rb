@@ -5,8 +5,7 @@ class ConversationPolicy < ApplicationPolicy
     end
 
     def index?
-      true
-      # record.user == user
+      record.user == user
     end
 
     def show?

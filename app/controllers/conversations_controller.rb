@@ -2,15 +2,18 @@ class ConversationsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    # @conversations = []
-    # Conversation.where(creator_id: current_user.id).or(Conversation.where(helper_id: current_user.id)).find_each do |conversation|
-    #   @conversations << conversation
-    # end
-    # authorize @conversations
     @conversations = policy_scope(Conversation)
     @user_conversations = []
     @conversations.each do |conversation|
       @user_conversations << conversation if (conversation.creator_id == current_user.id || conversation.helper_id == current_user.id)
+    end
+  end
+
+  def show
+    @conversation = Conversation.find(params[:id])
+    @messages = []
+    Message.where(conversation_id: @conversation.id).find_each do |message|
+      @messages << message
     end
   end
 
