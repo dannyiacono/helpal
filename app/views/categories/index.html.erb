@@ -1,0 +1,17 @@
+<h1>We are here to help</h1>
+<h2>Specify one category you need help with and pals will try and help you out</h2>
+
+
+<div class="searchbar-location">
+    <input type="text" placeholder="Search for location...">
+    <input type="submit" value="Change location">
+</div>
+
+<% @categories.each do |category| %>
+  <%= form_tag categories_path, method: :get do %>
+  <% hidden_field_tag params[:commit], class: "form-control" %>
+  <%= submit_tag category.name, class: "btn btn-primary"%>
+<% end %>
+<% end %>
+
+<%= render 'requests/new' %>
