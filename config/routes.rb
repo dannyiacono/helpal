@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'conversations/index'
+  get 'conversations/create'
   get 'messages/index'
   get 'messages/show'
   get 'messages/create'
