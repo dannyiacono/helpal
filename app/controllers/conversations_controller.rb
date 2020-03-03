@@ -1,4 +1,6 @@
 class ConversationsController < ApplicationController
+  before_action :authenticate_user
+
   def index
     @conversations = []
     Conversation.where(creator_id: current_user.id || helper_id: current_user.id).find_each do |conversation|
