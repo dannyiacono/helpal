@@ -7,6 +7,7 @@
 
   <div>
   <%= simple_form_for @request do |f| %>
+    <%= f.input :category_id, :as => :hidden%>
     <%= f.input :due_date %>
     <%= f.input :title %>
     <%= f.input :description %>

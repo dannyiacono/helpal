@@ -8,10 +8,10 @@ class RequestsController < ApplicationController
     @request = Request.new(request_params)
     @request.creator_id = current_user.id
     authorize @request
-    if @request.save
-      redirect_to request_path(@request)
+    if @request.save!
+      redirect_to categories_path
     else
-      render :template => 'requests/new'
+      redirect_to categories_path
     end
   end
 

@@ -3,13 +3,13 @@ class RequestPolicy < ApplicationPolicy
     def resolve
       scope.all
     end
+  end
 
     def new?
       true
     end
 
     def create?
-      record.creator_id == user
+      !user.nil?
     end
-  end
 end
