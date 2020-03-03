@@ -8,8 +8,9 @@ class User < ApplicationRecord
   has_many :messages
   has_many :requests_as_creator, source: :requests, foreign_key: :creator_id
   has_many :requests_as_helper, source: :requests, foreign_key: :helper_id
-  has_many :requests
+  has_many :requests, dependent: :destroy
   has_many :reviews, through: :requests
   has_many :conversations_as_creator, source: :conversations, foreign_key: :creator_id
   has_many :conversations_as_helper, source: :conversations, foreign_key: :helper_id
+  validates :first_name, :last_name, :location, presence: true
 end
