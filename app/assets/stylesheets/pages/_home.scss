@@ -22,7 +22,7 @@
 }
 
 .card-feature p {
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1.4;
   opacity: .7;
   margin-bottom: 0;
@@ -32,6 +32,10 @@
 .card-feature .card-feature-infos {
   padding: 16px;
   width: 50%;
+}
+
+.color {
+  background-color: $green-bg;
 }
 
 /* RESPONSIVE CSS
