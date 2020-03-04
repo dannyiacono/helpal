@@ -10,7 +10,9 @@
       <%= f.input :due_date, required: true%>
       <%= f.input :title, required: true, hint: "Title required"%>
       <%= f.input :description, required: true, hint: "Max. 500 characters"%>
-      <%= f.button :submit, class: "btn-primary" %>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+       Submit request
+      </button>
       <%= f.button :button, "Cancel", type: "reset", class: "btn-outline-secondary" %>
     <% end %>
   </div>
