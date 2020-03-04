@@ -3,4 +3,7 @@ class Request < ApplicationRecord
   belongs_to :helper, class_name: "User", optional: true
   has_one :category
   has_one :review
+  validates :due_date, presence: true
+  validates :title, presence: true, length: { minimum: 5 }
+  validates :description, presence: true, length: { in: 5..500 }
 end

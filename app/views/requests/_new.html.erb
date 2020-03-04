@@ -3,39 +3,40 @@
   <div class="category-selected">
     <h1><%=@user_category_selection %></h1>
   </div>
-  <div>
+
+  <div class="container">
     <%= simple_form_for @request do |f| %>
       <%= f.input :category_id, :as => :hidden%>
-      <%= f.input :due_date %>
-      <%= f.input :title %>
-      <%= f.input :description %>
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-      Submit request</button>
+      <%= f.input :due_date, required: true%>
+      <%= f.input :title, required: true, hint: "Title required"%>
+      <%= f.input :description, required: true, hint: "Max. 500 characters"%>
+      <%= f.button :submit, class: "btn-primary" %>
       <%= f.button :button, "Cancel", type: "reset", class: "btn-outline-secondary" %>
     <% end %>
   </div>
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
 
-      <div class="modal-body">
-        <h5 class="modal-title" id="exampleModalLabel">Great!</h5>
-        <span>Your request has been sent. You will be notified once a pal contacts you.</span>
-      </div>
-      <div class="modal-footer">
-        <%=link_to "Back to homepage", root_path %>
+<!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <h5 class="modal-title" id="exampleModalLabel">Great!</h5>
+          <span>Your request has been sent. You will be notified once a pal contacts you.</span>
+        </div>
+        <div class="modal-footer">
+          <%=link_to "Back to homepage", root_path %>
+        </div>
       </div>
     </div>
   </div>
-</div>
-
   <%else %>
     <p>To create a request please sign in </p>
     <%= link_to "Sign in", new_user_session_path%>
-<% end %>
+  <% end %>
+
