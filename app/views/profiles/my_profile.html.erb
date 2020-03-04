@@ -23,7 +23,7 @@ Lives in <%= @user.location %></p>
     </div>
     <div class="user-reviews">
       <h3>Reviews</h3>
-      <% @user.requests.each do |request| %>
+      <% @user.requests_as_creator.each do |request| %>
         <div class="individual-review">
             <p class="stars">
               <% request.review.rating.times do %>
