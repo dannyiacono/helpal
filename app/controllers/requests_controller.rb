@@ -7,9 +7,7 @@ class RequestsController < ApplicationController
     @request = Request.new(request_params)
     @request.creator_id = current_user.id
     authorize @request
-
-    if @request.description != "" && @request.title != ""
-      @request.save!
+    if @request.save
       redirect_to categories_path
     else
       redirect_to categories_path, notice: "Title and description can not be empty"
