@@ -23,9 +23,16 @@ Lives in <%= @user.location %></p>
     </div>
     <div class="user-reviews">
       <h3>Reviews</h3>
-      <%# @user.requests.reviews.each do |review| %>
-        <p><%#= review.content %></p>
-      <%# end %>
+      <% @user.requests_as_creator.each do |request| %>
+        <div class="individual-review">
+            <p class="stars">
+              <% request.review.rating.times do %>
+                <i class="fas fa-star"></i>
+              <% end %>
+            </p>
+            <p> <%= request.review.content %></p>
+        </div>
+      <% end %>
     </div>
   </div>
 
