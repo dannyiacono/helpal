@@ -13,13 +13,16 @@ class ProfilesController < ApplicationController
 
   def update
     @user = current_user
-    @user.update(set_user_params)
-    redirect_to my_profile_path(@user)
+    if @user.update(set_user_params)
+      redirect_to my_profile_path(@user)
+    else
+      render :edit
+    end
   end
 
   private
 
   def set_user_params
-    params.require(:user).permit(:first_name,:last_name, :location, :age)
+    params.require(:user).permit(:first_name,:last_name, :location, :age, :bio)
   end
 end
