@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+  get 'messages/new'
   get 'requests/new'
   get 'requests/create'
 

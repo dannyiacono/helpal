@@ -4,4 +4,13 @@ class MessagePolicy < ApplicationPolicy
       scope.all
     end
   end
+
+  def new?
+      true
+    end
+
+  def create?
+    !user.nil?
+  end
+
 end
