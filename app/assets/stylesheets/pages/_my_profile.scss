@@ -21,6 +21,20 @@
   margin-bottom: 7px;
 }
 
+.user-category-tags {
+  display: flex;
+  flex-flow: wrap;
+
+}
+
+.user-category-tags span {
+  background-color: $blue-bg;
+  padding: 10px 15px;
+  border-radius: 5px;
+  margin: 4px;
+  text-align: center;
+}
+
 .user-reviews {
   background-color: white;
   border-radius: 5px;
