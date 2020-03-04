@@ -11,7 +11,8 @@
   <%= form_tag categories_path, method: :get do %>
   <% hidden_field_tag params[:commit], class: "form-control" %>
   <%= submit_tag category.name, class: "btn btn-primary"%>
-<% end %>
+  <% end %>
 <% end %>
 
 <%= render 'requests/new' %>
+
