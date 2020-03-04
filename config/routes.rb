@@ -8,7 +8,5 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   resources :categories, only: :index
   resources :requests, only: [:create, :new]
-  resources :conversations, only: :show do
-    resources :messages, only: :create
   end
 end
