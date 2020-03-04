@@ -13,9 +13,12 @@ class ProfilesController < ApplicationController
 
   def update
     @user = current_user
-    @user_categories = UserCategory.new()
     if @user.update(set_user_params)
-      raise
+      @user_category_ids = params[:user][:category_ids]
+      @user.user_categories.destroy_all
+      @user_category_ids.each do |user_category_id|
+        @user.user_categories.create(category_id: user_category_id)
+      end
       redirect_to my_profile_path(@user)
     else
       render :edit
