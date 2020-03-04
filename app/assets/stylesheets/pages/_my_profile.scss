@@ -6,6 +6,7 @@
   width: 35%;
   margin-top: 20px;
   padding: 15px 25px;
+  height: max-content;
 }
 
 .user-info h3, a {
@@ -19,6 +20,20 @@
 
 .user-info a {
   margin-bottom: 7px;
+}
+
+.user-category-tags {
+  display: flex;
+  flex-flow: wrap;
+
+}
+
+.user-category-tags span {
+  background-color: $blue-bg;
+  padding: 10px 15px;
+  border-radius: 5px;
+  margin: 4px;
+  text-align: center;
 }
 
 .user-reviews {
@@ -46,7 +61,7 @@
 }
 
 .fa-star {
-  color: gold;
+  color: $yellow-stars;
 }
 
 .stars {
