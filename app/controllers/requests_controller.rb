@@ -1,5 +1,4 @@
 class RequestsController < ApplicationController
-
   def new
     @request = policy_scope(Request)
   end
