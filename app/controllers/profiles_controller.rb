@@ -13,7 +13,9 @@ class ProfilesController < ApplicationController
 
   def update
     @user = current_user
+    @user_categories = UserCategory.new()
     if @user.update(set_user_params)
+      raise
       redirect_to my_profile_path(@user)
     else
       render :edit
@@ -23,6 +25,6 @@ class ProfilesController < ApplicationController
   private
 
   def set_user_params
-    params.require(:user).permit(:first_name,:last_name, :location, :age, :bio)
+    params.require(:user).permit(:first_name, :last_name, :location, :age, :bio)
   end
 end
