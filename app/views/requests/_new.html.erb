@@ -3,17 +3,21 @@
   <div class="category-selected">
     <h1><%=@user_category_selection %></h1>
   </div>
-  <div>
+  <div class="container">
     <%= simple_form_for @request do |f| %>
       <%= f.input :category_id, :as => :hidden%>
       <%= f.input :due_date, required: true%>
-      <%= f.input :title, required: true%>
-      <%= f.input :description, required: true%>
+      <%= f.input :title, required: true, hint: "Title required"%>
+      <%= f.input :description, required: true, hint: "Max. 500 characters"%>
       <%= f.button :submit, class: "btn-primary" %>
       <%= f.button :button, "Cancel", type: "reset", class: "btn-outline-secondary" %>
     <% end %>
   </div>
-  <%else %>
+
+
+  <%else%>
     <p>To create a request please sign in </p>
     <%= link_to "Sign in", new_user_session_path%>
 <% end %>
+
+<!--<script type="text/javascript" src="relative/path/to/your/javascript.js"></script>-->
