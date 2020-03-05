@@ -3,7 +3,7 @@
     <% @messages.each do |message| %>
       <% if message.body %>
         <% user = User.find(message.user_id) %>
-        <div><strong><%= user.first_name %></strong> <%= message.created_at %></div>
+        <div><strong><%= user.first_name %></strong> <%= message.created_at.strftime("%d/%m/%Y") %></div>
         <p><%= message.body %></p>
       <% end %>
     <% end %>
