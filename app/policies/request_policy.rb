@@ -6,7 +6,7 @@ class RequestPolicy < ApplicationPolicy
   end
 
     def show?
-      record.user == user
+      @record.creator == user
     end
 
     def new?
