@@ -1,21 +1,14 @@
-<div class=”ui segment”>
- <% @messages.each do |message| %>
-  <% if message.body %>
-   <% user = User.find(message.user_id) %>
-   <div class=”item”>
-    <div class=”content”>
-     <div class=”header”><strong><%= user.first_name %></strong>     <%= message.created_at %></div>
-      <div class=”list”>
-       <div class=”item”>
-        <i class=”right triangle icon”></i>
-         <%= message.body %>
-      </div>
-    </div>
-   </div>
- </div>
- <% end %>
-<% end %>
+<div class="container">
+  <div class="conversation-messages">
+    <% @messages.each do |message| %>
+      <% if message.body %>
+        <% user = User.find(message.user_id) %>
+        <div><strong><%= user.first_name %></strong> <%= message.created_at %></div>
+        <p><%= message.body %></p>
+      <% end %>
+    <% end %>
+  </div>
+  <div id="new_messsage">
+    <%= render 'messages/new', message: @message, conversation: @conversation %>
+  </div>
 </div>
-
-
-<%= render 'messages/new', message: @message, conversation: @conversation %>
