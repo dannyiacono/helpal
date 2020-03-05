@@ -1,16 +1,18 @@
 <div class="container">
-<p>Request status<%= @request.status %></p>
+<p>Request status: <%= @request.status %></p>
 
 <h1>Request title:</h1>
 
 <%= @request.title %>
 
 <%= @request.created_at.strftime('%B %d, %Y') %>
+<%= @request.city %>
 
 <%= @new_request %>
 <h2>Pending inbox messages: <%= @conversation.count%></h2>
 
-<a href="#">Edit</a>
-<a href="#">Cancel</a>
+<a href="#" class="btn btn-primary">Edit</a>
+
+    <%= link_to "Cancel", request_path, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-primary" %>
 </div>
 
