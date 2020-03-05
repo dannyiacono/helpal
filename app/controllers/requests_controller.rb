@@ -17,16 +17,10 @@ class RequestsController < ApplicationController
     @request.creator_id = current_user.id
     authorize @request
      if @request.save
-      #redirect_to request_path(@request)
-    else
+     else
       redirect_to categories_path, notice: "Title and description can not be empty"
     end
   end
-
- # def edit
- #  @request = Request.find(params[:id])
- #  authorize @request
- #  end
 
   def destroy
     @request = Request.find(params[:id])
