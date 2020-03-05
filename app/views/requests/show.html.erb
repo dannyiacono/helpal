@@ -1,0 +1,14 @@
+<p>Status of request</p>
+
+<h1>Request title:</h1>
+
+<%= @request.title %>
+
+<%= @request.created_at.strftime('%B %d, %Y') %>
+
+<%= @new_request %>
+<h2>Pending inbox messages: <%= @conversation.count%></h2>
+
+<a href="#">Edit</a>
+<a href="#">Cancel</a>
+

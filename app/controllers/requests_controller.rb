@@ -1,4 +1,13 @@
 class RequestsController < ApplicationController
+
+  def show
+    @request = Request.find(params[:id])
+    @new_request = Category.find(@request.category_id).name
+    authorize @request
+    @conversation = Conversation.all
+
+  end
+
   def new
     @request = policy_scope(Request)
   end
