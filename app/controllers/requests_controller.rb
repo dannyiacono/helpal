@@ -21,6 +21,6 @@ class RequestsController < ApplicationController
   end
 
   def request_params
-    params.require(:request).permit(:description, :title, :due_date, :creator_id, :category_id)
+    params.require(:request).permit(:description, :title, :due_date, :creator_id, :category_id, :city)
   end
 end
