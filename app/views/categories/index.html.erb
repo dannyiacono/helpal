@@ -2,10 +2,12 @@
 <h2>Specify one category you need help with and pals will try and help you out</h2>
 
 
-<div class="searchbar-location">
-  <input type="text" placeholder="Enter your city...">
-  <input type="submit" value="Change location">
+<%= form_tag categories_path, method: :get, class: "form-inline" do %>
+  <%= text_field_tag :query, params[:query], class: "form-control", placeholder: @location %>
+  <%= submit_tag "Search", class: "btn btn-primary" %>
+  <% end %>
 </div>
+
 
 <% @categories.each do |category| %>
   <%= form_tag categories_path, method: :get do %>
