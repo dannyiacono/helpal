@@ -24,8 +24,23 @@
 
 .message-box {
   display: grid;
+  align-items: center;
   grid-template-columns: 1fr 1fr 400px 1fr;
   grid-gap: 15px;
+  padding: 15px 0;
+}
+
+.message-user-name p {
+  margin: 0;
+}
+
+
+.conversations-box li {
+  border-bottom: 1px solid $green-bg;
+}
+
+.conversations-box li:last-child {
+    border:none;
 }
 
 .message-body {
