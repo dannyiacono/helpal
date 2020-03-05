@@ -6,7 +6,7 @@
       <%  @user_conversations.each do |conversation| %>
         <li>
           <% if conversation.messages.present? %>
-            <%= conversation.messages.last.created_at %>
+            <%= conversation.messages.last.created_at.strftime("%d/%m/%Y") %>
             <%= link_to conversation.messages.last.body, conversation_path(conversation) %>
             <%#= conversation.messages.last.body %>
           <% else %>
