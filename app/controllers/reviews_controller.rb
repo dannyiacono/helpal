@@ -5,6 +5,7 @@ class ReviewsController < ApplicationController
     @review.request = @request
     authorize @review
     @review.save
+    redirect_to other_profile_path(@request.creator)
   end
 
   private
