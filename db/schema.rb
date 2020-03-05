@@ -117,8 +117,8 @@ ActiveRecord::Schema.define(version: 2020_03_05_105049) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "conversations", "requests"
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "conversations", "requests"
   add_foreign_key "conversations", "users", column: "creator_id"
   add_foreign_key "conversations", "users", column: "helper_id"
   add_foreign_key "messages", "conversations"
