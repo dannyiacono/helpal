@@ -1,4 +1,13 @@
 class RequestsController < ApplicationController
+
+  def show
+    @request = Request.find(params[:id])
+    @request.creator = current_user
+    @new_request = Category.find(@request.category_id).name
+    authorize @request
+    @conversation = Conversation.all
+  end
+
   def new
     @request = policy_scope(Request)
   end
@@ -21,6 +30,6 @@ class RequestsController < ApplicationController
   end
 
   def request_params
-    params.require(:request).permit(:description, :title, :due_date, :creator_id, :category_id)
+    params.require(:request).permit(:description, :title, :due_date, :creator_id, :category_id, :city)
   end
 end

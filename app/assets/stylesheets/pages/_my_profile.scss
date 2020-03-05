@@ -67,3 +67,22 @@
 .stars {
   text-align: right;
 }
+
+.reviewer-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.reviewer-details {
+  display: flex;
+  align-items: center;
+}
+
+.name-created-at {
+  margin-left: 9px;
+}
+
+.name-created-at p {
+  margin: unset;
+}
