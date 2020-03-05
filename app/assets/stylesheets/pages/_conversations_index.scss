@@ -17,7 +17,6 @@
   background-color: white;
   border-radius: 5px;
   margin-left: 30px;
-  padding: 20px;
 }
 
 .conversations-box ul {
@@ -48,6 +47,10 @@
 
 .message-body {
   text-align: center;
+}
+
+.message-body p {
+  margin: 0;
 }
 
 .message-body a {
