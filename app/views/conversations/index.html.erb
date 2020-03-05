@@ -24,7 +24,7 @@
               <div class="message-user-name">
                 <p>
                   <% if current_user.id == conversation.creator_id %>
-                    <%= User.find(conversation.helper_id).first_name%> %>
+                    <%= User.find(conversation.helper_id).first_name %>
                   <% else %>
                     <%= User.find(conversation.helper_id).first_name  %>
                   <% end %>

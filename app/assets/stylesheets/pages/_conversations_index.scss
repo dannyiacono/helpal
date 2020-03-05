@@ -8,7 +8,7 @@
   background-color: white;
   width: 300px;
   text-align: center;
-  padding-bottom: 40px;
+  padding: 40px;
 }
 
 .conversations-box {
@@ -19,13 +19,15 @@
 
 .conversations-box ul {
   list-style-type: none;
+  padding-inline-start: 20px;
 }
 
 .message-box {
   display: grid;
   grid-template-columns: 1fr 1fr 400px 1fr;
+  grid-gap: 15px;
 }
 
 .message-body {
-  width: 200px;
+  text-align: center;
 }
