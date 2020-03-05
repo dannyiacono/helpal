@@ -5,20 +5,23 @@ class RequestPolicy < ApplicationPolicy
     end
   end
 
-
     def index?
       true
     end
 
-    def show?
-      @record.creator == user
-    end
+  def show?
+    @record.creator == user
+  end
 
-    def new?
-      true
-    end
+  def new?
+    true
+  end
 
-    def create?
-      !user.nil?
-    end
+  def create?
+    !user.nil?
+  end
+
+  def destroy?
+    @record.creator == user
+  end
 end

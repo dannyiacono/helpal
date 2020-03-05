@@ -25,10 +25,17 @@ class RequestsController < ApplicationController
     @request = Request.new(request_params)
     @request.creator_id = current_user.id
     authorize @request
-    if @request.save
-    else
+     if @request.save
+     else
       redirect_to categories_path, notice: "Title and description can not be empty"
     end
+  end
+
+  def destroy
+    @request = Request.find(params[:id])
+    authorize @request
+    @request.destroy
+    redirect_to request_path, notice: "Succesfully cancelled your request"
   end
 
   private
