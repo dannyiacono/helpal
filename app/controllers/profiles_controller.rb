@@ -5,6 +5,8 @@ class ProfilesController < ApplicationController
 
   def other_profile
     @user = User.find(params[:id])
+    @review = Review.new
+    @eligible_requests = @user.requests_as_creator.select { |request| request.due_date < Date.today && request.helper == current_user && request.review.nil? }
   end
 
   def edit
