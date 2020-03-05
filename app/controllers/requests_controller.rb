@@ -1,4 +1,9 @@
 class RequestsController < ApplicationController
+  def index
+    @requests = policy_scope(Request)
+    @requests = current_user.requests
+  end
+
   def new
     @request = policy_scope(Request)
   end
