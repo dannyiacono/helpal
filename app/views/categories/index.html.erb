@@ -3,16 +3,17 @@
 
 
 <div class="searchbar-location">
-    <input type="text" placeholder="Search for location...">
-    <input type="submit" value="Change location">
+  <input type="text" placeholder="Enter your city...">
+  <input type="submit" value="Change location">
 </div>
 
 <% @categories.each do |category| %>
   <%= form_tag categories_path, method: :get do %>
-  <% hidden_field_tag params[:commit], class: "form-control" %>
+  <%= hidden_field_tag :query, params[:query], class: "form-control" %>
   <%= submit_tag category.name, class: "btn btn-primary"%>
   <% end %>
 <% end %>
 
 <%= render 'requests/new' %>
 
+</div>
