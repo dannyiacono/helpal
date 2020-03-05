@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-
-  get 'requests/new'
-  get 'requests/create'
-
   patch 'profiles/update'
   get 'profiles/edit'
   get '/my_profile/', to: "profiles#my_profile", as: :my_profile
