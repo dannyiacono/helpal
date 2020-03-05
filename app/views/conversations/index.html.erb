@@ -17,17 +17,18 @@
       <%  @user_conversations.each do |conversation| %>
         <li>
           <% if conversation.messages.present? %>
+            <% if current_user.id == conversation.creator_id %>
+              <% other_user = User.find(conversation.helper_id) %>
+            <% else %>
+              <% other_user = User.find(conversation.creator_id) %>
+            <% end %>
             <div class="message-box">
               <div class="message-user-avatar">
-                <%= image_tag "https://www.pinestrawmag.com/wp-content/uploads/2017/07/4yrcs2zo.png", class: "avatar" %>
+                <%= link_to image_tag("https://www.pinestrawmag.com/wp-content/uploads/2017/07/4yrcs2zo.png", class: "avatar"), other_profile_path(other_user) %>
               </div>
               <div class="message-user-name">
                 <p>
-                  <% if current_user.id == conversation.creator_id %>
-                    <%= User.find(conversation.helper_id).first_name %>
-                  <% else %>
-                    <%= User.find(conversation.helper_id).first_name  %>
-                  <% end %>
+                  <%= other_user.first_name %>
                 </p>
                 <p><%= conversation.messages.last.created_at.strftime("%d/%m/%Y") %></p>
               </div>
