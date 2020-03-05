@@ -4,8 +4,7 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.request = @request
     authorize @review
-    if @review.save
-      redirect_to :create
+    @review.save
   end
 
   private
