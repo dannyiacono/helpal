@@ -1,0 +1,59 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  margin: 60px;
+}
+
+.conversation-filter {
+  background-color: white;
+  width: 300px;
+  text-align: center;
+  padding: 40px;
+  border-radius: 5px;
+  padding-bottom: 40px;
+}
+
+.conversations-box {
+  background-color: white;
+  border-radius: 5px;
+  margin-left: 30px;
+}
+
+.conversations-box ul {
+  list-style-type: none;
+  padding-inline-start: 0px;
+}
+
+.message-box {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr 1fr 400px 1fr;
+  grid-gap: 15px;
+  padding: 25px;
+}
+
+.message-user-name p {
+  margin: 0;
+}
+
+
+.conversations-box li {
+  border-bottom: 1px solid $green-bg;
+}
+
+.conversations-box li:last-child {
+    border:none;
+}
+
+.message-body {
+  text-align: left;
+}
+
+.message-body p {
+  margin: 0;
+}
+
+.message-body a {
+  text-decoration: none;
+  color: black;
+}
