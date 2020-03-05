@@ -4,6 +4,7 @@ class Conversation < ApplicationRecord
   has_many :messages
   belongs_to :request
 
+  validates :recipient_id, presence: true, uniqueness: true
   validates_uniqueness_of :sender_id, scope: :recipient_id
 
   scope :between, -> (creator_id,helper_id) do
