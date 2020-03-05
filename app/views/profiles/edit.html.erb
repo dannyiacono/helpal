@@ -5,6 +5,8 @@
   <%= f.input :last_name %>
   <%= f.input :location %>
   <%= f.input :age %>
+  <%= f.input :bio %>
+  <%= f.association :categories, as: :check_boxes %>
 
   <%= f.submit "Save changes", class: "btn btn-primary" %>
   <%= f.error_notification %>

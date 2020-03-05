@@ -1,2 +1,39 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="banner">
+<div class="container">
+  <h1>Get <strong>help</strong> anytime anywhere!</h1>
+  <%= form_tag categories_path, method: :get, class: "form-inline" do %>
+    <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Type the city name" %>
+    <%= submit_tag "Search", class: "btn btn-primary" %>
+  <% end %>
+</div>
+</div>
+
+<div class="card-feature">
+  <%= image_tag("puzzle.jpg") %>
+  <div class="card-feature-infos">
+    <h2>Helpal helps you find support fast and easy</h2>
+    <p>Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+  </div>
+</div>
+
+<div class="card-feature color">
+  <div class="card-feature-infos">
+    <h2>Post your request</h2>
+    <p>Posting a request is easy. Pick the category you need help with. Then fill out the due date and your availability and submit your request. Pals will automatically be notified of your request.</p>
+  </div>
+  <%= image_tag("girl-relaxed.jpg") %>
+</div>
+
+<div class="card-feature">
+  <%= image_tag("people-together.jpg") %>
+  <div class="card-feature-infos">
+    <h2>Connect with your pal</h2>
+    <p>As soon as a pal has accepted your request you will be notified. Go to your inbox and share information safely and make an appointment! with your pal!</p>
+  </div>
+</div>
+
+
+
+
+
+

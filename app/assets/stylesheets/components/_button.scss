@@ -1,0 +1,7 @@
+.btn-primary {
+    @include button-variant($red-cta, darken($red-cta, 7.5%), darken($red-cta, 10%), lighten($red-cta,5%), lighten($red-cta, 10%), darken($red-cta,30%));
+}
+
+.btn-outline-primary {
+    @include button-outline-variant($red-cta, #222222, lighten($red-cta,5%), $red-cta);
+}
