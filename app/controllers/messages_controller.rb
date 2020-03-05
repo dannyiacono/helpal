@@ -1,9 +1,11 @@
 class MessagesController < ApplicationController
-  before_action do
-   @conversation = Conversation.find(params[:id])
-  end
+  before_action :skip_authorization
+  # before_action do
+  #  @conversation = Conversation.find(params[:id])
+  # end
 
   def index
+    @conversation = Conversation.find(params[:conversation_id])
     @messages = @conversation.messages
     if @messages.last
       if @messages.last.user_id != current_user.id
@@ -11,18 +13,14 @@ class MessagesController < ApplicationController
       end
     end
     @message = @conversation.messages.new
-    authorize @message
-  end
-
-
-  def new
-    @message = policy_scope(Message)
   end
 
   def create
+    @conversation = Conversation.find(params[:conversation_id])
     @message = @conversation.messages.new(message_params)
+    @message.user_id = current_user.id
     if @message.save
-      redirect_to conversation_messages_path(@conversation)
+      redirect_to conversation_path(@conversation)
     end
   end
 

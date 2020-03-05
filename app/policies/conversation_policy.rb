@@ -9,7 +9,7 @@ class ConversationPolicy < ApplicationPolicy
     end
 
     def show?
-      record.user == user
+      true
     end
   end
 end

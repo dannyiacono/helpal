@@ -1,5 +1,5 @@
 class ConversationsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :skip_authorization
 
   def index
     @conversations = policy_scope(Conversation)
@@ -15,6 +15,7 @@ class ConversationsController < ApplicationController
     Message.where(conversation_id: @conversation.id).find_each do |message|
       @messages << message
     end
+    @message = Message.new
   end
 
   def create

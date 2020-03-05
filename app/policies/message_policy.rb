@@ -5,12 +5,16 @@ class MessagePolicy < ApplicationPolicy
     end
   end
 
+  def index?
+    true
+  end
+
   def new?
-      true
-    end
+    true
+  end
 
   def create?
-    !user.nil?
+    true
   end
 
 end
