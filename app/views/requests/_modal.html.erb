@@ -6,13 +6,12 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-
         <div class="modal-body">
           <h5 class="modal-title" id="exampleModalLabel">Great!</h5>
           <span>Your request has been sent. You will be notified once a pal contacts you.</span>
         </div>
-
          <div class="modal-footer">
+          <p class="btn btn-primary" id="request_path"><%= link_to "My request", request_path(Request.last)%></p>
         </div>
       </div>
     </div>
