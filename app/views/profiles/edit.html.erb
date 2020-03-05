@@ -1,6 +1,7 @@
 <div class="container">
   <h1>Edit your profile</h1>
   <%= simple_form_for [@user], url: profiles_update_path(@user) do |f| %>
+  <%= f.input :photo, as: :file %>
   <%= f.input :first_name %>
   <%= f.input :last_name %>
   <%= f.input :location %>
