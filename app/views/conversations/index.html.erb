@@ -17,8 +17,27 @@
       <%  @user_conversations.each do |conversation| %>
         <li>
           <% if conversation.messages.present? %>
-            <%= conversation.messages.last.created_at.strftime("%d/%m/%Y") %>
-            <%= link_to conversation.messages.last.body, conversation_path(conversation) %>
+            <div class="message-box">
+              <div class="message-user-avatar">
+                <%= image_tag "https://www.pinestrawmag.com/wp-content/uploads/2017/07/4yrcs2zo.png", class: "avatar" %>
+              </div>
+              <div class="message-user-name">
+                <p>
+                  <% if current_user.id == conversation.creator_id %>
+                    <%= User.find(conversation.helper_id).first_name%> %>
+                  <% else %>
+                    <%= User.find(conversation.helper_id).first_name  %>
+                  <% end %>
+                </p>
+                <p><%= conversation.messages.last.created_at.strftime("%d/%m/%Y") %></p>
+              </div>
+              <div class="message-body">
+                <%= link_to conversation.messages.last.body, conversation_path(conversation)%>
+              </div>
+              <div class="request-state">
+                <%= Request.find(conversation.request_id).status %>
+              </div>
+            </div>
           <% else %>
             <p>Currently there is no conversation present</p>
           <% end %>

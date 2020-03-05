@@ -20,3 +20,12 @@
 .conversations-box ul {
   list-style-type: none;
 }
+
+.message-box {
+  display: grid;
+  grid-template-columns: 1fr 1fr 400px 1fr;
+}
+
+.message-body {
+  width: 200px;
+}
