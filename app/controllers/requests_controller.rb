@@ -5,7 +5,6 @@ class RequestsController < ApplicationController
     @new_request = Category.find(@request.category_id).name
     authorize @request
     @conversation = Conversation.all
-
   end
 
   def new
