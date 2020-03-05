@@ -1,6 +1,16 @@
 <div class="container">
   <div class="conversation-filter">
     <h1>Messages</h1>
+    <div class="dropdown">
+      <a class="btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown">
+        All Messages(<%= @user_conversations.count %>)
+      </a>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <a class="dropdown-item" href="#">All Messages(<%= @user_conversations.count %>)</a>
+        <a class="dropdown-item" href="#">Another action</a>
+        <a class="dropdown-item" href="#">Something else here</a>
+      </div>
+    </div>
   </div>
   <div class="conversations-box">
     <ul>
