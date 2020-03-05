@@ -1,7 +1,10 @@
 class RequestsController < ApplicationController
   def index
-    @requests = policy_scope(Request)
-    @requests = current_user.requests
+    @requests = policy_scope(Request).where(creator_id: current_user.id)
+    authorize @requests
+    @pending_requests = Request.pending
+    @ongoing_requests = Request.ongoing
+    @done_requests = Request.done
   end
 
   def new

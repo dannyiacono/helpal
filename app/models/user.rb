@@ -14,5 +14,4 @@ class User < ApplicationRecord
   has_many :conversations_as_creator, source: :conversations, foreign_key: :creator_id
   has_many :conversations_as_helper, source: :conversations, foreign_key: :helper_id
   validates :first_name, :last_name, :location, presence: true
-
 end

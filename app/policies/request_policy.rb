@@ -6,7 +6,7 @@ class RequestPolicy < ApplicationPolicy
   end
 
     def index?
-      record.user == user
+      true
     end
 
     def new?
