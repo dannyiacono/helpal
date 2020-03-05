@@ -5,6 +5,10 @@ class RequestPolicy < ApplicationPolicy
     end
   end
 
+    def show?
+      @record.creator == user
+    end
+
     def new?
       true
     end
