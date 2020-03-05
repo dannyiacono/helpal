@@ -1,7 +1,8 @@
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
-        <div class="modal-header">
+        <div class="modal-header modal-header-style">
+          <div class="modal-header-check"><i class="fas fa-check"></i></div>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -11,7 +12,7 @@
           <span>Your request has been sent. You will be notified once a pal contacts you.</span>
         </div>
          <div class="modal-footer">
-          <p class="btn btn-primary" id="request_path"><%= link_to "My request", request_path(Request.last)%></p>
+          <p class="btn btn-primary" id="modal_request_path"><%= link_to "My request", request_path(Request.last)%></p>
         </div>
       </div>
     </div>
