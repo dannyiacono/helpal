@@ -23,6 +23,14 @@ Lives in <%= @user.location %></p>
       <h3>About <%= @user.first_name %></h3>
       <p><%= @user.bio %></p>
     </div>
+    <div class="leave-review">
+      <% if !@eligible_requests.empty? %>
+        <h3>Leave your review</h3>
+        <% @eligible_requests.each do |request| %>
+          <%= render 'reviews/form', request: request, review: @review unless request.nil? %>
+        <% end %>
+      <% end %>
+    </div>
     <div class="user-reviews">
       <h3>Reviews</h3>
       <% @user.requests_as_creator.each do |request| %>
