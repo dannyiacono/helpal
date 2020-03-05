@@ -5,13 +5,13 @@ class RequestPolicy < ApplicationPolicy
     end
   end
 
-<<<<<<< HEAD
+
     def index?
       true
-=======
+    end
+
     def show?
       @record.creator == user
->>>>>>> master
     end
 
     def new?

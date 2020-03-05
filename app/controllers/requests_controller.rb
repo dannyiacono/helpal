@@ -1,12 +1,12 @@
 class RequestsController < ApplicationController
-<<<<<<< HEAD
+
   def index
     @requests = policy_scope(Request).where(creator_id: current_user.id)
     authorize @requests
     @pending_requests = Request.pending
     @ongoing_requests = Request.ongoing
     @done_requests = Request.done
-=======
+  end
 
   def show
     @request = Request.find(params[:id])
@@ -14,7 +14,7 @@ class RequestsController < ApplicationController
     @new_request = Category.find(@request.category_id).name
     authorize @request
     @conversation = Conversation.all
->>>>>>> master
+
   end
 
   def new
