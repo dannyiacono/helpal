@@ -1,6 +1,7 @@
-<div class="conversation-filter">
-  <h1>Messages</h1>
-
+<div class="container">
+  <div class="conversation-filter">
+    <h1>Messages</h1>
+  </div>
   <div class="conversations-box">
     <ul>
       <%  @user_conversations.each do |conversation| %>
@@ -8,7 +9,6 @@
           <% if conversation.messages.present? %>
             <%= conversation.messages.last.created_at.strftime("%d/%m/%Y") %>
             <%= link_to conversation.messages.last.body, conversation_path(conversation) %>
-            <%#= conversation.messages.last.body %>
           <% else %>
             <p>Currently there is no conversation present</p>
           <% end %>
@@ -17,4 +17,3 @@
     </ul>
   </div>
 </div>
-
