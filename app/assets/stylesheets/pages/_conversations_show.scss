@@ -6,3 +6,8 @@
   list-style-type: none;
   padding-inline-start: 0px;
 }
+
+.conversation-messages {
+  height: 300px;
+  overflow: scroll;
+}

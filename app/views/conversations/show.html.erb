@@ -2,6 +2,7 @@
   <div class="conversation-header">
    <%= link_to image_tag("https://www.pinestrawmag.com/wp-content/uploads/2017/07/4yrcs2zo.png", class: "avatar"), other_profile_path(@other_user) %>
    <%= @request.title %>
+   <%= @request.created_at.strftime("%d/%m/%Y") %>
   </div>
   <div class="conversation-messages">
     <ul>
