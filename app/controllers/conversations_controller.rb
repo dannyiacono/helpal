@@ -11,6 +11,11 @@ class ConversationsController < ApplicationController
 
   def show
     @conversation = Conversation.find(params[:id])
+    if current_user.id == @conversation.creator_id
+      @other_user = User.find(@conversation.helper_id)
+    else
+      @other_user = User.find(@conversation.creator_id)
+    end
     @request = Request.find(@conversation.request_id)
     @messages = []
     Message.where(conversation_id: @conversation.id).find_each do |message|
