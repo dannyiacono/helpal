@@ -16,11 +16,10 @@
       <%= f.input :due_date, required: true, order: [:month, :day, :year]%>
       <%= f.input :title, required: true, hint: "Title required"%>
       <%= f.input :description, required: true%>
-      <%= f.submit :submit, class: "btn btn-primary", data: {toggle: "modal", target:"#exampleModal"} %>
+      <%= f.submit :submit, class: "btn btn-primary" %>
       <%= f.button :button, "Cancel", type: "reset", class: "btn-outline-secondary" %>
     <% end %>
-  </div>
-</div>
+
 
   <%else %>
   <div class="login_before_request">

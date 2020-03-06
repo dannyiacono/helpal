@@ -1,18 +1,35 @@
-<div class="container">
-<p>Request status: <%= @request.status %></p>
+<div class="container container-show-request">
+  <div class="wrapper-request">
+    <div class="request-status">
+      <p>Request status: </p>
+      <p class="status"> <strong><%= @request.status %></strong></p>
+    </div>
 
-<h1>Request title:</h1>
+    <div class="request-title-show-wrapper ">
+      <h1>Request title:</h1>
+      <p><strong> <%= @request.title %></strong></p>
+    </div>
 
-<%= @request.title %>
+    <div class="date">
+      <i class="fas fa-map-marker-alt"></i>
+      <p><%= @request.created_at.strftime('%B %d, %Y') %></p>
+    </div>
 
-<%= @request.created_at.strftime('%B %d, %Y') %>
-<%= @request.city %>
+    <div class="request-category">
+     <p class="request-category-tag"><%= @new_request %></p>
+    </div>
 
-<%= @new_request %>
-<h2>Pending inbox messages: <%= @conversation.count%></h2>
+    <div class="request-description-field">
+      <%= @request.description%>
+    </div>
 
-<a href="#" class="btn btn-primary">Edit</a>
+    <div>
+    <h3>Pending inbox messages: <%= @conversation.count%></h3>
+    </div>
 
+    <div class="request-show-buttons">
+    <a href="#" class="btn btn-primary edit-btn">Edit</a>
     <%= link_to "Cancel", request_path, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-primary" %>
+    </div>
+  </div>
 </div>
-
