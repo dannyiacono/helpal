@@ -12,7 +12,7 @@
 
     <div class="date">
       <i class="fas fa-map-marker-alt"></i>
-      <p><%= @request.created_at.strftime('%B %d, %Y') %></p>
+      <p><%= @request.due_date.strftime('%B %d, %Y') %></p>
     </div>
 
     <div class="request-category">
@@ -24,7 +24,7 @@
     </div>
 
     <div>
-    <h3>Pending inbox messages: <%= @conversation.count%></h3>
+    <h3>Pending inbox messages: <%= @conversation%></h3>
     </div>
 
     <div class="request-show-buttons">

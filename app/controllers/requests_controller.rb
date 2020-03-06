@@ -13,7 +13,7 @@ class RequestsController < ApplicationController
     @request.creator = current_user
     @new_request = Category.find(@request.category_id).name
     authorize @request
-    @conversation = Conversation.all
+    @conversation = @request.conversations.count
   end
 
   def new
