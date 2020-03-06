@@ -18,9 +18,17 @@
       <%= f.button :button, "Cancel", type: "reset", class: "btn-outline-secondary" %>
     <% end %>
   </div>
+</div>
 
   <%else %>
-    <p>To create a request please sign in </p>
-    <%= link_to "Sign in", new_user_session_path%>
+  <div class="login_before_request">
+    <div>
+        <p><strong>New to Helpal?</strong> Please sign up and create your first request!</p>
+        <%= link_to "Sign up", new_user_registration_path, class: "btn btn-primary" %>
+    </div>
+    <div>
+      <p><strong>Already on Helpal?</strong> Please sign in to create a request.</p>
+      <%= link_to "Sign in", new_user_session_path, class: "btn btn-primary"%>
+    </div>
+  </div>
   <% end %>
-</div>
