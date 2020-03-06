@@ -4,7 +4,9 @@
   <h1>Fill in your request</h1>
 </div>
   <div class="category-selected">
+    <% if @user_category_selection %>
     <span><%=@user_category_selection %></span>
+    <% end %>
   </div>
   <div>
       <%= simple_form_for @request do |f| %>
