@@ -1,5 +1,5 @@
 <%= simple_form_for([request, review]) do |form| %>
-  <%= form.input :rating %>
+  <%= form.input :rating, as: :select, collection: 1..5 %>
   <%= form.input :content, as: :text, class: "review-text-input" %>
   <%= form.button :submit, class: "" %>
 <% end %>

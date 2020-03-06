@@ -1,0 +1,30 @@
+.location-update {
+  text-align: center;
+  display: inline-block;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+#category-card {
+  width: 20vw;
+  height: 20vh;
+  background-color: white;
+  border: 1px solid $light-gray;
+}
+
+.title-index {
+  text-align: center;
+  color: white;
+}
+
+.container-category-cards {
+  text-align: center;
+  padding: 60px;
+  width: 100%;
+  display: grid;
+  grid-column-gap: 50px;
+  grid-row-gap: 50px;
+  grid-template-columns: repeat(3, 20vw);
+  grid-auto-rows: minmax(100px, auto);
+}

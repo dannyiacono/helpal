@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(version: 2020_03_05_105049) do
   create_table "requests", force: :cascade do |t|
     t.text "description"
     t.date "due_date"
-    t.integer "status"
+    t.integer "status", default: 0
     t.string "title"
     t.bigint "creator_id"
     t.bigint "helper_id"

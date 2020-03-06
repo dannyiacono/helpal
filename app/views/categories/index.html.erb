@@ -1,21 +1,27 @@
-<h1>We are here to help</h1>
-<h2>Specify one category you need help with and pals will try and help you out</h2>
-
-
-<%= form_tag categories_path, method: :get, class: "form-inline" do %>
-  <%= text_field_tag :query, params[:query], class: "form-control", placeholder: @location %>
-  <%= submit_tag "Search", class: "btn btn-primary" %>
-  <% end %>
+<div class="container">
+  <div class="title-index">
+    <h1><strong>We are here to help</strong></h1>
+    <h2>Specify the category you need help with and pals will try and help you</h2>
+  </div>
 </div>
-
-
+ <div class="location-update">
+    <%= form_tag categories_path, method: :get, class: "form-inline" do %>
+      <%= text_field_tag :query, params[:query], class: "form-control", placeholder: @location %>
+      <%= submit_tag "Update location", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+<div class="container">
+<div class="container-category-cards">
 <% @categories.each do |category| %>
   <%= form_tag categories_path, method: :get do %>
   <%= hidden_field_tag :query, params[:query], class: "form-control" %>
-  <%= submit_tag category.name, class: "btn btn-primary"%>
+  <%= submit_tag category.name, id: "category-card"%>
   <% end %>
 <% end %>
+</div>
+</div>
+
+
 
 <%= render 'requests/new' %>
 
-</div>
