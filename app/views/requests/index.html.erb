@@ -1,50 +1,66 @@
 <div class="container">
 
+  <div class="cards-wrapper">
   <% if @requests.present? %>
-  <div>
-    <h1>Requests looking for helpal</h1>
-    <% @pending_requests.each do |request| %>
-      <p><%= request.status %></p>
-      <h3><%= request.title %></h3>
-      <p><%= request.due_date %></p>
-      <span><%= Category.find_by(id: request.category_id).name %></span>
-    <% end %>
-  </div>
+    <h3>Requests looking for helpal</h3>
+      <div class="cards">
+        <% @pending_requests.each do |request| %>
+          <div class="request-card">
+            <p><%= request.status %></p>
+            <h3><%= request.title %></h3>
+            <p><%= request.due_date %></p>
+            <div class="user-category-tags">
+              <span><%= Category.find_by(id: request.category_id).name %></span>
+            </div>
+            <div class="links">
+              <%= link_to "View details", "#", class: "details-btn" %>
+              <%= link_to "Delete", "#", class: "delete-btn" %>
+            </div>
+          </div>
+          <% end %>
+      </div>
 
   <br>
   <br>
 
-  <div>
-    <h1>Assigned to helpal</h1>
+
+    <h3>Assigned to helpal</h3>
     <% @ongoing_requests.each do |request| %>
-      <p><%= request.status %></p>
-      <h3><%= request.title %></h3>
-      <p><%= request.due_date %></p>
-      <span><%= request.category_id %></span>
-      <% if request.helper.photo.attached? %>
+      <% if !request.helper_id.nil? && request.helper.photo.attached? %>
         <%= cl_image_tag request.helper.photo.key %>
       <% else %>
         <img class="rounded-circle mx-auto mb-3" src="https://www.pinestrawmag.com/wp-content/uploads/2017/07/4yrcs2zo.png" style="height: 45; width: 45;">
       <% end %>
-    <% end %>
-  </div>
-
-  <br>
-  <br>
-
-  <div>
-    <h1>Completed</h1>
-    <% @done_requests.each do |request| %>
-      <p><%= request.status %></p>
       <h3><%= request.title %></h3>
       <p><%= request.due_date %></p>
-      <span><%= request.category_id %></span>
-      <p><%= request.helper_id %></p>
+      <span><%= Category.find_by(id: request.category_id).name %></span>
+      <p><%= link_to "View details", "#" %></p>
+      <p><%= link_to "Delete", "#" %></p>
     <% end %>
-  </div>
+
+
+  <br>
+  <br>
+
+
+    <h3>Completed</h3>
+    <% @done_requests.each do |request| %>
+      <% if !request.helper_id.nil? && request.helper.photo.attached? %>
+        <%= cl_image_tag request.helper.photo.key %>
+      <% else %>
+        <img class="rounded-circle mx-auto mb-3" src="https://www.pinestrawmag.com/wp-content/uploads/2017/07/4yrcs2zo.png" style="height: 45; width: 45;">
+      <% end %>
+      <h3><%= request.title %></h3>
+      <p><%= request.due_date %></p>
+      <span><%= Category.find_by(id: request.category_id).name %></span>
+      <p><%= link_to "View details", "#" %></p>
+      <p><%= link_to "Delete", "#" %></p>
+    <% end %>
+
 
   <% else %>
     <h3>Sorry, you don't have any requests to display.</h1>
   <% end %>
 
+  </div>
 </div>
