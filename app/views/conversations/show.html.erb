@@ -1,28 +1,30 @@
-<div class="container messages_box">
-  <div class="conversation-header">
-   <%= link_to image_tag("https://www.pinestrawmag.com/wp-content/uploads/2017/07/4yrcs2zo.png", class: "avatar"), other_profile_path(@other_user) %>
-   <%= @request.title %>
-   <%= @request.created_at.strftime("%d/%m/%Y") %>
+<div class="container">
+  <div class="messages_box">
+    <div class="conversation-header">
+     <%= link_to image_tag("https://www.pinestrawmag.com/wp-content/uploads/2017/07/4yrcs2zo.png", class: "avatar"), other_profile_path(@other_user) %>
+     <%= @request.title %>
+     <%= @request.created_at.strftime("%d/%m/%Y") %>
+    </div>
+    <div class="conversation-messages">
+      <ul>
+        <% @messages.each do |message| %>
+          <li>
+            <% if message.body %>
+              <% user = User.find(message.user_id) %>
+              <div><strong><%= user.first_name %></strong> <%= message.created_at.strftime("%d/%m/%Y") %></div>
+              <p><%= message.body %></p>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+    <div id="new-messsage">
+      <%= render 'messages/new', message: @message, conversation: @conversation %>
+    </div>
   </div>
-  <div class="conversation-messages">
-    <ul>
-      <% @messages.each do |message| %>
-        <li>
-          <% if message.body %>
-            <% user = User.find(message.user_id) %>
-            <div><strong><%= user.first_name %></strong> <%= message.created_at.strftime("%d/%m/%Y") %></div>
-            <p><%= message.body %></p>
-          <% end %>
-        </li>
-      <% end %>
-    </ul>
-  </div>
-  <div id="new-messsage">
-    <%= render 'messages/new', message: @message, conversation: @conversation %>
+  <div class="conversation-request-card">
+    <h1>Request title</h1>
+    <h2><strong><%= @request.title %></strong></h2>
   </div>
 </div>
 
-<div class="conversation-request-card">
-  <h1>Request title</h1>
-  <h2><strong><%= @request.title %></strong></h2>
-</div>
