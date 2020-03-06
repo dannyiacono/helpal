@@ -6,7 +6,9 @@
       <div class="cards">
         <% @pending_requests.each do |request| %>
           <div class="request-card">
+            <div class="request-status">
             <p><%= request.status %></p>
+            </div>
             <h3><%= request.title %></h3>
             <p><%= request.due_date %></p>
             <div class="user-category-tags">
