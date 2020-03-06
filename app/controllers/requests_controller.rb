@@ -37,6 +37,15 @@ class RequestsController < ApplicationController
     redirect_to request_path, notice: "Succesfully cancelled your request"
   end
 
+  def update
+    @request = Request.find(params[:id])
+    @request.helper_id = params[:request][:helper_id]
+    authorize @request
+    if @request.save
+      redirect_to request_path(@request)
+    end
+  end
+
   private
 
   def set_request
