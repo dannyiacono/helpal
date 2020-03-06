@@ -1,26 +1,36 @@
-<div class="container">
+<div class="container new-form">
 <% if user_signed_in?  %>
 <div>
-  <h1>New Request Form</h1>
+  <h1>Fill in your request</h1>
 </div>
   <div class="category-selected">
-    <h2><%=@location %></h2>
-    <h2><%=@user_category_selection %></h2>
+    <% if @user_category_selection %>
+    <span><%=@user_category_selection %></span>
+    <% end %>
   </div>
   <div>
       <%= simple_form_for @request do |f| %>
+      <%= f.input :status, :as => :hidden%>
       <%= f.input :category_id, :as => :hidden%>
       <%= f.input :city, input_html: {value: @location}, :as => :hidden%>
-      <%= f.input :due_date, required: true%>
+      <%= f.input :due_date, required: true, order: [:month, :day, :year]%>
       <%= f.input :title, required: true, hint: "Title required"%>
       <%= f.input :description, required: true%>
       <%= f.submit :submit, class: "btn btn-primary", data: {toggle: "modal", target:"#exampleModal"} %>
       <%= f.button :button, "Cancel", type: "reset", class: "btn-outline-secondary" %>
     <% end %>
   </div>
+</div>
 
   <%else %>
-    <p>To create a request please sign in </p>
-    <%= link_to "Sign in", new_user_session_path%>
+  <div class="login_before_request">
+    <div>
+        <p><strong>New to Helpal?</strong> Please sign up and create your first request!</p>
+        <%= link_to "Sign up", new_user_registration_path, class: "btn btn-primary" %>
+    </div>
+    <div>
+      <p><strong>Already on Helpal?</strong> Please sign in to create a request.</p>
+      <%= link_to "Sign in", new_user_session_path, class: "btn btn-primary"%>
+    </div>
+  </div>
   <% end %>
-</div>

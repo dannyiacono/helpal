@@ -1,0 +1,15 @@
+.new-form {
+  background-color: white;
+  margin-top: 50px;
+  margin-bottom: 30px;
+  padding: 20px;
+  width: 50%;
+  border-radius: 5px;
+}
+
+.category-selected span {
+  background-color: $blue-bg;
+  padding: 10px 15px;
+  border-radius: 5px;
+  text-align: center;
+}

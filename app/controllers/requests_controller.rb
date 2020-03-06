@@ -14,7 +14,6 @@ class RequestsController < ApplicationController
     @new_request = Category.find(@request.category_id).name
     authorize @request
     @conversation = Conversation.all
-
   end
 
   def new
@@ -55,6 +54,6 @@ class RequestsController < ApplicationController
   end
 
   def request_params
-    params.require(:request).permit(:description, :title, :due_date, :creator_id, :category_id, :city)
+    params.require(:request).permit(:description, :title, :due_date, :creator_id, :category_id, :city, :status)
   end
 end
