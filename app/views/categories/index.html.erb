@@ -7,7 +7,7 @@
   <div class="location-update">
     <%= form_tag categories_path, method: :get, class: "form-inline" do %>
       <%= text_field_tag :query, params[:query], class: "form-control", placeholder: @location %>
-      <%= submit_tag "Update location", class: "btn btn-primary" %>
+      <%= submit_tag "Search", class: "btn btn-primary" %>
     <% end %>
   </div>
   <div class="container">
