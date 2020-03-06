@@ -11,6 +11,7 @@ class ConversationsController < ApplicationController
 
   def show
     @conversation = Conversation.find(params[:id])
+    @request = Request.find(@conversation.request_id)
     @messages = []
     Message.where(conversation_id: @conversation.id).find_each do |message|
       @messages << message
