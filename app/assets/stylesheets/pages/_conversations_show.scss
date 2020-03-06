@@ -1,5 +1,6 @@
-#messages_box {
+.messages_box {
   background-color: white;
+  margin: 60px;
 }
 
 .conversation-messages ul {
@@ -9,5 +10,5 @@
 
 .conversation-messages {
   height: 300px;
-  overflow: scroll;
+  overflow: auto;
 }
