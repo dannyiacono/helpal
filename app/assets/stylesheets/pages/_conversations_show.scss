@@ -11,6 +11,7 @@
 .conversation-messages {
   height: 300px;
   overflow: auto;
+  padding: 15px 50px;
 }
 
 #new-message {
@@ -21,4 +22,6 @@
 textarea {
    resize: none;
    width:100%;
+   border: none;
+    border-top: 1px solid $green-bg;
 }
