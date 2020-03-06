@@ -35,7 +35,7 @@ class RequestsController < ApplicationController
     @request = Request.find(params[:id])
     authorize @request
     @request.destroy
-    redirect_to request_path, notice: "Successfully cancelled your request"
+    redirect_to categories_path, notice: "Succesfully cancelled your request"
   end
 
   def update
