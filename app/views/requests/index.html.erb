@@ -13,7 +13,7 @@
               <span><%= Category.find_by(id: request.category_id).name %></span>
             </div>
             <div class="links">
-              <%= link_to "View details", "#", class: "details-btn" %>
+              <%= link_to "View details", request_path(request), class: "details-btn" %>
               <%= link_to "Delete", "#", class: "delete-btn" %>
             </div>
           </div>
