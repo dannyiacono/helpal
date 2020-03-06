@@ -24,4 +24,8 @@ class RequestPolicy < ApplicationPolicy
   def destroy?
     @record.creator == user
   end
+
+  def update?
+    true
+  end
 end

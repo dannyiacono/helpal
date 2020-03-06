@@ -1,14 +1,48 @@
-<div class="container" id="messages_box">
-  <div class="conversation-messages">
-    <% @messages.each do |message| %>
-      <% if message.body %>
-        <% user = User.find(message.user_id) %>
-        <div><strong><%= user.first_name %></strong> <%= message.created_at.strftime("%d/%m/%Y") %></div>
-        <p><%= message.body %></p>
-      <% end %>
-    <% end %>
+<div class="container conversation">
+  <div class="messages_box">
+    <div class="conversation-header">
+     <%= link_to image_tag("https://www.pinestrawmag.com/wp-content/uploads/2017/07/4yrcs2zo.png", class: "avatar"), other_profile_path(@other_user) %>
+     <%= @request.title %>
+     <%= @request.created_at.strftime("%d/%m/%Y") %>
+    </div>
+    <div class="conversation-messages">
+      <ul>
+        <% @messages.each do |message| %>
+          <li>
+            <% if message.body %>
+              <% user = User.find(message.user_id) %>
+              <div><strong><%= user.first_name %></strong> <%= message.created_at.strftime("%d/%m/%Y") %></div>
+              <p><%= message.body %></p>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+    <div id="new-messsage">
+      <%= render 'messages/new', message: @message, conversation: @conversation %>
+    </div>
   </div>
-  <div id="new_messsage">
-    <%= render 'messages/new', message: @message, conversation: @conversation %>
+  <div class="request-container">
+    <div class="conversation-request-card">
+      <p class="conversation-request-status"><%= @request.status %></p>
+      <h2>Request title</h2>
+      <h2><strong><%= @request.title %></strong></h2>
+      <p><%= @request.created_at.strftime("%d/%m/%Y") %></p>
+      <p><i class="fas fa-map-marker-alt"></i> <%= @request.city %></p>
+      <% category = Category.find(@request.category_id) %>
+      <p><%= category.name %></p>
+    </div>
+    <div class="request-confirmation">
+      <p>Do you want to confirm this pal?</p>
+      <p>
+        <%= link_to image_tag("https://www.pinestrawmag.com/wp-content/uploads/2017/07/4yrcs2zo.png", class: "avatar"), other_profile_path(@other_user) %>
+        <%= @other_user.first_name %>
+        <%= simple_form_for ([@request]) do |f| %>
+          <%= f.input :helper_id %>
+          <%= f.submit "confirm pal"%>
+        <% end %>
+      </p>
+    </div>
   </div>
 </div>
+
