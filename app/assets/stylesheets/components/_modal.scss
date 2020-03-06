@@ -3,12 +3,16 @@
   color: white;
 }
 
-.modal-header-style {
+#modal-header-style {
   background-color: #1EDD88;
+ }
+
+.check-circle {
+  display: flex;
+  justify-content: center;
 }
 
-
-.fa-check {
+.fa-check-circle {
   color:white;
   font-weight: bold;
   font-size: 20vh;
