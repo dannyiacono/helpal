@@ -1,12 +1,16 @@
 <div class="container" id="messages_box">
   <div class="conversation-messages">
-    <% @messages.each do |message| %>
-      <% if message.body %>
-        <% user = User.find(message.user_id) %>
-        <div><strong><%= user.first_name %></strong> <%= message.created_at.strftime("%d/%m/%Y") %></div>
-        <p><%= message.body %></p>
+    <ul>
+      <% @messages.each do |message| %>
+        <li>
+          <% if message.body %>
+            <% user = User.find(message.user_id) %>
+            <div><strong><%= user.first_name %></strong> <%= message.created_at.strftime("%d/%m/%Y") %></div>
+            <p><%= message.body %></p>
+          <% end %>
+        </li>
       <% end %>
-    <% end %>
+    </ul>
   </div>
   <div id="new_messsage">
     <%= render 'messages/new', message: @message, conversation: @conversation %>
