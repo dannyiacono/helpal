@@ -25,6 +25,7 @@ class RequestsController < ApplicationController
     @request.creator_id = current_user.id
     authorize @request
      if @request.save
+      redirect_to request_path(@request), notice: "Successfully saved your request"
      else
       redirect_to categories_path, notice: "Title and description can not be empty"
     end
