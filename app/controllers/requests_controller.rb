@@ -40,7 +40,7 @@ class RequestsController < ApplicationController
 
   def update
     @request = Request.find(params[:id])
-    @request.helper_id = params[:request][:helper_id]
+    @request.helper_id = params[:helper_id]
     authorize @request
     if @request.save
       redirect_to request_path(@request)
