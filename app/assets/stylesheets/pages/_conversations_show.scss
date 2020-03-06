@@ -12,3 +12,13 @@
   height: 300px;
   overflow: auto;
 }
+
+#new-message {
+  // resize: none;
+}
+
+
+textarea {
+   resize: none;
+   width:100%;
+}
