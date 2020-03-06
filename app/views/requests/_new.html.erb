@@ -11,7 +11,7 @@
       <%= simple_form_for @request do |f| %>
       <%= f.input :category_id, :as => :hidden%>
       <%= f.input :city, input_html: {value: @location}, :as => :hidden%>
-      <%= f.input :due_date, required: true%>
+      <%= f.input :due_date, required: true, order: [:month, :day, :year]%>
       <%= f.input :title, required: true, hint: "Title required"%>
       <%= f.input :description, required: true%>
       <%= f.submit :submit, class: "btn btn-primary", data: {toggle: "modal", target:"#exampleModal"} %>
