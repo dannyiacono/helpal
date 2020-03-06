@@ -32,6 +32,17 @@
       <% category = Category.find(@request.category_id) %>
       <p><%= category.name %></p>
     </div>
+    <div class="request-confirmation">
+      <p>Do you want to confirm this pal?</p>
+      <p>
+        <%= link_to image_tag("https://www.pinestrawmag.com/wp-content/uploads/2017/07/4yrcs2zo.png", class: "avatar"), other_profile_path(@other_user) %>
+        <%= @other_user.first_name %>
+        <%= simple_form_for ([@request]) do |f| %>
+          <%= f.input :helper_id %>
+          <%= f.submit "confirm pal"%>
+        <% end %>
+      </p>
+    </div>
   </div>
 </div>
 

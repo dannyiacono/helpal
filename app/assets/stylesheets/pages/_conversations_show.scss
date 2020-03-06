@@ -31,10 +31,15 @@
   display: grid;
   width: 400px;
   padding: 15px;
+  margin-bottom: 15px;
 }
 
 .conversation-request-status {
   text-align: right;
+}
+
+.request-confirmation {
+  background-color: white;
 }
 
 textarea {
