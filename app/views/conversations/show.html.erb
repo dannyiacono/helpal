@@ -22,14 +22,16 @@
       <%= render 'messages/new', message: @message, conversation: @conversation %>
     </div>
   </div>
-  <div class="conversation-request-card">
-    <p class="conversation-request-status"><%= @request.status %></p>
-    <h2>Request title</h2>
-    <h2><strong><%= @request.title %></strong></h2>
-    <p><%= @request.created_at.strftime("%d/%m/%Y") %></p>
-    <p><i class="fas fa-map-marker-alt"></i> <%= @request.city %></p>
-    <% category = Category.find(@request.category_id) %>
-    <p><%= category.name %></p>
+  <div class="request-container">
+    <div class="conversation-request-card">
+      <p class="conversation-request-status"><%= @request.status %></p>
+      <h2>Request title</h2>
+      <h2><strong><%= @request.title %></strong></h2>
+      <p><%= @request.created_at.strftime("%d/%m/%Y") %></p>
+      <p><i class="fas fa-map-marker-alt"></i> <%= @request.city %></p>
+      <% category = Category.find(@request.category_id) %>
+      <p><%= category.name %></p>
+    </div>
   </div>
 </div>
 
