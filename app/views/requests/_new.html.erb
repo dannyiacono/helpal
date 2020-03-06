@@ -1,12 +1,14 @@
+<div class="container">
 <% if user_signed_in?  %>
+<div>
   <h1>New Request Form</h1>
+</div>
   <div class="category-selected">
     <h2><%=@location %></h2>
     <h2><%=@user_category_selection %></h2>
   </div>
-
-  <div class="container">
-    <%= simple_form_for @request do |f| %>
+  <div>
+      <%= simple_form_for @request do |f| %>
       <%= f.input :category_id, :as => :hidden%>
       <%= f.input :city, input_html: {value: @location}, :as => :hidden%>
       <%= f.input :due_date, required: true%>
@@ -17,32 +19,8 @@
     <% end %>
   </div>
 
-<!-- Modal -->
-
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-
-        <div class="modal-body">
-          <h5 class="modal-title" id="exampleModalLabel">Great!</h5>
-          <span>Your request has been sent. You will be notified once a pal contacts you.</span>
-        </div>
-
-         <div class="modal-footer">
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-
   <%else %>
     <p>To create a request please sign in </p>
     <%= link_to "Sign in", new_user_session_path%>
   <% end %>
-
+</div>
