@@ -16,45 +16,29 @@
     <ul>
       <%  @user_conversations.each do |conversation| %>
         <li>
-          <% if conversation.messages.present? %>
-            <% if current_user.id == conversation.creator_id %>
-              <% other_user = User.find(conversation.helper_id) %>
-            <% else %>
-              <% other_user = User.find(conversation.creator_id) %>
-            <% end %>
-            <div class="message-box">
-              <div class="message-user-avatar">
-                <%= link_to image_tag("https://www.pinestrawmag.com/wp-content/uploads/2017/07/4yrcs2zo.png", class: "avatar"), other_profile_path(other_user) %>
-              </div>
-              <div class="message-user-name">
-                <p><%= other_user.first_name %></p>
-                <p><%= conversation.messages.last.created_at.strftime("%d/%m/%Y") %></p>
-              </div>
-              <div class="message-body">
-                <p><%= link_to conversation.messages.last.body, conversation_path(conversation)%></p>
-                <% request = Request.find(conversation.request_id) %>
-                <p><%= request.title %> (<%= request.created_at.strftime("%d/%m/%Y")%>)</p>
-              </div>
-              <div>
-                <p id="conversation-status"><%= conversation.status %></p>
-              </div>
-            </div>
+          <% if current_user.id == conversation.creator_id %>
+            <% other_user = User.find(conversation.helper_id) %>
           <% else %>
-            <% if current_user.id == conversation.creator_id %>
-              <% other_user = User.find(conversation.helper_id) %>
-            <% else %>
-              <% other_user = User.find(conversation.creator_id) %>
-            <% end %>
+            <% other_user = User.find(conversation.creator_id) %>
+          <% end %>
             <div class="message-box">
               <div class="message-user-avatar">
                 <%= link_to image_tag("https://www.pinestrawmag.com/wp-content/uploads/2017/07/4yrcs2zo.png", class: "avatar"), other_profile_path(other_user) %>
               </div>
               <div class="message-user-name">
                 <p><%= other_user.first_name %></p>
-                <p><%= conversation.created_at.strftime("%d/%m/%Y") %></p>
+                <% if conversation.messages.empty? %>
+                  <p><%= conversation.created_at.strftime("%d/%m/%Y") %></p>
+                <% else %>
+                  <p><%= conversation.messages.last.created_at.strftime("%d/%m/%Y") %></p>
+                <% end %>
               </div>
               <div class="message-body">
-                <p><%= link_to "Open conversation: There is no message yet", conversation_path(conversation)%></p>
+                <% if conversation.messages.empty? %>
+                  <p><%= link_to "Open conversation: There is no message yet", conversation_path(conversation)%></p>
+                <% else %>
+                  <p><%= link_to conversation.messages.last.body, conversation_path(conversation)%></p>
+                <% end %>
                 <% request = Request.find(conversation.request_id) %>
                 <p><%= request.title %> (<%= request.created_at.strftime("%d/%m/%Y")%>)</p>
               </div>
@@ -62,7 +46,6 @@
                 <p id="conversation-status"><%= conversation.status %></p>
               </div>
             </div>
-          <% end %>
         </li>
       <% end %>
     </ul>
