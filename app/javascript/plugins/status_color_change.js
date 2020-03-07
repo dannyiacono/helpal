@@ -1,12 +1,14 @@
 const status_color = () => {
-  if (document.getElementById('conversation-status').textContent = 'pending') {
-  document.getElementById('conversation-status').style.color = "black";
+  const conversation_status = document.getElementById('conversation-status')
+
+  if (conversation_status.textContent = 'pending') {
+    conversation_status.style.color = "black";
   }
-  else if (document.getElementById('conversation-status').textContent = 'ongoing') {
-  document.getElementById('conversation-status').style.color = "red";
+  else if (conversation_status.textContent = 'ongoing') {
+    conversation_status.style.color = "red";
   }
   else {
-  document.getElementById('conversation-status').style.color = "green";
+    conversation_status.style.color = "green";
   }
 }
 
