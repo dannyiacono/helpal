@@ -43,6 +43,9 @@ class RequestsController < ApplicationController
     @request.helper_id = params[:request][:helper_id]
     authorize @request
     if @request.save
+      @helper_conversation = Conversation.find_by(request_id: @request.id, helper_id: @request.helper_id)
+      @helper_conversation.status = 2;
+      @helper_conversation.save;
       redirect_to request_path(@request)
     end
   end
