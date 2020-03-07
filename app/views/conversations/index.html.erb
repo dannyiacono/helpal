@@ -36,7 +36,8 @@
                 <p><%= request.title %> (<%= request.created_at.strftime("%d/%m/%Y")%>)</p>
               </div>
               <div class="request-state">
-                <%= Request.find(conversation.request_id).status %>
+                <%= conversation.status %>
+                <%= raise %>
               </div>
             </div>
           <% else %>
