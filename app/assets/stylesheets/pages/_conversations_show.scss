@@ -1,71 +1,20 @@
-.conversation {
-  display: flex;
-  flex-direction: row;
-  margin: 60px auto;
-}
-
-.messages_box {
-  background-color: white;
-  margin-right: 30px;
-  padding: 20px;
-  border-radius: 5px;
-  height: fit-content;
-}
-
-.conversation-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
 #conversation-img-title {
   display: flex;
   align-items: baseline;
+  img {
+    border: 3px solid $blue-bg;
+  }
+  p {
+    margin-left: 9px;
+  }
 }
 
-#conversation-img-title img {
-  border: 3px solid $blue-bg;
-}
-
-#conversation-img-title p {
-  margin-left: 9px;
-}
-
-.conversation-messages ul {
-  list-style-type: none;
-  padding-inline-start: 0px;
-}
-
-.conversation-messages {
-  height: 300px;
-  overflow: auto;
-  padding: 15px 50px;
-  word-break: break-all;
-}
-
-.new_message {
+#pal-confirm {
   display: flex;
-  justify-content: space-between;
-  border-top: 1px solid $light-gray;
-}
-
-.conversation-request-card {
-  background-color: white;
-  display: flex;
-  flex-direction: column;
   align-items: baseline;
-  width: 400px;
-  padding: 25px;
-  margin-bottom: 15px;
-  position: relative;
-  padding-top: 65px;
-  padding-bottom: 7px;
-  border-radius: 5px;
-}
-
-
-.conversation-request-card-status {
-  align-self: flex-end;
+  a {
+    margin-right: 8px;
+  }
 }
 
 #request-status {
@@ -92,27 +41,6 @@
   text-align: center;
 }
 
-.request-confirmation {
-  background-color: white;
-  padding: 25px;
-}
-
-#pal-confirm {
-  display: flex;
-  align-items: baseline;
-}
-
-#pal-confirm a {
-  margin-right: 8px;
-}
-
-.message-field {
-  resize: none;
-  width: 100%;
-  border: none;
-}
-
-
 .blue {
   background-color: $blue-bg;
   border-radius: 6px;
@@ -123,6 +51,68 @@
   padding: 10px;
 }
 
+.conversation {
+  display: flex;
+  flex-direction: row;
+  margin: 60px auto;
+}
+
+.conversation-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.conversation-messages {
+  height: 300px;
+  overflow: auto;
+  padding: 15px 50px;
+  word-break: break-all;
+  ul {
+    list-style-type: none;
+    padding-inline-start: 0px;
+  }
+}
+
+.conversation-request-card {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  width: 400px;
+  padding: 25px;
+  margin-bottom: 15px;
+  position: relative;
+  padding-top: 65px;
+  padding-bottom: 7px;
+  border-radius: 5px;
+}
+
+
+.conversation-request-card-status {
+  align-self: flex-end;
+}
+
+.messages_box {
+  background-color: white;
+  margin-right: 30px;
+  padding: 20px;
+  border-radius: 5px;
+  height: fit-content;
+}
+
+.new_message {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid $light-gray;
+}
+
+.message-field {
+  resize: none;
+  width: 100%;
+  border: none;
+}
 
 .message_send-btn {
   background-color: Transparent;
@@ -131,3 +121,10 @@
   overflow: hidden;
   margin-top: 14px;
 }
+
+.request-confirmation {
+  background-color: white;
+  padding: 25px;
+}
+
+
