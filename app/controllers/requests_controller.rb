@@ -40,7 +40,7 @@ class RequestsController < ApplicationController
 
   def update
     @request = Request.find(params[:id])
-    @request.helper_id = params[:request][:helper_id]
+    @request.helper_id = params[:helper_id]
     authorize @request
     if @request.save
       @helper_conversation = Conversation.find_by(request_id: @request.id, helper_id: @request.helper_id)
