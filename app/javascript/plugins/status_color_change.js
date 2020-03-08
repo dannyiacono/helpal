@@ -5,7 +5,7 @@ const status_color = () => {
     if (conversation_status.textContent == 'pending') {
       conversation_status.style.color = "black";
     }
-    else if (conversation_status.textContent == 'ongoing') {
+    else if (conversation_status.textContent == 'declined') {
       conversation_status.style.color = "red";
     }
     else {
