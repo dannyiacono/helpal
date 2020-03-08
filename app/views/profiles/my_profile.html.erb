@@ -26,6 +26,7 @@ Lives in <%= @user.location %></p>
     </div>
     <div class="user-reviews">
       <h3>Reviews</h3>
+      <% if !@user.reviews_as_request_creator.empty? %>
       <% @user.requests_as_creator.each do |request| %>
         <% if !request.helper.nil? && request.review %>
         <div class="individual-review">
@@ -52,6 +53,9 @@ Lives in <%= @user.location %></p>
           <p> <%= request.review.content %></p>
         </div>
       <% end %>
+      <% end %>
+      <% else %>
+      <p><em>You don't have any reviews yet</em></p>
       <% end %>
     </div>
   </div>
