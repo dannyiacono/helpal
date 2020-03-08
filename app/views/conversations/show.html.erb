@@ -37,7 +37,7 @@
   <div class="request-container">
     <div class="conversation-request-card">
       <div class="conversation-request-card-status">
-        <% if @request.helper_id.present? %>
+        <% if @request.status != 0 %>
           <% if @other_user.photo.attached? %>
             <%= link_to (cl_image_tag @other_user.photo.key, height: 45, width: 45, class: "rounded-circle", id: "request-avatar"), other_profile_path(@other_user) %>
           <% else %>
