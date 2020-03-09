@@ -40,14 +40,25 @@ class RequestsController < ApplicationController
 
   def update
     @request = Request.find(params[:id])
-    @request.helper_id = params[:helper_id]
-    @request.helper_id.present? ? @request.status = 1 : @request.status = 0
-    authorize @request
-    if @request.save
-      @helper_conversation = Conversation.find_by(request_id: @request.id, helper_id: @request.helper_id)
-      @helper_conversation.status = 2
+    if params[:commit] == "Confirm pal"
+      @request.helper_id = params[:helper_id]
+      @request.status = 1
+      authorize @request
+      if @request.save
+        @helper_conversation = Conversation.find_by(request_id: @request.id, helper_id: @request.helper_id)
+        @helper_conversation.status = 2
+        if @helper_conversation.save
+          redirect_to conversation_path(@helper_conversation)
+        else
+          redirect_to conversation_path(@helper_conversation), notice: "Something went wrong: Please try again"
+        end
+      end
+    else
+      authorize @request
+      @helper_conversation = Conversation.find_by(request_id: @request.id, helper_id: params[:helper_id])
+      @helper_conversation.status = 1
       if @helper_conversation.save
-        redirect_to conversation_path(@helper_conversation)
+        redirect_to conversations_path
       else
         redirect_to conversation_path(@helper_conversation), notice: "Something went wrong: Please try again"
       end
