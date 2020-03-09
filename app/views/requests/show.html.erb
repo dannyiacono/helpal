@@ -1,8 +1,9 @@
 <div class="container container-show-request">
   <div class="wrapper-request">
     <div class="request-status">
-      <p>Request status: </p>
-      <p class="status"> <strong><%= @request.status %></strong></p>
+      <div class="conversation-request-card-status">
+        <p id="request-status-show"><%= @request.status%></p>
+      </div>
     </div>
 
     <div class="request-title-show-wrapper ">
@@ -12,7 +13,7 @@
 
     <div class="date">
       <i class="fas fa-map-marker-alt"></i>
-      <p><%= @request.created_at.strftime('%B %d, %Y') %></p>
+      <p><%= @request.due_date.strftime('%B %d, %Y') %></p>
     </div>
 
     <div class="request-category">
@@ -23,13 +24,39 @@
       <%= @request.description%>
     </div>
 
-    <div>
-    <h3>Pending inbox messages: <%= @conversation.count%></h3>
-    </div>
+
+    <% if @helper.present? %>
+      <% if @helper.photo.attached? %>
+        <h3>Assigned to:</h3>
+        <div class="assigned-to-avatar">
+          <div>
+            <%= cl_image_tag @helper.photo.key, class: "avatar-bordered" %>
+          </div>
+          <p class="helper-name"><%= @helper.first_name %> <%=@helper.last_name %></p>
+        </div>
+      <% else %>
+        <div>
+          <h3>Assigned to:</h3>
+          <div class="assigned-to-avatar">
+            <div>
+              <img class="rounded-circle mx-auto mb-3" src="https://www.pinestrawmag.com/wp-content/uploads/2017/07/4yrcs2zo.png" style="height: 45px; width: 45px;">
+            </div>
+            <p class="helper-name"><%= @helper.first_name %> <%=@helper.last_name %></p>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <div>
+        <h3>Pending inbox messages: <%= @conversation_count%></h3>
+      </div>
+
+    <% end %>
+
+
 
     <div class="request-show-buttons">
     <a href="#" class="btn btn-primary edit-btn">Edit</a>
-    <%= link_to "Cancel", request_path, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-primary" %>
+    <%= link_to "Cancel", request_path, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-outline-danger" %>
     </div>
   </div>
 </div>
