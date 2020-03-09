@@ -53,22 +53,24 @@
       <% category = Category.find(@request.category_id) %>
       <p id="request-category"><%= category.name %></p>
     </div>
-    <div class="request-confirmation">
-      <p>Do you want to confirm this pal?</p>
-      <div id="pal-confirm">
-        <% if @other_user.photo.attached? %>
-          <%= link_to (cl_image_tag @other_user.photo.key, height: 45, width: 45, class: "rounded-circle"), other_profile_path(@other_user) %>
-        <% else %>
-          <%= link_to image_tag("https://www.pinestrawmag.com/wp-content/uploads/2017/07/4yrcs2zo.png", class: "avatar"), other_profile_path(@other_user) %>
-        <% end %>
-        <p><%= @other_user.first_name %> <%= @other_user.last_name %></p>
+    <% if @request.creator == current_user && @request.status == "pending" %>
+      <div class="request-confirmation">
+        <p>Do you want to confirm this pal?</p>
+        <div id="pal-confirm">
+          <% if @other_user.photo.attached? %>
+            <%= link_to (cl_image_tag @other_user.photo.key, height: 45, width: 45, class: "rounded-circle"), other_profile_path(@other_user) %>
+          <% else %>
+            <%= link_to image_tag("https://www.pinestrawmag.com/wp-content/uploads/2017/07/4yrcs2zo.png", class: "avatar"), other_profile_path(@other_user) %>
+          <% end %>
+          <p><%= @other_user.first_name %> <%= @other_user.last_name %></p>
+        </div>
+          <%= simple_form_for ([@request]) do |f| %>
+            <%= hidden_field_tag :helper_id, @conversation.helper_id %>
+            <%= f.button :submit, "Confirm pal", class: "btn btn-primary rounder"%>
+            <%= f.button :submit, "Decline", class: "btn rounder inverted" %>
+          <% end %>
       </div>
-        <%= simple_form_for ([@request]) do |f| %>
-          <%= hidden_field_tag :helper_id, @conversation.helper_id %>
-          <%= f.button :submit, "Confirm pal", class: "btn btn-primary rounder"%>
-          <%= f.button :submit, "Decline", class: "btn rounder inverted" %>
-        <% end %>
-    </div>
+    <% end %>
   </div>
 </div>
 
