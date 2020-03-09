@@ -7,7 +7,7 @@
         <% @pending_requests.each do |request| %>
           <div class="request-card">
             <p id="request-status"><%= request.status.capitalize %></p>
-            <h3><%= request.title %></h3>
+            <h3><%= request.title.truncate(42) %></h3>
             <div class="date">
               <i class="fas fa-map-marker-alt"></i>
               <p><%= request.due_date.strftime('%B %d, %Y') %></p>
@@ -84,7 +84,8 @@
 
   <% else %>
     <div class="no-results">
-    <h3>Sorry, you don't have any requests to display. Create your first request.</h3>
+    <h3>Sorry, you don't have any requests to display.</h3>
+    <p>Create your first request.</p>
     <%= link_to "New request", categories_path, class: "btn btn-primary" %>
     </div>
   <% end %>

@@ -22,16 +22,21 @@ margin-top: 60px;
   flex-direction: column;
   align-items: baseline;
   position: relative;
+  display: flex;
+  height: 280px;
 }
 
 .request-card h3 {
   margin-top: 40px;
+  height: 64px;
 }
 
 .links {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
+  width: 100%;
+  text-align: end;
+  position: absolute;
+  bottom: 14px;
+  right: 14px;
 }
 
 .links .details-btn {
@@ -55,6 +60,9 @@ margin-top: 60px;
 }
 
 .no-results {
+  max-width: 620px;
+  margin-left: auto;
+  margin-right: auto;
   text-align: center;
 }
 
