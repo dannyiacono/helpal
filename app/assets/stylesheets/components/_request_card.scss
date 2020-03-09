@@ -16,6 +16,13 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   border-radius: 5px;
   padding: 20px;
+  flex-direction: column;
+  align-items: baseline;
+  position: relative;
+}
+
+.request-card h3 {
+  margin-top: 40px;
 }
 
 .links {
@@ -35,8 +42,13 @@
   font-weight: bold;
 }
 
-.rounded-circle .mx-auto .mb-3 {
-
+.helper-avatar {
+  height: 45px;
+  width: 45px;
+  position: absolute;
+  right: 14px;
+  top: 14px;
+  border-radius: 50%;
 }
 
  // Media queries
