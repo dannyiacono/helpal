@@ -65,7 +65,8 @@
       </div>
         <%= simple_form_for ([@request]) do |f| %>
           <%= hidden_field_tag :helper_id, @conversation.helper_id %>
-          <%= f.submit "Confirm pal", class: "btn btn-primary round"%>
+          <%= f.button :submit, "Confirm pal", class: "btn btn-primary rounder"%>
+          <%= f.button :submit, "Decline", class: "btn rounder inverted" %>
         <% end %>
     </div>
   </div>

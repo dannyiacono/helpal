@@ -136,5 +136,21 @@
 
 #edit_request_2 {
   margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
 }
 
+#edit_request_2 input:last-child {
+  margin-left: 5px;
+}
+
+.inverted {
+  color: $red-cta;
+  background-color: white;
+  border: 1px solid $red-cta;
+}
+
+.rounder {
+  border-radius: 10px;
+  padding: 7px 20px;
+}
