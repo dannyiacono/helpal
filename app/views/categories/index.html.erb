@@ -7,7 +7,8 @@
     <div class="search-bar">
       <div class="search-city-input">
       <%= form_tag categories_path, method: :get, class: "form-inline" do %>
-        <%= text_field_tag :query, params[:query], id: "form-city", class: "form-control search-input", placeholder: "Type the city name" %>
+        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+        <%= text_field_tag :query, params[:query], id: "form-city", class: "form-control search-input", placeholder: "Type the city name", required: true %>
       </div>
       <div class="search-submit">
         <%= submit_tag "Search", class: "btn btn-primary" %>
@@ -20,6 +21,7 @@
     <div class="container-category-cards">
       <% @categories.each do |category| %>
         <%= form_tag categories_path, method: :get do %>
+          <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
           <%= hidden_field_tag :query, params[:query], class: "form-control" %>
           <%= submit_tag category.name, id: "category-card"%>
         <% end %>
