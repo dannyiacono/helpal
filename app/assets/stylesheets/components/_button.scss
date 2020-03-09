@@ -5,3 +5,7 @@
 .btn-outline-primary {
     @include button-outline-variant($red-cta, #222222, lighten($red-cta,5%), $red-cta);
 }
+
+.btn-outline-warning   {
+  @include button-outline-variant($red-cta, #222222, lighten($red-cta,5%), $red-cta);
+}

@@ -68,3 +68,38 @@
 .edit-btn {
   margin-right:10px;
 }
+
+#request-status-show {
+  text-align: right;
+  background-color: $light-gray;
+  padding: 7px;
+  border-radius: 5px;
+  position: relative;
+  right: 14px;
+  top: 14px;
+
+}
+
+.assigned-to-avatar {
+  display: flex;
+  align-items: center;
+}
+
+.helper-name {
+  margin-left:10px;
+  text-decoration:none
+}
+
+.pending-messages {
+  display:flex;
+}
+
+.pending-messages a{
+color: $black-text;
+text-decoration: none;
+}
+
+.pending-messages a:hover {
+color: #737774;
+text-decoration: none;
+}

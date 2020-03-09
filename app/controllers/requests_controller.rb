@@ -13,8 +13,11 @@ class RequestsController < ApplicationController
     @request.creator = current_user
     @new_request = Category.find(@request.category_id).name
     authorize @request
-    @conversation = Conversation.all
-  end
+    @conversation_count = @request.conversations.count
+    @id = @request.helper_id
+    @id ? @helper = User.find(@id) : @helper = nil
+    @helper_conversation = Conversation.find_by(request_id: @request.id, helper_id: @request.helper_id)
+ end
 
   def new
     @request = policy_scope(Request)
@@ -40,13 +43,25 @@ class RequestsController < ApplicationController
 
   def update
     @request = Request.find(params[:id])
-    @request.helper_id = params[:helper_id]
-    authorize @request
-    if @request.save
-      @helper_conversation = Conversation.find_by(request_id: @request.id, helper_id: @request.helper_id)
-      @helper_conversation.status = 2
+    if params[:commit] == "Confirm pal"
+      @request.helper_id = params[:helper_id]
+      @request.status = 1
+      authorize @request
+      if @request.save
+        @helper_conversation = Conversation.find_by(request_id: @request.id, helper_id: @request.helper_id)
+        @helper_conversation.status = 2
+        if @helper_conversation.save
+          redirect_to conversation_path(@helper_conversation)
+        else
+          redirect_to conversation_path(@helper_conversation), notice: "Something went wrong: Please try again"
+        end
+      end
+    else
+      authorize @request
+      @helper_conversation = Conversation.find_by(request_id: @request.id, helper_id: params[:helper_id])
+      @helper_conversation.status = 1
       if @helper_conversation.save
-        redirect_to conversation_path(@helper_conversation)
+        redirect_to conversations_path
       else
         redirect_to conversation_path(@helper_conversation), notice: "Something went wrong: Please try again"
       end

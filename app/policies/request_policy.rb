@@ -26,6 +26,6 @@ class RequestPolicy < ApplicationPolicy
   end
 
   def update?
-    true
+    @record.creator == user
   end
 end

@@ -128,9 +128,30 @@
 .request-confirmation {
   background-color: white;
   padding: 25px;
+  border-radius: 5px;
 }
 
 .request-container {
   width: 38%;
 }
 
+#edit_request_2 {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+#edit_request_2 input:last-child {
+  margin-left: 5px;
+}
+
+.inverted {
+  color: $red-cta;
+  background-color: white;
+  border: 1px solid $red-cta;
+}
+
+.rounder {
+  border-radius: 8px;
+  padding: 6px 20px;
+}
