@@ -54,6 +54,16 @@ margin-top: 60px;
   border-radius: 50%;
 }
 
+.no-results {
+  text-align: center;
+}
+
+.not-assigned {
+  margin-top: 24px;
+  color: $gray;
+  opacity: 0.6;
+}
+
  // Media queries
 
 @media (min-width: 100px) and (max-width: 575px) {

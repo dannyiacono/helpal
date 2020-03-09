@@ -17,65 +17,76 @@
             </div>
             <div class="links">
               <%= link_to "View details", request_path(request), class: "details-btn" %>
-              <%= link_to "Delete", request_path(request), method: :delete, data: { confirm: "Are you sure?" }, class: "delete-btn" %>
+              <%= link_to "Cancel", request_path(request), method: :delete, data: { confirm: "Are you sure?" }, class: "delete-btn" %>
             </div>
           </div>
           <% end %>
       </div>
 
     <h3>Assigned to helpal</h3>
-    <div class="cards">
-      <% @ongoing_requests.each do |request| %>
-        <div class="request-card">
-          <% if !request.helper_id.nil? && request.helper.photo.attached? %>
-            <%= link_to (cl_image_tag request.helper.photo.key, class: "helper-avatar"), other_profile_path(request.helper_id) %>
-          <% else %>
-            <img class="rounded-circle mx-auto mb-3" src="https://www.pinestrawmag.com/wp-content/uploads/2017/07/4yrcs2zo.png" style="height: 45px; width: 45px; position: absolute; right: 14px; top: 14px;">
-          <% end %>
-          <h3><%= request.title %></h3>
-          <div class="date">
-            <i class="fas fa-map-marker-alt"></i>
-            <p><%= request.due_date.strftime('%B %d, %Y') %></p>
+    <% if @ongoing_requests.present? %>
+      <div class="cards">
+        <% @ongoing_requests.each do |request| %>
+          <div class="request-card">
+            <% if !request.helper_id.nil? && request.helper.photo.attached? %>
+              <%= link_to (cl_image_tag request.helper.photo.key, class: "helper-avatar"), other_profile_path(request.helper_id) %>
+            <% else %>
+              <img class="rounded-circle mx-auto mb-3" src="https://www.pinestrawmag.com/wp-content/uploads/2017/07/4yrcs2zo.png" style="height: 45px; width: 45px; position: absolute; right: 14px; top: 14px;">
+            <% end %>
+            <h3><%= request.title %></h3>
+            <div class="date">
+              <i class="fas fa-map-marker-alt"></i>
+              <p><%= request.due_date.strftime('%B %d, %Y') %></p>
+            </div>
+            <div class="user-category-tags">
+              <span><%= Category.find_by(id: request.category_id).name %></span>
+            </div>
+            <div class="links">
+              <%= link_to "View details", request_path(request), class: "details-btn" %>
+              <%= link_to "Cancel", request_path(request), method: :delete, data: { confirm: "Are you sure?" }, class: "delete-btn" %>
+            </div>
           </div>
-          <div class="user-category-tags">
-            <span><%= Category.find_by(id: request.category_id).name %></span>
-          </div>
-          <div class="links">
-            <%= link_to "View details", request_path(request), class: "details-btn" %>
-            <%= link_to "Delete", "#", class: "delete-btn" %>
-          </div>
-        </div>
-      <% end %>
-    </div>
+        <% end %>
+      </div>
+    <% else %>
+      <p class="not-assigned">Nothing assigned yet</p>
+    <% end %>
 
     <h3>Completed</h3>
-    <div class="cards">
-      <% @done_requests.each do |request| %>
-        <div class="request-card">
-          <% if !request.helper_id.nil? && request.helper.photo.attached? %>
-            <%= link_to (cl_image_tag request.helper.photo.key, class: "helper-avatar"), other_profile_path(request.helper_id) %>
-          <% else %>
-            <img class="rounded-circle mx-auto mb-3" src="https://www.pinestrawmag.com/wp-content/uploads/2017/07/4yrcs2zo.png" style="height: 45px; width: 45px; position: absolute; right: 14px; top: 14px;">
-          <% end %>
-          <h3><%= request.title %></h3>
-          <div class="date">
-            <i class="fas fa-map-marker-alt"></i>
-            <p><%= request.due_date.strftime('%B %d, %Y') %></p>
+    <% if @done_requests.present? %>
+      <div class="cards">
+        <% @done_requests.each do |request| %>
+          <div class="request-card">
+            <% if !request.helper_id.nil? && request.helper.photo.attached? %>
+              <%= link_to (cl_image_tag request.helper.photo.key, class: "helper-avatar"), other_profile_path(request.helper_id) %>
+            <% else %>
+              <img class="rounded-circle mx-auto mb-3" src="https://www.pinestrawmag.com/wp-content/uploads/2017/07/4yrcs2zo.png" style="height: 45px; width: 45px; position: absolute; right: 14px; top: 14px;">
+            <% end %>
+            <h3><%= request.title %></h3>
+            <div class="date">
+              <i class="fas fa-map-marker-alt"></i>
+              <p><%= request.due_date.strftime('%B %d, %Y') %></p>
+            </div>
+            <div class="user-category-tags">
+              <span><%= Category.find_by(id: request.category_id).name %></span>
+            </div>
+            <div class="links">
+              <%= link_to "View details", request_path(request), class: "details-btn" %>
+              <%= link_to "Cancel", request_path(request), method: :delete, data: { confirm: "Are you sure?" }, class: "delete-btn" %>
+            </div>
           </div>
-          <div class="user-category-tags">
-            <span><%= Category.find_by(id: request.category_id).name %></span>
-          </div>
-          <div class="links">
-            <%= link_to "View details", request_path(request), class: "details-btn" %>
-            <%= link_to "Delete", "#", class: "delete-btn" %>
-          </div>
-        </div>
-      <% end %>
-    </div>
+        <% end %>
+      </div>
+    <% else %>
+      <p class="not-assigned">Nothing completed yet</p>
+    <% end %>
 
 
   <% else %>
-    <h3>Sorry, you don't have any requests to display.</h1>
+    <div class="no-results">
+    <h3>Sorry, you don't have any requests to display. Create your first request.</h3>
+    <%= link_to "New request", categories_path, class: "btn btn-primary" %>
+    </div>
   <% end %>
 
   </div>
