@@ -30,7 +30,7 @@
         <h3>Assigned to:</h3>
         <div class="assigned-to-avatar">
           <div>
-            <%= cl_image_tag @helper.photo.key %>
+            <%= cl_image_tag @helper.photo.key, class: "avatar-bordered" %>
           </div>
           <p class="helper-name"><%= @helper.first_name %> <%=@helper.last_name %></p>
         </div>
