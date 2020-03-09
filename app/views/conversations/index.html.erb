@@ -40,7 +40,7 @@
                   <% if conversation.messages.empty? %>
                     <p><%= link_to "Open conversation: There is no message yet", conversation_path(conversation)%></p>
                   <% else %>
-                    <p><%= link_to conversation.messages.last.body, conversation_path(conversation)%></p>
+                    <p><%= link_to truncate(conversation.messages.last.body, length: 75), conversation_path(conversation)%></p>
                   <% end %>
                   <% request = Request.find(conversation.request_id) %>
                   <p><%= request.title %> (<%= request.created_at.strftime("%d/%m/%Y")%>)</p>
