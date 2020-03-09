@@ -53,6 +53,18 @@
   background-color: $green-bg;
 }
 
+.search-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-city-input input[type="text"] {
+  width: 25vw;
+  text-align: left;
+}
+
+
 /* RESPONSIVE CSS
 -------------------------------------------------- */
 

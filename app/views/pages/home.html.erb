@@ -1,11 +1,17 @@
 <div class="banner">
-<div class="container">
-  <h1>Get <strong>help</strong> anytime anywhere!</h1>
-  <%= form_tag categories_path, method: :get, class: "form-inline" do %>
-    <%= text_field_tag :query, params[:query], class: "form-control search-input", placeholder: "Type the city name" %>
-    <%= submit_tag "Search", class: "btn btn-primary" %>
-  <% end %>
-</div>
+  <div class="container">
+    <h1>Get <strong>help</strong> anytime anywhere!</h1>
+    <div class="search-bar">
+      <div class="search-city-input">
+      <%= form_tag categories_path, method: :get, class: "form-inline" do %>
+        <%= text_field_tag :query, params[:query], class: "form-control search-input", placeholder: "Type the city name" %>
+      </div>
+      <div class="search-submit">
+        <%= submit_tag "Search", class: "btn btn-primary" %>
+      </div>
+    </div>
+    <% end %>
+  </div>
 </div>
 
 <div class="card-feature">
