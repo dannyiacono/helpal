@@ -1,8 +1,8 @@
 <div class="container container-show-request">
   <div class="wrapper-request">
-    <div class="request-status">
+    <div class="request-status-info">
       <div class="conversation-request-card-status">
-        <p id="request-status-show"><%= @request.status%></p>
+        <p id="request-status-show"><%= @request.status.capitalize%></p>
       </div>
     </div>
 
@@ -60,12 +60,17 @@
           <h3>Pending inbox messages: <%= @conversation_count%></h3>
         <% end %>
       </div>
-
     <% end %>
 
     <div class="request-show-buttons">
-    <a href="#" class="btn btn-primary edit-btn">Edit</a>
-    <%= link_to "Cancel", request_path, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-outline-danger" %>
+      <% if @request.creator == current_user %>
+        <a href="#" class="btn btn-primary edit-btn">Edit</a>
+        <%= link_to "Cancel", request_path, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-outline-danger" %>
+      <% else %>
+         <div>
+          <%= link_to "View all open requests", requests_path, class: "btn btn-primary edit-btn" %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
