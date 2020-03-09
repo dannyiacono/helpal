@@ -6,6 +6,7 @@
   height: 100%;
   background-color: white;
   margin-top: 60px;
+  margin-bottom: 60px;
   padding: 15px 30px 15px;
 }
 
@@ -28,12 +29,12 @@
 
 .request-title-show-wrapper h1 {
   font-family: $headers-font;
-  font-size: 2,5rem;
+  font-size: 36px;
   font-weight: 400;
 }
 
 .request-title-show-wrapper p {
-  font-size: 1rem;
+  font-size: 24px;
   font-weight: 700;
 }
 
@@ -63,10 +64,13 @@
 .request-show-buttons {
   display: flex;
   justify-content: flex-end;
+  margin-left: 10px;
+  align-content: baseline;
 }
 
 .edit-btn {
-  margin-right:10px;
+  margin-right: 10px;
+  margin-left: 30px;
 }
 
 #request-status-show {
@@ -77,7 +81,6 @@
   position: relative;
   right: 14px;
   top: 14px;
-
 }
 
 .assigned-to-avatar {

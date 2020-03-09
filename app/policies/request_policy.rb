@@ -10,7 +10,7 @@ class RequestPolicy < ApplicationPolicy
     end
 
   def show?
-    @record.creator == user
+    !user.nil?
   end
 
   def new?

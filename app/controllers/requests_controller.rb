@@ -10,14 +10,14 @@ class RequestsController < ApplicationController
 
   def show
     @request = Request.find(params[:id])
-    @request.creator = current_user
     @new_request = Category.find(@request.category_id).name
     authorize @request
     @conversation_count = @request.conversations.count
     @id = @request.helper_id
     @id ? @helper = User.find(@id) : @helper = nil
     @helper_conversation = Conversation.find_by(request_id: @request.id, helper_id: @request.helper_id)
- end
+
+  end
 
   def new
     @request = policy_scope(Request)
