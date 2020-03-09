@@ -28,7 +28,16 @@
   border: 1px solid #b9bfbb;
   border-radius: 5px;
   box-shadow: 1px 1px 1px #b9bfbb;
-}
+ }
+
+.change-border-color {
+  width: 20vw;
+  height: 20vh;
+  background-color: white;
+  border: 2px solid $red-cta;
+  border-radius: 5px;
+  box-shadow: 1px 1px 1px #b9bfbb;
+ }
 
 .title-index {
   text-align: center;

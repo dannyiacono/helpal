@@ -1,23 +1,23 @@
 class RequestsController < ApplicationController
 
   def index
+    # raise
     @requests = policy_scope(Request).where(creator_id: current_user.id)
-    authorize @requests
-    @pending_requests = Request.pending
-    @ongoing_requests = Request.ongoing
-    @done_requests = Request.done
+    @pending_requests = @requests.pending
+    @ongoing_requests = @requests.ongoing
+    @done_requests = @requests.done
   end
 
   def show
     @request = Request.find(params[:id])
-    @request.creator = current_user
     @new_request = Category.find(@request.category_id).name
     authorize @request
     @conversation_count = @request.conversations.count
     @id = @request.helper_id
     @id ? @helper = User.find(@id) : @helper = nil
     @helper_conversation = Conversation.find_by(request_id: @request.id, helper_id: @request.helper_id)
- end
+
+  end
 
   def new
     @request = policy_scope(Request)
@@ -38,7 +38,7 @@ class RequestsController < ApplicationController
     @request = Request.find(params[:id])
     authorize @request
     @request.destroy
-    redirect_to categories_path, notice: "Successfully cancelled your request"
+    redirect_to requests_path, notice: "Successfully cancelled your request"
   end
 
   def update
