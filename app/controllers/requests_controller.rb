@@ -1,11 +1,11 @@
 class RequestsController < ApplicationController
 
   def index
+    # raise
     @requests = policy_scope(Request).where(creator_id: current_user.id)
-    authorize @requests
-    @pending_requests = Request.pending
-    @ongoing_requests = Request.ongoing
-    @done_requests = Request.done
+    @pending_requests = @requests.pending
+    @ongoing_requests = @requests.ongoing
+    @done_requests = @requests.done
   end
 
   def show
@@ -38,7 +38,7 @@ class RequestsController < ApplicationController
     @request = Request.find(params[:id])
     authorize @request
     @request.destroy
-    redirect_to categories_path, notice: "Successfully cancelled your request"
+    redirect_to requests_path, notice: "Successfully cancelled your request"
   end
 
   def update
