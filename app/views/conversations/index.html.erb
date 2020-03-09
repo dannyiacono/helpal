@@ -14,35 +14,43 @@
   </div>
   <div class="conversations-box">
     <ul>
-      <%  @user_conversations.each do |conversation| %>
-        <li>
-          <% if conversation.messages.present? %>
+      <% if @user_conversations.empty? %>
+        <p><em>Sorry you have no messages yet.</em></p>
+      <% else %>
+        <%  @user_conversations.each do |conversation| %>
+          <li>
             <% if current_user.id == conversation.creator_id %>
               <% other_user = User.find(conversation.helper_id) %>
             <% else %>
               <% other_user = User.find(conversation.creator_id) %>
             <% end %>
-            <div class="message-box">
-              <div class="message-user-avatar">
-                <%= link_to image_tag("https://www.pinestrawmag.com/wp-content/uploads/2017/07/4yrcs2zo.png", class: "avatar"), other_profile_path(other_user) %>
+              <div class="message-box">
+                <div class="message-user-avatar">
+                  <%= link_to image_tag("https://www.pinestrawmag.com/wp-content/uploads/2017/07/4yrcs2zo.png", class: "avatar"), other_profile_path(other_user) %>
+                </div>
+                <div class="message-user-name">
+                  <p><%= other_user.first_name %></p>
+                  <% if conversation.messages.empty? %>
+                    <p><%= conversation.created_at.strftime("%d/%m/%Y") %></p>
+                  <% else %>
+                    <p><%= conversation.messages.last.created_at.strftime("%d/%m/%Y") %></p>
+                  <% end %>
+                </div>
+                <div class="message-body">
+                  <% if conversation.messages.empty? %>
+                    <p><%= link_to "Open conversation: There is no message yet", conversation_path(conversation)%></p>
+                  <% else %>
+                    <p><%= link_to truncate(conversation.messages.last.body, length: 75), conversation_path(conversation)%></p>
+                  <% end %>
+                  <% request = Request.find(conversation.request_id) %>
+                  <p><%= request.title %> (<%= request.created_at.strftime("%d/%m/%Y")%>)</p>
+                </div>
+                <div>
+                  <p class="conversation-status"><%= conversation.status %></p>
+                </div>
               </div>
-              <div class="message-user-name">
-                <p><%= other_user.first_name %></p>
-                <p><%= conversation.messages.last.created_at.strftime("%d/%m/%Y") %></p>
-              </div>
-              <div class="message-body">
-                <p><%= link_to conversation.messages.last.body, conversation_path(conversation)%></p>
-                <% request = Request.find(conversation.request_id) %>
-                <p><%= request.title %> (<%= request.created_at.strftime("%d/%m/%Y")%>)</p>
-              </div>
-              <div class="request-state">
-                <%= Request.find(conversation.request_id).status %>
-              </div>
-            </div>
-          <% else %>
-            <p>Currently there is no conversation present</p>
-          <% end %>
-        </li>
+          </li>
+        <% end %>
       <% end %>
     </ul>
   </div>
