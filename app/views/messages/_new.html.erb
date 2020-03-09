@@ -1,8 +1,8 @@
 <%= form_for [conversation, message] do |f| %>
-  <div class=”field”>
+  <div class=”field” style="width: 100%;">
    <%= f.text_area :body, placeholder: "Type your message here", class: "message-field" %>
   </div>
   <div>
-   <%= f.button '', {class: 'button postfix'} do %><i class="fa fa-paper-plane"></i><% end %>
+   <%= f.button '', {class: 'message_send-btn'} do %><i class="fa fa-paper-plane"></i><% end %>
   </div>
  <% end %>
