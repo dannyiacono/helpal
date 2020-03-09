@@ -1,6 +1,9 @@
 .cards-wrapper {
-  margin-top: 30px;
   margin-bottom: 60px;
+}
+
+.cards-wrapper h3 {
+margin-top: 60px;
 }
 
 .cards {
@@ -16,6 +19,13 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   border-radius: 5px;
   padding: 20px;
+  flex-direction: column;
+  align-items: baseline;
+  position: relative;
+}
+
+.request-card h3 {
+  margin-top: 40px;
 }
 
 .links {
@@ -27,11 +37,21 @@
 .links .details-btn {
   color: $black-text;
   font-weight: bold;
+  margin-right: 10px;
 }
 
 .links .delete-btn {
   color: $red-cta;
   font-weight: bold;
+}
+
+.helper-avatar {
+  height: 45px;
+  width: 45px;
+  position: absolute;
+  right: 14px;
+  top: 14px;
+  border-radius: 50%;
 }
 
  // Media queries
