@@ -13,5 +13,6 @@ class Request < ApplicationRecord
 
   def expire
     self.status = 2
+    self.save
   end
 end
