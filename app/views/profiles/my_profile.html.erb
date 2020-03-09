@@ -14,8 +14,8 @@
 Lives in <%= @user.location %></p>
     <p>Good in these categories:</p>
     <div class="user-category-tags">
-        <% @user.categories.each do |category| %>
-          <span><%= category.name %></span>
+      <% @user.categories.each do |category| %>
+        <span><%= category.name %></span>
       <% end %>
     </div>
   </div>
@@ -26,32 +26,36 @@ Lives in <%= @user.location %></p>
     </div>
     <div class="user-reviews">
       <h3>Reviews</h3>
-      <% @user.requests_as_creator.each do |request| %>
-        <% if !request.helper.nil? && request.review %>
+      <% if !@user.reviews_as_request_creator.empty? %>
+        <% @user.requests_as_creator.each do |request| %>
+          <% if !request.helper.nil? && request.review %>
         <div class="individual-review">
           <div class="reviewer-info">
             <div class="reviewer-details">
-            <% if request.helper.photo.attached? %>
-              <%= cl_image_tag request.helper.photo.key, height: 45, width: 45, class: "rounded-circle" %>
-            <% else %>
-              <img class="rounded-circle mx-auto mb-3" src="https://www.pinestrawmag.com/wp-content/uploads/2017/07/4yrcs2zo.png" style="height: 45; width: 45;">
-            <% end %>
-            <div class="name-created-at">
-              <p><%= request.helper.first_name %></p>
-              <p><%= request.review.created_at.strftime("%B %d, %Y") %></p>
+              <% if request.helper.photo.attached? %>
+                <%= cl_image_tag request.helper.photo.key, height: 45, width: 45, class: "rounded-circle" %>
+              <% else %>
+                <img class="rounded-circle mx-auto mb-3" src="https://www.pinestrawmag.com/wp-content/uploads/2017/07/4yrcs2zo.png" style="height: 45; width: 45;">
+              <% end %>
+              <div class="name-created-at">
+                <p><%= request.helper.first_name %></p>
+                <p><%= request.review.created_at.strftime("%B %d, %Y") %></p>
+              </div>
             </div>
+            <div class="rating">
+              <p class="stars">
+              <% request.review.rating.times do %>
+                <i class="fas fa-star"></i>
+              <% end %>
+              </p>
             </div>
-          <div class="rating">
-          <p class="stars">
-            <% request.review.rating.times do %>
-              <i class="fas fa-star"></i>
-            <% end %>
-          </p>
-          </div>
           </div>
           <p> <%= request.review.content %></p>
         </div>
-      <% end %>
+          <% end %>
+        <% end %>
+      <% else %>
+        <p><em>You don't have any reviews yet</em></p>
       <% end %>
     </div>
   </div>

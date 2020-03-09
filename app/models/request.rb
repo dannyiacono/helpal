@@ -10,4 +10,5 @@ class Request < ApplicationRecord
   validates :title, presence: true, length: { minimum: 4 }
   validates :description, presence: true, length: { in: 5..1000 }
   validates :city, presence: true
+
 end
