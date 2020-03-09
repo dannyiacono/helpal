@@ -1,8 +1,9 @@
 <div class="container container-show-request">
   <div class="wrapper-request">
     <div class="request-status">
-      <p>Request status: </p>
-      <p class="status"> <strong><%= @request.status %></strong></p>
+      <div class="conversation-request-card-status">
+        <p id="request-status"><%= @request.status.capitalize %></p>
+      </div>
     </div>
 
     <div class="request-title-show-wrapper ">
