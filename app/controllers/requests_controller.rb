@@ -38,15 +38,22 @@ class RequestsController < ApplicationController
     @request = Request.find(params[:id])
     authorize @request
     @request.destroy
-    redirect_to categories_path, notice: "Succesfully cancelled your request"
+    redirect_to categories_path, notice: "Successfully cancelled your request"
   end
 
   def update
     @request = Request.find(params[:id])
-    @request.helper_id = params[:request][:helper_id]
+    @request.helper_id = params[:helper_id]
+    @request.helper_id.present? ? @request.status = 1 : @request.status = 0
     authorize @request
     if @request.save
-      redirect_to request_path(@request)
+      @helper_conversation = Conversation.find_by(request_id: @request.id, helper_id: @request.helper_id)
+      @helper_conversation.status = 2
+      if @helper_conversation.save
+        redirect_to conversation_path(@helper_conversation)
+      else
+        redirect_to conversation_path(@helper_conversation), notice: "Something went wrong: Please try again"
+      end
     end
   end
 
