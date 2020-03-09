@@ -55,10 +55,14 @@
         </div>
       <% end %>
     <% else %>
+      <% if @request.creator == current_user %>
       <div class="pending-messages">
         <%= link_to conversations_path do %>
           <h3>Pending inbox messages: <%= @conversation_count%></h3>
         <% end %>
+        <% else %>
+          <%= link_to "Start converstation", new_conversation_message_path(current_user) %>
+      <% end %>
       </div>
     <% end %>
 
