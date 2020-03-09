@@ -1,7 +1,6 @@
 class RequestsController < ApplicationController
 
   def index
-    # raise
     @requests = policy_scope(Request).where(creator_id: current_user.id)
     @pending_requests = @requests.pending
     @ongoing_requests = @requests.ongoing
