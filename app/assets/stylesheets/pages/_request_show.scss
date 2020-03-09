@@ -87,4 +87,19 @@
 
 .helper-name {
   margin-left:10px;
+  text-decoration:none
+}
+
+.pending-messages {
+  display:flex;
+}
+
+.pending-messages a{
+color: $black-text;
+text-decoration: none;
+}
+
+.pending-messages a:hover {
+color: #737774;
+text-decoration: none;
 }
