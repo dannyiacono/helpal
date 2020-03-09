@@ -4,5 +4,6 @@ namespace :request do
     requests = Request.all
     puts "Enqueuing update of #{requests.size} requests..."
     requests.each { |request| request.expire if request.due_date < Date.today}
+    puts "Job complete!"
   end
 end
