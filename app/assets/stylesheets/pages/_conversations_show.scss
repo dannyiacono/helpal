@@ -45,10 +45,12 @@
   background-color: $blue-bg;
   border-radius: 6px;
   padding: 10px;
+  margin-bottom: 10px;
 }
 
 .not-blue {
   padding: 10px;
+  margin-bottom: 10px;
 }
 
 .conversation {
@@ -80,7 +82,6 @@
   display: flex;
   flex-direction: column;
   align-items: baseline;
-  width: 400px;
   padding: 25px;
   margin-bottom: 15px;
   position: relative;
@@ -100,6 +101,7 @@
   padding: 20px;
   border-radius: 5px;
   height: fit-content;
+  width: 65%;
 }
 
 .new_message {
@@ -128,4 +130,7 @@
   padding: 25px;
 }
 
+.request-container {
+  width: 38%;
+}
 
