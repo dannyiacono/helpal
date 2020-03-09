@@ -6,7 +6,7 @@
             <%= link_to (cl_image_tag @other_user.photo.key, height: 45, width: 45, class: "rounded-circle"), other_profile_path(@other_user) %>
           <% else %>
             <%= link_to image_tag("https://www.pinestrawmag.com/wp-content/uploads/2017/07/4yrcs2zo.png", class: "avatar"), other_profile_path(@other_user) %>
-          <% end %>
+        <% end %>
       </div>
      <span><%= @request.created_at.strftime("%B %d, %Y") %></span>
     </div>
@@ -37,7 +37,15 @@
   <div class="request-container">
     <div class="conversation-request-card">
       <div class="conversation-request-card-status">
-        <p id="request-status"><%= @request.status.capitalize %></p>
+        <% if @request.status != "pending" %>
+          <% if @other_user.photo.attached? %>
+            <%= link_to (cl_image_tag @other_user.photo.key, height: 45, width: 45, class: "rounded-circle", id: "request-avatar"), other_profile_path(@other_user) %>
+          <% else %>
+            <%= link_to image_tag("https://www.pinestrawmag.com/wp-content/uploads/2017/07/4yrcs2zo.png", class: "avatar", id: "request-avatar"), other_profile_path(@other_user) %>
+          <% end %>
+        <% else %>
+          <p id="request-status"><%= @request.status.capitalize %></p>
+        <% end %>
       </div>
       <h2><strong><%= @request.title %></strong></h2>
       <p><%= @request.due_date.strftime("%B %d, %Y") %></p>
