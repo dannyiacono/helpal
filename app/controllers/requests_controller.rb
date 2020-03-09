@@ -44,9 +44,12 @@ class RequestsController < ApplicationController
     authorize @request
     if @request.save
       @helper_conversation = Conversation.find_by(request_id: @request.id, helper_id: @request.helper_id)
-      @helper_conversation.status = 2;
-      @helper_conversation.save;
-      redirect_to conversation_path(@helper_conversation)
+      @helper_conversation.status = 2
+      if @helper_conversation.save
+        redirect_to conversation_path(@helper_conversation)
+      else
+        redirect_to conversation_path(@helper_conversation), notice: "Something went wrong: Please try again"
+      end
     end
   end
 
