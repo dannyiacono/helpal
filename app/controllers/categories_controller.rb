@@ -8,7 +8,8 @@ class CategoriesController < ApplicationController
     if params[:commit] && params[:commit] != "Search"
       @user_category_selection = params[:commit]
       @category = Category.find_by(name: @user_category_selection)
-      @request = Request.new(category_id: @category.id, city: params[:query])
+      @request = Request.new(city: params[:query])
     end
+
   end
 end
