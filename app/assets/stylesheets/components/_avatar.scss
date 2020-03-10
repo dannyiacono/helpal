@@ -2,6 +2,7 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
+}
 
 .avatar-middle {
   width: 45px;
@@ -9,7 +10,6 @@
   border-radius: 50%;
 }
 
-}
 .avatar-large {
   width: 56px;
   height: 56px;
@@ -17,9 +17,9 @@
 }
 
 .avatar-profile {
-    height: 75px;
-    width: 75px;
-    border-radius: 50%;
+  height: 75px;
+  width: 75px;
+  border-radius: 50%;
 }
 
 .avatar-bordered {
@@ -29,6 +29,7 @@
   box-shadow: 0 1px 2px rgba(0,0,0,0.2);
   border: white 1px solid;
 }
+
 .avatar-square {
   width: 40px;
   border-radius: 0px;
@@ -37,5 +38,5 @@
 }
 
 .waldo-img {
- content: url("https://www.pinestrawmag.com/wp-content/uploads/2017/07/4yrcs2zo.png");
+  content: url("https://www.pinestrawmag.com/wp-content/uploads/2017/07/4yrcs2zo.png");
 }
