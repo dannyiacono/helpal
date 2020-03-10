@@ -42,7 +42,7 @@ Lives in <%= @user.location %></p>
             <% if request.helper.photo.attached? %>
               <%= cl_image_tag request.helper.photo.key, class: "avatar" %>
             <% else %>
-              <img class="avatar waldo-img mx-auto mb-3">
+              <%= image_tag("waldo.png", class: "avatar mx-auto mb-3") %>
             <% end %>
             <div class="name-created-at">
               <p><%= request.helper.first_name %></p>
