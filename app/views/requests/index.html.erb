@@ -58,11 +58,13 @@
     <% if @done_requests.present? %>
       <div class="cards">
         <% @done_requests.each do |request| %>
-          <div class="request-card">
-            <% if !request.helper_id.nil? && request.helper.photo.attached? %>
-              <%= link_to (cl_image_tag request.helper.photo.key, class: "helper-avatar"), other_profile_path(request.helper_id) %>
-            <% else %>
-              <img class="avatar-middle mx-auto mb-3" style="position: absolute; right: 14px; top: 14px;">
+          <div class="request-card">position: absolutposition: absolute; right: 14px; top: 14px;e; right: 14px; top: 14px;
+            <% if !request.helper_id.nil? %>
+              <% if request.helper.photo.attached? %>
+                <%= link_to (cl_image_tag request.helper.photo.key, class: "avatar"), other_profile_path(request.helper_id) %>
+              <% else %>
+                <img class="avatar-middle waldo-img mx-auto mb-3" style="position: absolute; right: 14px; top: 14px;">
+              <% end %>
             <% end %>
             <h3><%= request.title %></h3>
             <div class="date">
