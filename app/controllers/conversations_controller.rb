@@ -17,7 +17,10 @@ class ConversationsController < ApplicationController
       @other_user = User.find(@conversation.creator_id)
     end
     @request = Request.find(@conversation.request_id)
-    @messages = @conversation.messages
+    @messages = []
+    Message.where(conversation_id: @conversation.id).find_each do |message|
+      @messages << message
+    end
     @messages.each do |message|
       if current_user.id != message.user_id
         message.read = true
