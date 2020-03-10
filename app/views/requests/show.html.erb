@@ -68,7 +68,7 @@
             <%= f.input :helper_id, input_html: {value: current_user.id}, :as => :hidden%>
             <%= f.input :creator_id, input_html: {value: @request.creator_id}, :as => :hidden%>
             <%= f.input :request_id, input_html: {value: @request.id}, :as => :hidden%>
-            <%= f.submit :submit, class: "btn btn-primary" %>
+            <%= f.button :submit, "Start a conversation", class: "btn btn-primary" %>
           <% end %>
 
       <% end %>

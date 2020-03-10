@@ -31,16 +31,8 @@ class ConversationsController < ApplicationController
   end
 
   def create
-  #  if Conversation.between(params[:creator_id],params[:helper_id]).present?
-  #   @conversation = Conversation.between(params[:creator_id], params[:helper_id]).first
-  # else
-
-
-      @conversation = Conversation.create(conversation_params)
-      authorize @conversation
-
-  # end
-      redirect_to conversation_messages_path(@conversation)
+    @conversation = Conversation.create(conversation_params)
+    redirect_to conversation_path(@conversation)
   end
 
 
