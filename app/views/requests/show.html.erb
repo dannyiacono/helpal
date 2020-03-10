@@ -70,12 +70,12 @@
           <%= link_to "Go to conversation", conversation_path(@helper_conversation), class: "btn btn-outline-secondary"%>
         <% else %>
           <div class="request-helper-buttons">
-              <%= simple_form_for @conversation do |f| %>
-                <%= f.input :helper_id, input_html: {value: current_user.id}, :as => :hidden%>
-                <%= f.input :creator_id, input_html: {value: @request.creator_id}, :as => :hidden%>
-                <%= f.input :request_id, input_html: {value: @request.id}, :as => :hidden%>
-                <%= f.button :submit, "Start a conversation", class: "btn btn-primary" %>
-              <% end %>
+            <%= simple_form_for @conversation do |f| %>
+              <%= f.input :helper_id, input_html: {value: current_user.id}, :as => :hidden%>
+              <%= f.input :creator_id, input_html: {value: @request.creator_id}, :as => :hidden%>
+              <%= f.input :request_id, input_html: {value: @request.id}, :as => :hidden%>
+              <%= f.button :submit, "Start a conversation", class: "btn btn-primary" %>
+            <% end %>
             <%= link_to "View all open requests", requests_path, class: "btn btn-primary"%>
           </div>
         <% end %>
