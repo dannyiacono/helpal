@@ -1,5 +1,4 @@
 class ConversationsController < ApplicationController
-  before_action :skip_authorization
 
   def index
     @conversations = policy_scope(Conversation)
@@ -7,10 +6,12 @@ class ConversationsController < ApplicationController
     @conversations.each do |conversation|
       @user_conversations << conversation if (conversation.creator_id == current_user.id || conversation.helper_id == current_user.id)
     end
+    @user_conversations
   end
 
   def show
     @conversation = Conversation.find(params[:id])
+    authorize @conversation
     if current_user.id == @conversation.creator_id
       @other_user = User.find(@conversation.helper_id)
     else
@@ -32,6 +33,7 @@ class ConversationsController < ApplicationController
 
   def create
     @conversation = Conversation.create(conversation_params)
+    authorize @conversation
     redirect_to conversation_path(@conversation)
   end
 

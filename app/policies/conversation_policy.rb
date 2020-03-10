@@ -3,20 +3,17 @@ class ConversationPolicy < ApplicationPolicy
     def resolve
       scope.all
     end
+  end
 
     def index?
-      raise
-      record.user == user
+      @record.creator == user || @record.helper == user
     end
 
     def show?
-      raise
-      true
+      @record.creator == user || @record.helper == user
     end
 
     def create?
-      raise
-      true
+      @record.creator != user
     end
-  end
 end
