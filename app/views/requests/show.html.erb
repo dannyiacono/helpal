@@ -76,7 +76,7 @@
               <%= f.input :request_id, input_html: {value: @request.id}, :as => :hidden%>
               <%= f.button :submit, "Start a conversation", class: "btn btn-primary" %>
             <% end %>
-            <%= link_to "View all open requests", requests_path, class: "btn btn-primary"%>
+            <p><%= link_to "View all open requests", requests_path, class: "btn btn-primary"%></p>
           </div>
         <% end %>
       <% end %>

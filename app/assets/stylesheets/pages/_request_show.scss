@@ -52,7 +52,6 @@
   margin-bottom: 60px;
 }
 
-
 .edit-btn {
   margin-right: 10px;
   margin-left: 30px;
@@ -80,16 +79,14 @@
 
 .pending-messages {
   display:flex;
-}
-
-.pending-messages a{
-color: $black-text;
-text-decoration: none;
-}
-
-.pending-messages a:hover {
-color: #737774;
-text-decoration: none;
+  a{
+    color: $black-text;
+    text-decoration: none;
+    &:hover {
+    color: #737774;
+    text-decoration: none;
+    }
+  }
 }
 
 .request-helper-buttons {
