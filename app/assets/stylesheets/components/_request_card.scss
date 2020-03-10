@@ -72,7 +72,14 @@ margin-top: 60px;
   opacity: 0.6;
 }
 
- // Media queries
+ // BOOTSTRAP OVERRIDE
+
+.nav-pills>li+li {
+  margin-left: 24px; // 2px by default
+}
+
+
+ // MEDIA QUERIES
 
 @media (min-width: 100px) and (max-width: 575px) {
   .cards {

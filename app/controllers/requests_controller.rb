@@ -5,6 +5,9 @@ class RequestsController < ApplicationController
     @pending_requests = @requests.pending
     @ongoing_requests = @requests.ongoing
     @done_requests = @requests.done
+    @helping_requests = policy_scope(Request).where(helper_id: current_user.id)
+    @ongoing_help_requests = @helping_requests.ongoing
+    @done_help_requests = @helping_requests.done
   end
 
   def show
