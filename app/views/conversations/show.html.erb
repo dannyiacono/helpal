@@ -17,11 +17,11 @@
             <% if message.body %>
               <% if current_user != message.user %>
               <div class="blue">
-                <div><strong><%= message.user.first_name %></strong> <%= message.created_at.strftime("%B %d, %Y") %></div>
+                <div><strong><%= message.user.first_name %></strong> <%= message.created_at.strftime("%H:%M (%B %d)") %></div>
                 <p><%= message.body %></p>
               <% else %>
               <div class="not-blue">
-                <div><strong><%= message.user.first_name %></strong> <%= message.created_at.strftime("%B %d, %Y") %></div>
+                <div><strong><%= message.user.first_name %></strong> <%= message.created_at.strftime("%H:%M (%B %d)") %></div>
                 <p><%= message.body %></p>
             <% end %>
               </div>
@@ -45,7 +45,7 @@
       <% category = Category.find(@request.category_id) %>
       <p id="request-category"><%= category.name %></p>
     </div>
-    <% if @request.creator == current_user && @request.status == "pending" %>
+    <% if @request.creator == current_user && @request.status == "pending" && @conversation.status != "declined" %>
       <div class="request-confirmation">
         <p>Do you want to confirm this pal?</p>
         <div id="pal-confirm">
@@ -56,10 +56,10 @@
           <% end %>
           <p><%= @other_user.first_name %> <%= @other_user.last_name %></p>
         </div>
-          <%= simple_form_for ([@request]) do |f| %>
+          <%= simple_form_for([@request]) do |form| %>
             <%= hidden_field_tag :helper_id, @conversation.helper_id %>
-            <%= f.button :submit, "Confirm pal", class: "btn btn-primary rounder"%>
-            <%= f.button :submit, "Decline", class: "btn rounder inverted" %>
+            <%= form.button :submit, "Confirm pal", class: "btn btn-primary rounder", id: "confirm-button"%>
+            <%= form.button :submit, "Decline", class: "btn rounder inverted", id: "decline-button" %>
           <% end %>
       </div>
     <% end %>

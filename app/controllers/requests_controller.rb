@@ -47,27 +47,34 @@ class RequestsController < ApplicationController
       @request.status = 1
       authorize @request
       if @request.save
-        @helper_conversation = Conversation.find_by(request_id: @request.id, helper_id: @request.helper_id)
-        @helper_conversation.status = 2
-        if @helper_conversation.save
-          redirect_to conversation_path(@helper_conversation)
-        else
-          redirect_to conversation_path(@helper_conversation), notice: "Something went wrong: Please try again"
-        end
+        update_helper_conversation(@request)
       end
     else
       authorize @request
-      @helper_conversation = Conversation.find_by(request_id: @request.id, helper_id: params[:helper_id])
+      update_helper_conversation(@request)
+    end
+  end
+
+  private
+
+  def update_helper_conversation(request)
+    @helper_conversation = Conversation.find_by(request_id: @request.id, helper_id: params[:helper_id])
+    if @request.helper_id.nil?
       @helper_conversation.status = 1
       if @helper_conversation.save
         redirect_to conversations_path
       else
         redirect_to conversation_path(@helper_conversation), notice: "Something went wrong: Please try again"
       end
+    else
+      @helper_conversation.status = 2
+      if @helper_conversation.save
+        redirect_to conversation_path(@helper_conversation)
+      else
+        redirect_to conversation_path(@helper_conversation), notice: "Something went wrong: Please try again"
+      end
     end
   end
-
-  private
 
   def set_request
     @request = Request.find(params[:id])
