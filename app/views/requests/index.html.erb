@@ -1,6 +1,4 @@
-<div class="container">
-
-  <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist" style="justify-content: center; margin-top: 36px;";>
+  <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist" style="justify-content: center; background-color: #9AD7E9;";>
     <li class="nav-item">
       <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">My help requests</a>
     </li>
@@ -8,6 +6,8 @@
       <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Helping others</a>
     </li>
   </ul>
+<div class="container">
+
   <div class="tab-content" id="pills-tabContent">
     <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
       <div class="cards-wrapper">
@@ -125,7 +125,7 @@
                       </div>
                       <div class="links">
                         <%= link_to "View details", request_path(request), class: "details-btn" %>
-                        <%= link_to "Cancel", request_path(request), method: :delete, data: { confirm: "Are you sure?" }, class: "delete-btn" %>
+                        <%= link_to "Cancel", "#", class: "delete-btn" %>
                       </div>
                     </div>
                   <% end %>
@@ -154,7 +154,6 @@
                     </div>
                     <div class="links">
                       <%= link_to "View details", request_path(request), class: "details-btn" %>
-                      <%= link_to "Cancel", request_path(request), method: :delete, data: { confirm: "Are you sure?" }, class: "delete-btn" %>
                     </div>
                   </div>
                 <% end %>
@@ -167,7 +166,7 @@
           <div class="no-results">
           <h3>Nothing to display yet.</h3>
           <p>Check pending help requests.</p>
-          <%= link_to "New request", "#", class: "btn btn-primary" %>
+          <%= link_to "Help others", "#", class: "btn btn-primary" %>
         </div>
         <% end %>
       </div>
