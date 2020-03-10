@@ -61,7 +61,16 @@
           <h3>Pending inbox messages: <%= @conversation_count%></h3>
         <% end %>
       <% else %>
-          <%= link_to "Start converstation", conversations_path, class: "btn btn-outline-secondary"%>
+        <% if @helper_conversation.present? %>
+          <%= link_to "Go to conversation", conversation_path(@helper_conversation), class: "btn btn-outline-secondary"%>
+        <% else %>
+          <%= simple_form_for @conversation do |f| %>
+            <%= f.input :helper_id, input_html: {value: current_user}, :as => :hidden%>
+            <%= f.input :creator_id, input_html: {value: @request.creator_id}, :as => :hidden%>
+            <%= f.submit :submit, class: "btn btn-primary" %>
+          <% end %>
+
+      <% end %>
       <% end %>
       </div>
       <% if @request.creator == current_user %>

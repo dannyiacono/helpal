@@ -15,6 +15,7 @@ class RequestsController < ApplicationController
     @id = @request.helper_id
     @id ? @helper = User.find(@id) : @helper = nil
     @helper_conversation = Conversation.find_by(request_id: @request.id, helper_id: @request.helper_id)
+    @conversation = Conversation.create
   end
 
   def new
