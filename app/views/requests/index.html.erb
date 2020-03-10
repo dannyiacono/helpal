@@ -32,7 +32,7 @@
               <% if request.helper.photo.attached? %>
                 <%= link_to (cl_image_tag request.helper.photo.key, class: "avatar"), other_profile_path(request.helper) %>
               <% else %>
-                <%= link_to image_tag( class: "avatar waldo-img"), other_profile_path(@other_user) %>
+                <%= link_to image_tag("waldo.png", class: "avatar"), other_profile_path(request.helper_id) %>
               <% end %>
             <% end %>
             <h3><%= request.title %></h3>
@@ -63,8 +63,7 @@
               <% if request.helper.photo.attached? %>
                 <%= link_to (cl_image_tag request.helper.photo.key, class: "avatar"), other_profile_path(request.helper_id) %>
               <% else %>
-                <%= link_to image_tag( class: "avatar waldo-img"), other_profile_path(request.helper_id) %>
-                <img class="avatar" src="https://www.pinestrawmag.com/wp-content/uploads/2017/07/4yrcs2zo.png">
+                <%= link_to image_tag("waldo.png", class: "avatar"), other_profile_path(request.helper_id) %>
               <% end %>
             <% end %>
             <h3><%= request.title %></h3>
