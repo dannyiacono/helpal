@@ -100,33 +100,15 @@ color: #737774;
 text-decoration: none;
 }
 
-.request-all-btn {
-  position: absolute;
-  right: 5px;
-}
-
 .request-conversation-button {
   // display: flex;
   position: absolute;
   justify-content: flex-end;
 }
 
-.request-show-buttons {
-  // display: flex;
-  position: absolute;
-  justify-content: flex-end;
-  margin-left: 10px;
-}
-
-.request-buttons {
-  position: absolute;
-  justify-content: flex-start;
-}
-
-.button-flexbox {
+.button-helper-buttons {
   display: flex;
-  flex-direction: row;
-  position: relative;
+  justify-content: space-between;
 }
 
 .request-show-btn {
