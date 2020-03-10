@@ -79,12 +79,12 @@
 
 .pending-messages {
   display:flex;
-  a{
+  a {
     color: $black-text;
     text-decoration: none;
     &:hover {
-    color: #737774;
-    text-decoration: none;
+      color: #737774;
+      text-decoration: none;
     }
   }
 }
