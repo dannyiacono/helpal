@@ -33,9 +33,9 @@ Lives in <%= @user.location %></p>
           <div class="reviewer-info">
             <div class="reviewer-details">
               <% if request.helper.photo.attached? %>
-                <%= cl_image_tag request.helper.photo.key, height: 45, width: 45, class: "rounded-circle" %>
+                <%= cl_image_tag request.helper.photo.key, class: "avatar" %>
               <% else %>
-                <img class="rounded-circle mx-auto mb-3" src="https://www.pinestrawmag.com/wp-content/uploads/2017/07/4yrcs2zo.png" style="height: 45; width: 45;">
+                <img class="avatar mx-auto mb-3" src="https://www.pinestrawmag.com/wp-content/uploads/2017/07/4yrcs2zo.png">
               <% end %>
               <div class="name-created-at">
                 <p><%= request.helper.first_name %></p>
