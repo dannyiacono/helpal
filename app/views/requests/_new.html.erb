@@ -4,15 +4,13 @@
   <h1>Fill in your request</h1>
 </div>
   <div class="category-selected">
-    <% if @user_category_selection %>
-      <span><%=@user_category_selection %></span>
-    <% end %>
+      <span></span>
   </div>
-  <div class="no-category-selected">
-    <% if @user_category_selection.nil?%>
+  <!--<div class="no-category-selected">
+    <#% if @user_category_selection.nil?%>
       <span>Please select a category to continue</span>
-    <% end %>
-  </div>
+    <#% end %>
+  </div> -->
   <div class="no-category-selected">
     <% if @location.nil?%>
       <span>Please select a city before continuing</span>
@@ -20,15 +18,14 @@
   </div>
   <div>
       <%= simple_form_for @request do |f| %>
-      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
       <%= f.input :status, :as => :hidden%>
       <%= f.input :category_id, :as => :hidden%>
       <%= f.input :city, input_html: {value: @location}, :as => :hidden%>
       <%= f.input :due_date, as: :string, placeholder: "Please enter a due date", input_html: { id: "request_due_date"}%>
       <%= f.input :title, required: true, hint: "Title required"%>
       <%= f.input :description, required: true%>
-      <%= f.submit :submit, class: "btn btn-primary" %>
-      <%= f.button :button, "Cancel", type: "reset", class: "btn-outline-secondary" %>
+      <%= f.submit :Submit, class: "btn btn-primary" %>
+      <%= f.button :button, "Cancel", type: "reset", class: "btn-outline-warning" %>
   <% end %>
 
    <%else %>
