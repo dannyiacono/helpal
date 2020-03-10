@@ -25,6 +25,19 @@ class User < ApplicationRecord
     reviews
   end
 
+  def unread_messages?
+   unread = conversations.find do |conversation|
+    conversation if conversation.messages.any? do |message|
+      message if message.read == false && message.user_id != self.id
+      end
+    end
+    if unread.present?
+      true
+    else
+      false
+    end
+  end
+
   def reviews_as_request_creator
     reviews.select { |review| review if review.request.creator == self}
   end
