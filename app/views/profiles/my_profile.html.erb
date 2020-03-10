@@ -35,7 +35,7 @@ Lives in <%= @user.location %></p>
               <% if request.helper.photo.attached? %>
                 <%= cl_image_tag request.helper.photo.key, class: "avatar-middle" %>
               <% else %>
-                <%= image_tag("waldo.png", class: "avatar-middle mx-auto mb-3") %>
+                <%= image_tag("waldo.png", class: "avatar-middle") %>
               <% end %>
               <div class="name-created-at">
                 <p><%= request.helper.first_name %></p>
