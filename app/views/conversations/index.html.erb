@@ -48,8 +48,12 @@
                   <% end %>
                   <p class="message-text-preview"><%= conversation.messages.last.body.truncate(42)%></p>
                 </div>
-                <div>
-                  <p class="conversation-status"><%= conversation.status.capitalize %></p>
+                <div id="conversation-status-details">
+                  <% if conversation.unread_messages? %>
+                    <p class="conversation-status"><%= conversation.status.capitalize %></p><p class="badged">#</p>
+                  <% else %>
+                    <p class="conversation-status"><%= conversation.status.capitalize %></p>
+                  <% end %>
                 </div>
               </div>
           </li>

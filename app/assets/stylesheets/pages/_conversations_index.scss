@@ -76,3 +76,21 @@
   text-decoration: none;
   color: black;
 }
+
+#conversation-status-details {
+  display: flex;
+}
+
+.conversation-status {
+  position: relative;
+}
+
+.badged {
+  margin-left: 8px;
+  border-radius: 50%;
+  background: red;
+  color: red;
+  font-size: 6px;
+  width: 10px;
+  height: 10px;
+}
