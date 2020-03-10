@@ -128,3 +128,8 @@ text-decoration: none;
   flex-direction: row;
   position: relative;
 }
+
+.request-show-btn {
+  display: flex;
+  justify-content: flex-end;
+}
