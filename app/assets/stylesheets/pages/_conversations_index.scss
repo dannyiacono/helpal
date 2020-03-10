@@ -30,13 +30,13 @@
 
 .message-box {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   padding: 25px;
 }
 
 .message-user-avatar {
   display: flex;
+  padding-right: 50px;
 }
 
 .user-name-and-time {
@@ -57,12 +57,7 @@
 
 .message-body {
   word-wrap: break-word;
-  display: flex;
-  flex-direction: column;
-}
-
-.due-date {
-  color: $red-cta;
+  flex-grow: 1;
 }
 
 
