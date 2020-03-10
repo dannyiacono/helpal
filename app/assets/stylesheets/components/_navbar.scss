@@ -10,3 +10,24 @@
 .navbar-lewagon .navbar-brand img {
   width: 80px;
 }
+
+.notification {
+  position: relative;
+  display: inline-block;
+  color: $gray;
+}
+
+.notification:hover {
+  text-decoration: none;
+  color:inherit;
+}
+
+.badge {
+  position: absolute;
+  top: 5px;
+  right: 3px;
+  border-radius: 50%;
+  background: red;
+  color: red;
+  font-size: 6px;
+}
