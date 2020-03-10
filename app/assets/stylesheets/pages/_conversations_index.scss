@@ -1,16 +1,18 @@
 .conversations {
   display: flex;
   flex-direction: row;
-  margin: 60px;
+  margin: 60px auto;
 }
 
 .conversation-filter {
   background-color: white;
+  display: flex;
+  flex-direction: column;
   width: 25%;
   text-align: center;
-  padding: 40px;
+  padding: 30px;
   border-radius: 5px;
-  padding-bottom: 40px;
+  height: max-content;
 
 }
 
@@ -18,7 +20,7 @@
   background-color: white;
   border-radius: 5px;
   margin-left: 30px;
-  width: 70%;
+  width: 75%;
 }
 
 .conversations-box ul {
@@ -27,17 +29,23 @@
 }
 
 .message-box {
-  display: grid;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  grid-template-columns: 1fr 1fr 400px 1fr;
-  grid-gap: 15px;
   padding: 25px;
 }
 
-.message-user-name p {
-  margin: 0;
+.message-user-avatar {
+  display: flex;
 }
 
+.user-name-and-time {
+  margin-left: 15px;
+}
+
+.user-name-and-time p {
+  margin: unset;
+}
 
 .conversations-box li {
   border-bottom: 1px solid $green-bg;
@@ -48,9 +56,15 @@
 }
 
 .message-body {
-  text-align: left;
   word-wrap: break-word;
+  display: flex;
+  flex-direction: column;
 }
+
+.due-date {
+  color: $red-cta;
+}
+
 
 .message-body p {
   margin: 0;
