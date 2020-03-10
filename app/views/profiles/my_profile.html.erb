@@ -4,7 +4,7 @@
     <% if current_user.photo.attached? %>
       <%= cl_image_tag @user.photo.key, class: "avatar-profile mx-auto mb-3" %>
     <% else %>
-      <img class="avatar-profile mx-auto mb-3" src="https://www.pinestrawmag.com/wp-content/uploads/2017/07/4yrcs2zo.png" alt="">
+      <img class="avatar-profile waldo-img mx-auto mb-3">
     <% end %>
     <h3><%= @user.first_name %> <%= @user.last_name %></h3>
     <%= link_to "Edit your profile", profiles_edit_path %>
@@ -35,7 +35,7 @@ Lives in <%= @user.location %></p>
               <% if request.helper.photo.attached? %>
                 <%= cl_image_tag request.helper.photo.key, class: "avatar" %>
               <% else %>
-                <img class="avatar mx-auto mb-3" src="https://www.pinestrawmag.com/wp-content/uploads/2017/07/4yrcs2zo.png">
+                <img class="avatar waldo-img mx-auto mb-3">
               <% end %>
               <div class="name-created-at">
                 <p><%= request.helper.first_name %></p>
