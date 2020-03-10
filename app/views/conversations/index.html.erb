@@ -44,9 +44,9 @@
                   <% if conversation.messages.empty? %>
                     <p><%= link_to "Open conversation: There is no message yet", conversation_path(conversation)%></p>
                   <% else %>
-                    <p><%= link_to conversation.request.title.truncate(42), conversation_path(conversation)%></p>
+                    <p class="request-title"><%= link_to conversation.request.title.truncate(42), conversation_path(conversation)%></p>
                   <% end %>
-                  <p class="due-date">Due: <%= conversation.request.due_date.strftime("%B %d, %Y")%></p>
+                  <p class="message-text-preview"><%= conversation.messages.last.body.truncate(42)%></p>
                 </div>
                 <div>
                   <p class="conversation-status"><%= conversation.status.capitalize %></p>
