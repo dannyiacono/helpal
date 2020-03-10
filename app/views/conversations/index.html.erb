@@ -17,7 +17,7 @@
       <% if @user_conversations.empty? %>
         <p><em>Sorry you have no messages yet.</em></p>
       <% else %>
-        <%  @user_conversations.each do |conversation| %>
+        <%  @user_conversations.sort_by(&:updated_at).reverse.each do |conversation| %>
           <li>
             <% if current_user.id == conversation.creator_id %>
               <% other_user = User.find(conversation.helper_id) %>
