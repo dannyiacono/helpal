@@ -100,15 +100,10 @@ color: #737774;
 text-decoration: none;
 }
 
-.request-conversation-button {
-  // display: flex;
-  position: absolute;
-  justify-content: flex-end;
-}
-
 .button-helper-buttons {
   display: flex;
   justify-content: space-between;
+  flex-direction: row;
 }
 
 .request-show-btn {
