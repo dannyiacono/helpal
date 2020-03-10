@@ -55,22 +55,35 @@
         </div>
       <% end %>
     <% else %>
+      <% if @request.creator == current_user %>
       <div class="pending-messages">
         <%= link_to conversations_path do %>
           <h3>Pending inbox messages: <%= @conversation_count%></h3>
         <% end %>
-      </div>
-    <% end %>
-
-    <div class="request-show-buttons">
-      <% if @request.creator == current_user %>
-        <a href="#" class="btn btn-primary edit-btn">Edit</a>
-        <%= link_to "Cancel", request_path, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-outline-danger" %>
       <% else %>
-         <div>
-          <%= link_to "View all open requests", requests_path, class: "btn btn-primary edit-btn" %>
-        </div>
+        <% if @helper_conversation.present? %>
+          <%= link_to "Go to conversation", conversation_path(@helper_conversation), class: "btn btn-outline-secondary"%>
+        <% else %>
+          <%= simple_form_for @conversation do |f| %>
+            <%= f.input :helper_id, input_html: {value: current_user.id}, :as => :hidden%>
+            <%= f.input :creator_id, input_html: {value: @request.creator_id}, :as => :hidden%>
+            <%= f.input :request_id, input_html: {value: @request.id}, :as => :hidden%>
+            <%= f.button :submit, "Start a conversation", class: "btn btn-primary" %>
+          <% end %>
+
       <% end %>
-    </div>
-  </div>
+      <% end %>
+      </div>
+      <% if @request.creator == current_user %>
+      <div class="request-show-buttons">
+          <a href="#" class="btn btn-primary edit-btn">Edit</a>
+          <%= link_to "Cancel", request_path, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-outline-danger" %>
+      <% else %>
+      <div class="request-all-btn">
+        <%= link_to "View all open requests", requests_path, class: "btn btn-primary"%>
+      </div>
+      <% end %>
+     </div>
+    <% end %>
+   </div>
 </div>

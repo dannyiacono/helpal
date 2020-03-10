@@ -14,7 +14,8 @@ class RequestsController < ApplicationController
     @conversation_count = @request.conversations.count
     @id = @request.helper_id
     @id ? @helper = User.find(@id) : @helper = nil
-    @helper_conversation = Conversation.find_by(request_id: @request.id, helper_id: @request.helper_id)
+    @helper_conversation = Conversation.find_by(request_id: @request.id, helper_id: current_user.id, creator_id: @request.creator_id)
+    @conversation = Conversation.new
   end
 
   def new
