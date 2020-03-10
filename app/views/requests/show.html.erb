@@ -25,33 +25,22 @@
     </div>
 
     <% if @helper.present? %>
-      <% if @helper.photo.attached? %>
         <h3>Assigned to:</h3>
         <div class="assigned-to-avatar">
           <div class="pending-messages">
-            <%= link_to conversations_path do %>
-              <%= cl_image_tag @helper.photo.key, class: "avatar-large" %>
+            <% if @helper.photo.attached? %>
+              <%= link_to conversations_path do %>
+                <%= cl_image_tag @helper.photo.key, class: "avatar-large" %>
+              <% end %>
+            <% else %>
+              <%= link_to conversations_path do %>
+                <%= image_tag("waldo.png", class: "avatar-large") %>
+              <% end %>
             <% end %>
           </div>
           <%= link_to conversations_path(@helper_conversation) do %>
             <p class="helper-name"><%= @helper.first_name %> <%=@helper.last_name %></p>
           <% end %>
-        </div>
-      <% else %>
-        <div>
-          <h3>Assigned to:</h3>
-          <div class="assigned-to-avatar">
-            <div class="pending-messages">
-              <%= link_to conversations_path do %>
-                <%= image_tag("waldo.png", class: "avatar-large") %>
-              <% end %>
-            </div>
-            <div class="pending-messages">
-              <%= link_to conversations_path(@helper_conversation) do %>
-                <p class="helper-name"><%= @helper.first_name %> <%=@helper.last_name %></p>
-              <% end %>
-            </div>
-          </div>
         </div>
       <% end %>
     <% else %>
