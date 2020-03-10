@@ -25,6 +25,10 @@ class User < ApplicationRecord
     reviews
   end
 
+  def conversations
+    conversations_as_helper + conversations_as_creator
+  end
+
   def unread_messages?
    unread = conversations.find do |conversation|
     conversation if conversation.messages.any? do |message|
