@@ -62,7 +62,7 @@
             <% if !request.helper_id.nil? && request.helper.photo.attached? %>
               <%= link_to (cl_image_tag request.helper.photo.key, class: "helper-avatar"), other_profile_path(request.helper_id) %>
             <% else %>
-              <img class="rounded-circle mx-auto mb-3" src="https://www.pinestrawmag.com/wp-content/uploads/2017/07/4yrcs2zo.png" style="height: 45px; width: 45px; position: absolute; right: 14px; top: 14px;">
+              <img class="avatar-middle mx-auto mb-3" style="position: absolute; right: 14px; top: 14px;">
             <% end %>
             <h3><%= request.title %></h3>
             <div class="date">
