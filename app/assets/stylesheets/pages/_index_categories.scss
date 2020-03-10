@@ -21,22 +21,27 @@
   grid-auto-rows: minmax(100px, auto);
 }
 
-#category-card {
+.category-card {
+  display: flex;
+  justify-content: center;
   width: 20vw;
   height: 20vh;
   background-color: white;
   border: 1px solid #b9bfbb;
   border-radius: 5px;
   box-shadow: 1px 1px 1px #b9bfbb;
- }
+  align-items: center;
+}
+
 
 .change-border-color {
   width: 20vw;
   height: 20vh;
   background-color: white;
-  border: 2px solid $red-cta;
+  border: 2px solid green;
   border-radius: 5px;
   box-shadow: 1px 1px 1px #b9bfbb;
+  text-align: center;
  }
 
 .title-index {
@@ -58,4 +63,8 @@
   height: 100%;
   display: flex;
   padding: 15px;
+}
+
+.category-card span {
+  text-align: center;
 }

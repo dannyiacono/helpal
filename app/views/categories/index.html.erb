@@ -19,15 +19,14 @@
 
   <div class="wrapper">
     <div class="container-category-cards">
-      <% @categories.each do |category| %>
-        <%= form_tag categories_path, method: :get do %>
-          <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-          <%= hidden_field_tag :query, params[:query], class: "form-control" %>
-          <%= submit_tag category.name, id: "category-card"%>
+       <% @categories.each do |category| %>
+          <div class="category-card" id="<%= category.name %>">
+            <span class="name_cat_card"><%=category.name  %></span>
+          </div>
         <% end %>
-      <% end %>
     </div>
-    </div>
+  </div>
+
 </div>
 
 <div>
