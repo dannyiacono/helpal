@@ -11,4 +11,8 @@ class Request < ApplicationRecord
   validates :description, presence: true, length: { in: 5..1000 }
   validates :city, presence: true
 
+  def expire
+    self.status = 2
+    self.save
+  end
 end
