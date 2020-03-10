@@ -11,6 +11,7 @@ const categoriesIndex = () => {
         category.classList.remove("change-border-color")
       })
     event.currentTarget.classList.add("change-border-color");
+    catSelect.classList.add('blue-back');
     catSelect.innerText = event.currentTarget.innerText;
     catInput.value = catId.innerText;
     });

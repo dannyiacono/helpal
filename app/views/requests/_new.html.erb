@@ -24,8 +24,8 @@
       <%= f.input :due_date, as: :string, placeholder: "Please enter a due date", input_html: { id: "request_due_date"}%>
       <%= f.input :title, required: true, hint: "Title required"%>
       <%= f.input :description, required: true%>
-      <%= f.submit :submit, class: "btn btn-primary" %>
-      <%= f.button :button, "Cancel", type: "reset", class: "btn-outline-secondary" %>
+      <%= f.submit :Submit, class: "btn btn-primary" %>
+      <%= f.button :button, "Cancel", type: "reset", class: "btn-outline-warning" %>
   <% end %>
 
    <%else %>

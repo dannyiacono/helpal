@@ -8,12 +8,14 @@
 }
 
 .category-selected {
-  background-color: $blue-bg;
   height: 40px;
   width: 100px;
   padding: 10px 15px;
   border-radius: 5px;
-  text-align: left;
+  text-align: center;
+  &.blue-back {
+    background-color: $blue-bg;
+  }
 }
 
 .no-category-selected {
