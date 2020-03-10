@@ -21,6 +21,12 @@ class ConversationsController < ApplicationController
     Message.where(conversation_id: @conversation.id).find_each do |message|
       @messages << message
     end
+    @messages.each do |message|
+      if current_user.id != message.user_id
+        message.read = true
+        message.save
+      end
+    end
     @message = Message.new
   end
 
