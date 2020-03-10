@@ -6,7 +6,7 @@ class Request < ApplicationRecord
   has_one :category
   has_one :review
   has_many :conversations
-  validates :due_date, presence: true
+  validates :due_date, :city, :category_id, presence: true
   validates :title, presence: true, length: { minimum: 4 }
   validates :description, presence: true, length: { in: 5..1000 }
   validates :city, presence: true
