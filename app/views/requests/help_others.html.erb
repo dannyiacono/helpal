@@ -1,0 +1,5 @@
+<p>Test</p>
+<% @pending_requests.each do |request| %>
+<p><%= request.status.capitalize %></p>
+<h3><%= request.title.truncate(42) %></h3>
+<% end %>

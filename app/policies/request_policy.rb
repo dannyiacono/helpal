@@ -5,6 +5,9 @@ class RequestPolicy < ApplicationPolicy
     end
   end
 
+  def help_others?
+    !user.nil?
+  end
 
   def show?
     !user.nil?

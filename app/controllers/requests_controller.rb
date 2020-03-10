@@ -10,6 +10,12 @@ class RequestsController < ApplicationController
     @done_help_requests = @helping_requests.done
   end
 
+  def help_others
+    @requests = policy_scope(Request).where.not(creator_id: current_user.id)
+    @pending_requests = @requests.pending
+    authorize @requests
+  end
+
   def show
     @request = Request.find(params[:id])
     @new_request = Category.find(@request.category_id).name
