@@ -4,7 +4,7 @@
     <% if @user.photo.attached? %>
       <%= cl_image_tag @user.photo.key, class: "avatar-profile mx-auto mb-3" %>
     <% else %>
-      <img class="avatar-profile waldo-img mx-auto mb-3">
+      <%= image_tag("waldo.png", class: "avatar-profile mx-auto mb-3") %>
     <% end %>
     <h3><%= @user.first_name %> <%= @user.last_name %></h3>
     <p><svg width="14" height="20" viewBox="0 0 14 20" fill="none" xmlns="http://www.w3.org/2000/svg">
