@@ -2,9 +2,9 @@
 
   <div class="user-info">
     <% if current_user.photo.attached? %>
-      <%= cl_image_tag @user.photo.key, class: "rounded-circle mx-auto mb-3" %>
+      <%= cl_image_tag @user.photo.key, class: "avatar mx-auto mb-3" %>
     <% else %>
-      <img class="rounded-circle mx-auto mb-3" src="https://www.pinestrawmag.com/wp-content/uploads/2017/07/4yrcs2zo.png" alt="">
+      <img class="avatar mx-auto mb-3" src="https://www.pinestrawmag.com/wp-content/uploads/2017/07/4yrcs2zo.png" alt="">
     <% end %>
     <h3><%= @user.first_name %> <%= @user.last_name %></h3>
     <%= link_to "Edit your profile", profiles_edit_path %>
