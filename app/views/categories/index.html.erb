@@ -1,19 +1,27 @@
 <div id="category-index-body">
-   <div class="title-index">
+  <div class="container">
+    <div class="title-index">
       <h1><strong>We are here to help</strong></h1>
       <h2>Select the category you need help with and connect with pals who can help you</h2>
     </div>
-
-  <div class="location-update">
-    <%= form_tag categories_path, method: :get, class: "form-inline" do %>
-      <%= text_field_tag :query, params[:query], class: "form-control", placeholder: @location %>
-      <%= submit_tag "Search", class: "btn btn-primary" %>
+    <div class="search-bar">
+      <div class="search-city-input">
+      <%= form_tag categories_path, method: :get, class: "form-inline" do %>
+        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+        <%= text_field_tag :query, params[:query], id: "form-city", class: "form-control search-input", placeholder: "Type the city name" %>
+      </div>
+      <div class="search-submit">
+        <%= submit_tag "Search", class: "btn btn-primary" %>
+      </div>
+    </div>
     <% end %>
   </div>
+
   <div class="wrapper">
     <div class="container-category-cards">
       <% @categories.each do |category| %>
         <%= form_tag categories_path, method: :get do %>
+          <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
           <%= hidden_field_tag :query, params[:query], class: "form-control" %>
           <%= submit_tag category.name, id: "category-card"%>
         <% end %>

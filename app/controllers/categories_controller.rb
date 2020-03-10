@@ -2,7 +2,7 @@ class CategoriesController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
 
   def index
-    @location = params[:query]
+    @location = params[:query].split(",").first
     @categories = policy_scope(Category)
     @request = Request.new
     if params[:commit] && params[:commit] != "Search"
