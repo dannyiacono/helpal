@@ -4,7 +4,6 @@
       <div class="conversation-request-card-status">
         <p id="request-status-show"><%= @request.status.capitalize%></p>
       </div>
-
     </div>
     <div class="request-title-show-wrapper ">
       <p><strong> <%= @request.title %></strong></p>
@@ -22,50 +21,37 @@
     <div class="request-description-field">
       <%= @request.description%>
     </div>
+
     <% if @request.helper.present? && current_user == @request.creator %>
+      <% if @request.helper.photo.attached? %>
         <h3>Assigned to:</h3>
         <div class="assigned-to-avatar">
           <div class="pending-messages">
-            <% if @request.helper.photo.attached? %>
-              <%= link_to conversation_path(@helper_conversation) do %>
-                <%= cl_image_tag @request.helper.photo.key, class: "avatar-large" %>
-              <% end %>
-            <% else %>
-              <%= link_to conversations_path do %>
-                <%= image_tag("waldo.png", class: "avatar-large") %>
-              <% end %>
+            <%= link_to conversations_path do %>
+              <%= cl_image_tag @request.helper.photo.key, class: "avatar-large" %>
             <% end %>
           </div>
             <p class="helper-name"><%= @request.helper.first_name %> <%=@request.helper.last_name %></p>
         </div>
-    <% else %>
-      <% if @request.creator == current_user && @request.status != "inactive" %>
-        <div class="pending-messages">
-          <%= link_to conversations_path do %>
-            <h3>Pending inbox messages: <%= @conversation_count%></h3>
-          <% end %>
-        </div>
-        <div class="request-show-btn">
-          <a href="#" class="btn btn-primary edit-btn rounder">Edit</a>
-          <%= link_to "Cancel", request_path, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-outline-danger rounder" %>
-        </div>
-      <% else %>
-        <% if @helper_conversation.present? %>
-          <%= link_to "Go to conversation", conversation_path(@helper_conversation), class: "btn btn-outline-secondary request-conversation-btn rounder"%>
-        <% else %>
-          <% if @request.status != "inactive" %>
-            <div class="request-helper-buttons">
-              <%= simple_form_for @conversation do |f| %>
-                <%= f.input :helper_id, input_html: {value: current_user.id}, :as => :hidden%>
-                <%= f.input :creator_id, input_html: {value: @request.creator_id}, :as => :hidden%>
-                <%= f.input :request_id, input_html: {value: @request.id}, :as => :hidden%>
-                <%= f.button :submit, "Start a conversation", class: "btn btn-primary" %>
-              <% end %>
-            </div>
-          <% end %>
         <% end %>
+    <% elsif %>
+      <% current_user == @request.helper %>
+      <%= link_to "Go to conversation", conversation_path(@helper_conversation), class: "btn btn-outline-secondary request-conversation-btn rounder"%>
+    <% else %>
+      <% if @conversation_count.positive? %>
+      <div class="pending-messages">
+        <%= link_to conversations_path do %>
+          <h3>Messages for this request: <%= @conversation_count%></h3>
+        <% end %>
+      </div>
       <% end %>
     <% end %>
+    <div class="request-show-buttons">
+      <% if @request.creator == current_user && @request.status != "inactive" %>
+        <a href="#" class="btn btn-primary edit-btn rounder">Edit</a>
+        <%= link_to "Cancel", request_path, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-outline-danger rounder" %>
+      <% end %>
+    </div>
   </div>
 </div>
 
