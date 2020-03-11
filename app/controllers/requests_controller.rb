@@ -13,6 +13,12 @@ class RequestsController < ApplicationController
   def help_others
     @requests = policy_scope(Request).where.not(creator_id: current_user.id)
     @pending_requests = @requests.pending
+    if params[:query].present?
+      @query = params[:query].split(',')[0]
+      @filtered_requests = @requests.pending.where(city: @query)
+    else
+      # @error = "Can't be empty!"
+    end
     authorize @requests
   end
 
