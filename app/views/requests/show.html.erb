@@ -67,7 +67,7 @@
         </div>
       <% else %>
         <% if @helper_conversation.present? %>
-          <%= link_to "Go to conversation", conversation_path(@helper_conversation), class: "btn btn-outline-secondary"%>
+          <%= link_to "Go to conversation", conversation_path(@helper_conversation), class: "btn btn-outline-secondary request-conversation-btn"%>
         <% else %>
           <div class="request-helper-buttons">
             <%= simple_form_for @conversation do |f| %>
