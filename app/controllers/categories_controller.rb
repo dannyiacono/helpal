@@ -4,7 +4,7 @@ class CategoriesController < ApplicationController
   def index
     @location = params[:query]
     if @location.nil?
-      redirect_to root_path
+      redirect_to categories_path
     else
       @loco = @location.split(",").first
     end
