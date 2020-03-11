@@ -1,14 +1,14 @@
-<div class="conversations">
+<div class="container conversations">
   <div class="conversation-filter">
     <h1>Messages</h1>
     <div class="dropdown">
       <a class="btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown">
-        All Messages(<%= @user_conversations.count %>)
+        All Messages (<%= @user_conversations.count %>)
       </a>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-        <a class="dropdown-item" href="#">All Messages(<%= @user_conversations.count %>)</a>
-        <a class="dropdown-item" href="#">Another action</a>
-        <a class="dropdown-item" href="#">Something else here</a>
+        <a class="dropdown-item" href="#">All Messages (<%= @user_conversations.count %>)</a>
+        <a class="dropdown-item" href="#">Confirmed</a>
+        <a class="dropdown-item" href="#">Pending</a>
       </div>
     </div>
   </div>
@@ -17,7 +17,7 @@
       <% if @user_conversations.empty? %>
         <p><em>Sorry you have no messages yet.</em></p>
       <% else %>
-        <%  @user_conversations.each do |conversation| %>
+        <%  @user_conversations.sort_by(&:updated_at).reverse.each do |conversation| %>
           <li>
             <% if current_user.id == conversation.creator_id %>
               <% other_user = User.find(conversation.helper_id) %>
@@ -26,27 +26,34 @@
             <% end %>
               <div class="message-box">
                 <div class="message-user-avatar">
-                  <%= link_to image_tag("https://www.pinestrawmag.com/wp-content/uploads/2017/07/4yrcs2zo.png", class: "avatar"), other_profile_path(other_user) %>
-                </div>
-                <div class="message-user-name">
-                  <p><%= other_user.first_name %></p>
-                  <% if conversation.messages.empty? %>
-                    <p><%= conversation.created_at.strftime("%d/%m/%Y") %></p>
+                  <% if other_user.photo.attached? %>
+                    <%= link_to (cl_image_tag other_user.photo.key, height: 45, width: 45, class: "rounded-circle"), other_profile_path(other_user) %>
                   <% else %>
-                    <p><%= conversation.messages.last.created_at.strftime("%d/%m/%Y") %></p>
+                    <%= link_to image_tag("https://www.pinestrawmag.com/wp-content/uploads/2017/07/4yrcs2zo.png", class: "avatar"), other_profile_path(other_user) %>
                   <% end %>
+                  <div class="user-name-and-time">
+                    <p><%= other_user.first_name %></p>
+                    <% if conversation.messages.empty? %>
+                      <p><%= conversation.created_at.strftime("%B %d, %Y") %></p>
+                    <% else %>
+                      <p><%= conversation.messages.last.created_at.strftime("%B %d, %Y") %></p>
+                    <% end %>
+                  </div>
                 </div>
                 <div class="message-body">
                   <% if conversation.messages.empty? %>
                     <p><%= link_to "Open conversation: There is no message yet", conversation_path(conversation)%></p>
                   <% else %>
-                    <p><%= link_to truncate(conversation.messages.last.body, length: 75), conversation_path(conversation)%></p>
+                    <p class="request-title"><%= link_to conversation.request.title.truncate(42), conversation_path(conversation)%></p>
                   <% end %>
-                  <% request = Request.find(conversation.request_id) %>
-                  <p><%= request.title %> (<%= request.created_at.strftime("%d/%m/%Y")%>)</p>
+                  <p class="message-text-preview"><%= conversation.messages.last.body.truncate(42)%></p>
                 </div>
-                <div>
-                  <p class="conversation-status"><%= conversation.status %></p>
+                <div id="conversation-status-details">
+                  <% if conversation.unread_messages? %>
+                    <p class="conversation-status"><%= conversation.status.capitalize %></p><p class="badged">#</p>
+                  <% else %>
+                    <p class="conversation-status"><%= conversation.status.capitalize %></p>
+                  <% end %>
                 </div>
               </div>
           </li>

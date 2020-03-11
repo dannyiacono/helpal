@@ -7,11 +7,15 @@
   border-radius: 5px;
 }
 
-.category-selected span {
-  background-color: $blue-bg;
+.category-selected {
+  height: 40px;
+  width: 100px;
   padding: 10px 15px;
   border-radius: 5px;
   text-align: center;
+  &.blue-back {
+    background-color: $blue-bg;
+  }
 }
 
 .no-category-selected {
