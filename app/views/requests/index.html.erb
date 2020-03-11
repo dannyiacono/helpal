@@ -39,8 +39,8 @@
             <% @ongoing_requests.each do |request| %>
               <div class="request-card">
                 <% if !request.helper_id.nil? %>
-                  <% if request.helper_id.photo.attached? %>
-                    <%= link_to (cl_image_tag request.helper_id.photo.key, class: "helper-avatar"), other_profile_path(request.helper_id) %>
+                  <% if request.helper.photo.attached? %>
+                    <%= link_to (cl_image_tag request.helper.photo.key, class: "helper-avatar"), other_profile_path(request.helper_id) %>
                   <% else %>
                     <%= link_to image_tag("waldo.png", class: "helper-avatar"), other_profile_path(request.helper_id) %>
                   <% end %>
@@ -70,8 +70,8 @@
             <% @done_requests.each do |request| %>
               <div class="request-card">
                 <% if !request.helper_id.nil? %>
-                  <% if request.helper_idphoto.attached? %>
-                    <%= link_to (cl_image_tag request.helper_id.photo.key, class: "helper-avatar"), other_profile_path(request.helper_id) %>
+                  <% if request.helper.photo.attached? %>
+                    <%= link_to (cl_image_tag request.helper.photo.key, class: "helper-avatar"), other_profile_path(request.helper_id) %>
                   <% else %>
                     <%= link_to image_tag("waldo.png", class: "helper-avatar"), other_profile_path(request.helper_id) %>
                   <% end %>
@@ -115,8 +115,8 @@
                   <% @ongoing_help_requests.each do |request| %>
                     <div class="request-card">
                       <% if !request.helper_id.nil? %>
-                        <% if request.helper_id.photo.attached? %>
-                          <%= link_to (cl_image_tag request.helper_id.photo.key, class: "helper-avatar"), other_profile_path(request.helper_id) %>
+                        <% if request.helper.photo.attached? %>
+                          <%= link_to (cl_image_tag request.helper.photo.key, class: "helper-avatar"), other_profile_path(request.helper_id) %>
                         <% else %>
                           <%= link_to image_tag("waldo.png", class: "helper-avatar"), other_profile_path(request.helper_id) %>
                         <% end %>
@@ -146,8 +146,8 @@
                 <% @done_help_requests.each do |request| %>
                   <div class="request-card">
                     <% if !request.helper_id.nil? %>
-                      <% if request.helper_id.photo.attached? %>
-                        <%= link_to (cl_image_tag request.helper_id.photo.key, class: "helper-avatar"), other_profile_path(request.helper_id) %>
+                      <% if request.helper.photo.attached? %>
+                        <%= link_to (cl_image_tag request.helper.photo.key, class: "helper-avatar"), other_profile_path(request.helper_id) %>
                       <% else %>
                         <%= link_to image_tag("waldo.png", class: "helper-avatar"), other_profile_path(request.helper_id) %>
                       <% end %>
