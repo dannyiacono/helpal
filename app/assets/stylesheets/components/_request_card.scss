@@ -42,12 +42,12 @@ margin-top: 60px;
 .links .details-btn {
   color: $black-text;
   font-weight: bold;
-  margin-right: 10px;
 }
 
 .links .delete-btn {
   color: $red-cta;
   font-weight: bold;
+  margin-left: 10px;
 }
 
 .helper-avatar {
@@ -72,7 +72,27 @@ margin-top: 60px;
   opacity: 0.6;
 }
 
- // Media queries
+ // BOOTSTRAP OVERRIDE
+
+.nav-pills>li+li {
+  margin-left: 24px; // 2px by default
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  border-bottom: 4px solid #FFFFFF;
+  background-color: transparent !important;
+}
+
+.nav-pills>li>a {
+  color: #FFFFFF;
+}
+
+.nav-pills .nav-link {
+  border-radius: 0 !important;
+}
+
+
+ // MEDIA QUERIES
 
 @media (min-width: 100px) and (max-width: 575px) {
   .cards {
