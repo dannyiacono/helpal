@@ -1,5 +1,4 @@
 const catSelect = document.querySelector(".category-selected");
-
 const catInput = document.getElementById("request_category_id");
 const catId = document.querySelector(".name_cat_id");
 
@@ -18,8 +17,6 @@ const categoriesIndex = () => {
 
   });
 };
-
-
 
 
 export { categoriesIndex };
