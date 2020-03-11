@@ -49,7 +49,7 @@
                   <% end %>
                 </div>
                 <div id="conversation-status-details">
-                  <% if conversation.unread_messages? %>
+                  <% if conversation.has_unread_messages(current_user) %>
                     <p class="conversation-status"><%= conversation.status.capitalize %></p><p class="badged">#</p>
                   <% else %>
                     <p class="conversation-status"><%= conversation.status.capitalize %></p>
