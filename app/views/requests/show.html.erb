@@ -34,8 +34,10 @@
             <p class="helper-name"><%= @request.helper.first_name %> <%=@request.helper.last_name %></p>
         </div>
         <% end %>
-    <% elsif current_user == @request.helper || current_user.conversations.find { |conv| conv.request == @request }%>
+    <% elsif @helper_unconfirmed_conversation %>
       <%= link_to "Go to conversation", conversation_path(@helper_unconfirmed_conversation), class: "btn btn-outline-secondary request-conversation-btn rounder"%>
+    <% elsif current_user == @request.helper %>
+      <%= link_to "Go to conversation", conversation_path(@helper_conversation), class: "btn btn-outline-secondary request-conversation-btn rounder"%>
     <% elsif @request.status == "pending" && current_user != @request.creator %>
         <%= simple_form_for @conversation do |f| %>
                 <%= f.input :helper_id, input_html: {value: current_user.id}, :as => :hidden%>
