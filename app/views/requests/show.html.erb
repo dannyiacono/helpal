@@ -55,11 +55,7 @@
         </div>
       <% else %>
         <% if @helper_conversation.present? %>
-<<<<<<< HEAD
-          <%= link_to "Go to conversation", conversation_path(@helper_conversation), class: "btn btn-outline-secondary"%>
-=======
           <%= link_to "Go to conversation", conversation_path(@helper_conversation), class: "btn btn-outline-secondary request-conversation-btn"%>
->>>>>>> master
         <% else %>
           <div class="request-helper-buttons">
             <%= simple_form_for @conversation do |f| %>
@@ -68,11 +64,7 @@
               <%= f.input :request_id, input_html: {value: @request.id}, :as => :hidden%>
               <%= f.button :submit, "Start a conversation", class: "btn btn-primary" %>
             <% end %>
-<<<<<<< HEAD
-            <p><%= link_to "View all open requests", requests_path, class: "btn btn-primary"%></p>
-=======
             <%= link_to "View all open requests", requests_path, class: "btn btn-primary"%>
->>>>>>> master
           </div>
         <% end %>
       <% end %>
