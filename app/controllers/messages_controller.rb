@@ -20,6 +20,7 @@ class MessagesController < ApplicationController
     @message = @conversation.messages.new(message_params)
     @message.user_id = current_user.id
     if @message.save
+      @message.update_conversation
       redirect_to conversation_path(@conversation)
     end
   end
