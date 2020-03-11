@@ -7,6 +7,7 @@
   background-color: white;
   margin-top: 60px;
   padding: 15px 30px 15px;
+  border-radius: 4px;
 }
 
 .request-status-info {
@@ -31,6 +32,10 @@
 
 .date {
   display: flex;
+  flex-direction: column;
+  p {
+    margin: 3px;
+  }
 }
 
 .fa-map-marker-alt {
