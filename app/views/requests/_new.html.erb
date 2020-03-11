@@ -1,14 +1,13 @@
 <div class="request-new-wrapper">
   <% if user_signed_in?  %>
-    <h3>Fill in your help request</h3>
+    <h3>Fill out your help request:</h3>
   <div class="new-form">
+    <div class="category-selected">
+    </div>
     <div class="no-location-selected">
       <% if @location.nil?%>
-        <span>Please select a city before continuing</span>
+        <span>Please select a city before continuing.</span>
       <% end %>
-    </div>
-    <div class="category-selected">
-      <span></span>
     </div>
     <div class="form-input">
       <%= simple_form_for @request do |f| %>
