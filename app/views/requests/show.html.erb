@@ -4,15 +4,14 @@
       <div class="conversation-request-card-status">
         <p id="request-status-show"><%= @request.status.capitalize%></p>
       </div>
-    </div>
 
+    </div>
     <div class="request-title-show-wrapper ">
-      <h1>Request title:</h1>
       <p><strong> <%= @request.title %></strong></p>
     </div>
 
     <div class="date">
-      <i class="fas fa-map-marker-alt"></i>
+      <p><i class="fas fa-map-marker-alt"></i> <%= @request.city %></p>
       <p><%= @request.due_date.strftime('%B %d, %Y') %></p>
     </div>
 
@@ -25,65 +24,54 @@
     </div>
 
     <% if @helper.present? %>
-      <% if @helper.photo.attached? %>
         <h3>Assigned to:</h3>
         <div class="assigned-to-avatar">
           <div class="pending-messages">
-            <%= link_to conversations_path do %>
-              <%= cl_image_tag @helper.photo.key, class: "avatar-large" %>
+            <% if @helper.photo.attached? %>
+              <%= link_to conversations_path do %>
+                <%= cl_image_tag @helper.photo.key, class: "avatar-large" %>
+              <% end %>
+            <% else %>
+              <%= link_to conversations_path do %>
+                <%= image_tag("waldo.png", class: "avatar-large") %>
+              <% end %>
             <% end %>
           </div>
           <%= link_to conversations_path(@helper_conversation) do %>
             <p class="helper-name"><%= @helper.first_name %> <%=@helper.last_name %></p>
           <% end %>
         </div>
-      <% else %>
-        <div>
-          <h3>Assigned to:</h3>
-          <div class="assigned-to-avatar">
-            <div class="pending-messages">
-              <%= link_to conversations_path do %>
-                <img class="rounded-circle mx-auto mb-3" src="https://www.pinestrawmag.com/wp-content/uploads/2017/07/4yrcs2zo.png" style="height: 56px; width: 56px;">
-              <% end %>
-            </div>
-            <div class="pending-messages">
-              <%= link_to conversations_path(@helper_conversation) do %>
-                <p class="helper-name"><%= @helper.first_name %> <%=@helper.last_name %></p>
-              <% end %>
-            </div>
-          </div>
-        </div>
-      <% end %>
     <% else %>
       <% if @request.creator == current_user %>
-      <div class="pending-messages">
-        <%= link_to conversations_path do %>
-          <h3>Pending inbox messages: <%= @conversation_count%></h3>
+        <div class="pending-messages">
+          <%= link_to conversations_path do %>
+            <h3>Pending inbox messages: <%= @conversation_count%></h3>
+          <% end %>
+        </div>
+        <% if @request.status != "inactive" %>
+          <div class="request-show-btn">
+            <a href="#" class="btn btn-primary edit-btn rounder">Edit</a>
+            <%= link_to "Cancel", request_path, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-outline-danger rounder" %>
+          </div>
         <% end %>
       <% else %>
         <% if @helper_conversation.present? %>
-          <%= link_to "Go to conversation", conversation_path(@helper_conversation), class: "btn btn-outline-secondary"%>
+          <%= link_to "Go to conversation", conversation_path(@helper_conversation), class: "btn btn-outline-secondary request-conversation-btn rounder"%>
         <% else %>
-          <%= simple_form_for @conversation do |f| %>
-            <%= f.input :helper_id, input_html: {value: current_user.id}, :as => :hidden%>
-            <%= f.input :creator_id, input_html: {value: @request.creator_id}, :as => :hidden%>
-            <%= f.input :request_id, input_html: {value: @request.id}, :as => :hidden%>
-            <%= f.button :submit, "Start a conversation", class: "btn btn-primary" %>
+          <% if @request.status != "inactive" %>
+            <div class="request-helper-buttons">
+              <%= simple_form_for @conversation do |f| %>
+                <%= f.input :helper_id, input_html: {value: current_user.id}, :as => :hidden%>
+                <%= f.input :creator_id, input_html: {value: @request.creator_id}, :as => :hidden%>
+                <%= f.input :request_id, input_html: {value: @request.id}, :as => :hidden%>
+                <%= f.button :submit, "Start a conversation", class: "btn btn-primary" %>
+              <% end %>
+              <%= link_to "View all open requests", requests_path, class: "btn btn-primary"%>
+            </div>
           <% end %>
-
+        <% end %>
       <% end %>
-      <% end %>
-      </div>
-      <% if @request.creator == current_user %>
-      <div class="request-show-buttons">
-          <a href="#" class="btn btn-primary edit-btn">Edit</a>
-          <%= link_to "Cancel", request_path, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-outline-danger" %>
-      <% else %>
-      <div class="request-all-btn">
-        <%= link_to "View all open requests", requests_path, class: "btn btn-primary"%>
-      </div>
-      <% end %>
-     </div>
     <% end %>
-   </div>
+  </div>
 </div>
+

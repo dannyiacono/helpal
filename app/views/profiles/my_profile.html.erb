@@ -2,9 +2,9 @@
 
   <div class="user-info">
     <% if current_user.photo.attached? %>
-      <%= cl_image_tag @user.photo.key, class: "rounded-circle mx-auto mb-3" %>
+      <%= cl_image_tag @user.photo.key, class: "avatar-profile mx-auto mb-3" %>
     <% else %>
-      <img class="rounded-circle mx-auto mb-3" src="https://www.pinestrawmag.com/wp-content/uploads/2017/07/4yrcs2zo.png" alt="">
+      <%= image_tag("waldo.png", class: "avatar-profile mx-auto mb-3") %>
     <% end %>
     <h3><%= @user.first_name %> <%= @user.last_name %></h3>
     <%= link_to "Edit your profile", profiles_edit_path %>
@@ -33,9 +33,9 @@ Lives in <%= @user.location %></p>
           <div class="reviewer-info">
             <div class="reviewer-details">
               <% if request.helper.photo.attached? %>
-                <%= cl_image_tag request.helper.photo.key, height: 45, width: 45, class: "rounded-circle" %>
+                <%= cl_image_tag request.helper.photo.key, class: "avatar-middle" %>
               <% else %>
-                <img class="rounded-circle mx-auto mb-3" src="https://www.pinestrawmag.com/wp-content/uploads/2017/07/4yrcs2zo.png" style="height: 45; width: 45;">
+                <%= image_tag("waldo.png", class: "avatar-middle") %>
               <% end %>
               <div class="name-created-at">
                 <p><%= request.helper.first_name %></p>
