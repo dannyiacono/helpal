@@ -3,11 +3,8 @@ class CategoriesController < ApplicationController
 
   def index
     @location = params[:query]
-
     if @location.nil?
-      flash[:notice] = "Please select a city first!"
-    else
-      @location.split(",").first
+      redirect_to categories_path
     end
     @categories = policy_scope(Category)
     @request = Request.new
