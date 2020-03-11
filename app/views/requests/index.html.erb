@@ -19,7 +19,7 @@
                 <p id="request-status"><%= request.status.capitalize %></p>
                 <h3><%= request.title.truncate(42) %></h3>
                 <div class="date">
-                  <i class="fas fa-map-marker-alt"></i>
+                  <p><i class="fas fa-map-marker-alt"></i> <%= request.city %></p>
                   <p><%= request.due_date.strftime('%B %d, %Y') %></p>
                 </div>
                 <div class="user-category-tags">
@@ -47,7 +47,7 @@
                 <% end %>
                 <h3><%= request.title %></h3>
                 <div class="date">
-                  <i class="fas fa-map-marker-alt"></i>
+                  <p><i class="fas fa-map-marker-alt"></i> <%= request.city %></p>
                   <p><%= request.due_date.strftime('%B %d, %Y') %></p>
                 </div>
                 <div class="user-category-tags">
@@ -78,7 +78,7 @@
                 <% end %>
                 <h3><%= request.title %></h3>
                 <div class="date">
-                  <i class="fas fa-map-marker-alt"></i>
+                  <p><i class="fas fa-map-marker-alt"></i> <%= request.city %></p>
                   <p><%= request.due_date.strftime('%B %d, %Y') %></p>
                 </div>
                 <div class="user-category-tags">
@@ -123,7 +123,7 @@
                       <% end %>
                       <h3><%= request.title %></h3>
                       <div class="date">
-                        <i class="fas fa-map-marker-alt"></i>
+                        <p><i class="fas fa-map-marker-alt"></i> <%= request.city %></p>
                         <p><%= request.due_date.strftime('%B %d, %Y') %></p>
                       </div>
                       <div class="user-category-tags">
@@ -154,7 +154,7 @@
                     <% end %>
                     <h3><%= request.title %></h3>
                     <div class="date">
-                      <i class="fas fa-map-marker-alt"></i>
+                      <p><i class="fas fa-map-marker-alt"></i> <%= request.city %></p>
                       <p><%= request.due_date.strftime('%B %d, %Y') %></p>
                     </div>
                     <div class="user-category-tags">

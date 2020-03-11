@@ -7,12 +7,11 @@
 
     </div>
     <div class="request-title-show-wrapper ">
-      <h1>Request title:</h1>
       <p><strong> <%= @request.title %></strong></p>
     </div>
 
     <div class="date">
-      <i class="fas fa-map-marker-alt"></i>
+      <p><i class="fas fa-map-marker-alt"></i> <%= @request.city %></p>
       <p><%= @request.due_date.strftime('%B %d, %Y') %></p>
     </div>
 
@@ -51,13 +50,13 @@
         </div>
         <% if @request.status != "inactive" %>
           <div class="request-show-btn">
-            <a href="#" class="btn btn-primary edit-btn">Edit</a>
-            <%= link_to "Cancel", request_path, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-outline-danger" %>
+            <a href="#" class="btn btn-primary edit-btn rounder">Edit</a>
+            <%= link_to "Cancel", request_path, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-outline-danger rounder" %>
           </div>
         <% end %>
       <% else %>
         <% if @helper_conversation.present? %>
-          <%= link_to "Go to conversation", conversation_path(@helper_conversation), class: "btn btn-outline-secondary request-conversation-btn"%>
+          <%= link_to "Go to conversation", conversation_path(@helper_conversation), class: "btn btn-outline-secondary request-conversation-btn rounder"%>
         <% else %>
           <% if @request.status != "inactive" %>
             <div class="request-helper-buttons">
