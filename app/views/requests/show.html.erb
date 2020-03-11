@@ -27,7 +27,7 @@
         <h3>Assigned to:</h3>
         <div class="assigned-to-avatar">
           <div class="pending-messages">
-            <%= link_to conversations_path do %>
+            <%= link_to conversation_path(@helper_conversation) do %>
               <%= cl_image_tag @request.helper.photo.key, class: "avatar-large" %>
             <% end %>
           </div>
