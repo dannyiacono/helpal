@@ -6,6 +6,23 @@
 margin-top: 60px;
 }
 
+.request-status {
+  text-align: right;
+  background-color: $light-gray;
+  padding: 7px;
+  border-radius: 5px;
+  position: absolute;
+  right: 14px;
+  top: 14px;
+  &.ongoing {
+  background-color: $status-green;
+  color: $white;
+  }
+  &.done {
+  background-color: $status-green;
+  }
+}
+
 .cards {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;

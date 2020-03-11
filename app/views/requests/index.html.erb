@@ -16,7 +16,7 @@
           <div class="cards">
             <% @pending_requests.each do |request| %>
               <div class="request-card">
-                <p id="request-status"><%= request.status.capitalize %></p>
+                <p class="request-status"><%= request.status.capitalize %></p>
                 <h3><%= request.title.truncate(42) %></h3>
                 <div class="date">
                   <p><i class="fas fa-map-marker-alt"></i> <%= request.city %></p>
@@ -38,13 +38,7 @@
           <div class="cards">
             <% @ongoing_requests.each do |request| %>
               <div class="request-card">
-                <% if !request.helper_id.nil? %>
-                  <% if request.helper.photo.attached? %>
-                    <%= link_to (cl_image_tag request.helper.photo.key, class: "helper-avatar"), other_profile_path(request.helper_id) %>
-                  <% else %>
-                    <%= link_to image_tag("waldo.png", class: "helper-avatar"), other_profile_path(request.helper_id) %>
-                  <% end %>
-                <% end %>
+                <p class="request-status ongoing"><%= request.status.capitalize %></p>
                 <h3><%= request.title %></h3>
                 <div class="date">
                   <p><i class="fas fa-map-marker-alt"></i> <%= request.city %></p>
@@ -69,13 +63,7 @@
           <div class="cards">
             <% @done_requests.each do |request| %>
               <div class="request-card">
-                <% if !request.helper_id.nil? %>
-                  <% if request.helper.photo.attached? %>
-                    <%= link_to (cl_image_tag request.helper.photo.key, class: "helper-avatar"), other_profile_path(request.helper_id) %>
-                  <% else %>
-                    <%= link_to image_tag("waldo.png", class: "helper-avatar"), other_profile_path(request.helper_id) %>
-                  <% end %>
-                <% end %>
+                <p class="request-status done"><%= request.status.capitalize %></p>
                 <h3><%= request.title %></h3>
                 <div class="date">
                   <p><i class="fas fa-map-marker-alt"></i> <%= request.city %></p>
@@ -86,7 +74,6 @@
                 </div>
                 <div class="links">
                   <%= link_to "View details", request_path(request), class: "details-btn" %>
-                  <%= link_to "Cancel", request_path(request), method: :delete, data: { confirm: "Are you sure?" }, class: "delete-btn" %>
                 </div>
               </div>
             <% end %>
@@ -174,7 +161,7 @@
           <div class="no-results">
           <h3>Nothing to display yet.</h3>
           <p>Check pending help requests.</p>
-          <%= link_to "Help others", "#", class: "btn btn-primary" %>
+          <%= link_to "Help others", help_others_path, class: "btn btn-primary" %>
         </div>
         <% end %>
       </div>
