@@ -3,9 +3,9 @@
     <div class="conversation-header">
       <div id="conversation-img-title">
         <% if @other_user.photo.attached? %>
-            <%= link_to (cl_image_tag @other_user.photo.key, height: 45, width: 45, class: "rounded-circle"), other_profile_path(@other_user) %>
+            <%= link_to (cl_image_tag @other_user.photo.key, class: "avatar-middle"), other_profile_path(@other_user) %>
           <% else %>
-            <%= link_to image_tag("https://www.pinestrawmag.com/wp-content/uploads/2017/07/4yrcs2zo.png", class: "avatar"), other_profile_path(@other_user) %>
+            <%= link_to image_tag("waldo.png", class: "avatar-middle"), other_profile_path(@other_user) %>
         <% end %>
       </div>
      <span><%= @request.created_at.strftime("%B %d, %Y") %></span>
@@ -30,9 +30,11 @@
         <% end %>
       </ul>
     </div>
-    <div id="new-messsage">
-      <%= render 'messages/new', message: @message, conversation: @conversation %>
-    </div>
+    <% if @conversation.request.status != "inactive" %>
+      <div id="new-messsage">
+        <%= render 'messages/new', message: @message, conversation: @conversation %>
+      </div>
+    <% end %>
   </div>
   <div class="request-container">
     <div class="conversation-request-card">
@@ -50,9 +52,9 @@
         <p>Do you want to confirm this pal?</p>
         <div id="pal-confirm">
           <% if @other_user.photo.attached? %>
-            <%= link_to (cl_image_tag @other_user.photo.key, height: 45, width: 45, class: "rounded-circle"), other_profile_path(@other_user) %>
+            <%= link_to (cl_image_tag @other_user.photo.key, class: "avatar-middle"), other_profile_path(@other_user) %>
           <% else %>
-            <%= link_to image_tag("https://www.pinestrawmag.com/wp-content/uploads/2017/07/4yrcs2zo.png", class: "avatar"), other_profile_path(@other_user) %>
+          <%= link_to image_tag("waldo.png", class: "avatar-middle"), other_profile_path(@other_user) %>
           <% end %>
           <p><%= @other_user.first_name %> <%= @other_user.last_name %></p>
         </div>

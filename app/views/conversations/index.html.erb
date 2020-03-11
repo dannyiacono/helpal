@@ -27,9 +27,9 @@
               <div class="message-box">
                 <div class="message-user-avatar">
                   <% if other_user.photo.attached? %>
-                    <%= link_to (cl_image_tag other_user.photo.key, height: 45, width: 45, class: "rounded-circle"), other_profile_path(other_user) %>
+                    <%= link_to (cl_image_tag other_user.photo.key, class: "avatar-middle"), other_profile_path(other_user) %>
                   <% else %>
-                    <%= link_to image_tag("https://www.pinestrawmag.com/wp-content/uploads/2017/07/4yrcs2zo.png", class: "avatar"), other_profile_path(other_user) %>
+                    <%= link_to image_tag("waldo.png", class: "avatar-middle"), other_profile_path(other_user) %>
                   <% end %>
                   <div class="user-name-and-time">
                     <p><%= other_user.first_name %></p>
@@ -49,7 +49,7 @@
                   <% end %>
                 </div>
                 <div id="conversation-status-details">
-                  <% if conversation.unread_messages? %>
+                  <% if conversation.has_unread_messages(current_user) %>
                     <p class="conversation-status"><%= conversation.status.capitalize %></p><p class="badged">#</p>
                   <% else %>
                     <p class="conversation-status"><%= conversation.status.capitalize %></p>
@@ -58,6 +58,8 @@
               </div>
           </li>
         <% end %>
+
+
       <% end %>
     </ul>
   </div>

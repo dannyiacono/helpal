@@ -38,10 +38,12 @@
           <div class="cards">
             <% @ongoing_requests.each do |request| %>
               <div class="request-card">
-                <% if !request.helper_id.nil? && request.helper.photo.attached? %>
-                  <%= link_to (cl_image_tag request.helper.photo.key, class: "helper-avatar"), other_profile_path(request.helper_id) %>
-                <% else %>
-                  <img class="rounded-circle mx-auto mb-3" src="https://www.pinestrawmag.com/wp-content/uploads/2017/07/4yrcs2zo.png" style="height: 45px; width: 45px; position: absolute; right: 14px; top: 14px;">
+                <% if !request.helper_id.nil? %>
+                  <% if request.helper.photo.attached? %>
+                    <%= link_to (cl_image_tag request.helper.photo.key, class: "helper-avatar"), other_profile_path(request.helper_id) %>
+                  <% else %>
+                    <%= link_to image_tag("waldo.png", class: "helper-avatar"), other_profile_path(request.helper_id) %>
+                  <% end %>
                 <% end %>
                 <h3><%= request.title %></h3>
                 <div class="date">
@@ -67,10 +69,12 @@
           <div class="cards">
             <% @done_requests.each do |request| %>
               <div class="request-card">
-                <% if !request.helper_id.nil? && request.helper.photo.attached? %>
-                  <%= link_to (cl_image_tag request.helper.photo.key, class: "helper-avatar"), other_profile_path(request.helper_id) %>
-                <% else %>
-                  <img class="rounded-circle mx-auto mb-3" src="https://www.pinestrawmag.com/wp-content/uploads/2017/07/4yrcs2zo.png" style="height: 45px; width: 45px; position: absolute; right: 14px; top: 14px;">
+                <% if !request.helper_id.nil? %>
+                  <% if request.helper.photo.attached? %>
+                    <%= link_to (cl_image_tag request.helper.photo.key, class: "helper-avatar"), other_profile_path(request.helper_id) %>
+                  <% else %>
+                    <%= link_to image_tag("waldo.png", class: "helper-avatar"), other_profile_path(request.helper_id) %>
+                  <% end %>
                 <% end %>
                 <h3><%= request.title %></h3>
                 <div class="date">
@@ -110,10 +114,12 @@
                 <div class="cards">
                   <% @ongoing_help_requests.each do |request| %>
                     <div class="request-card">
-                      <% if !request.helper_id.nil? && request.helper.photo.attached? %>
-                        <%= link_to (cl_image_tag request.helper.photo.key, class: "helper-avatar"), other_profile_path(request.helper_id) %>
-                      <% else %>
-                        <img class="rounded-circle mx-auto mb-3" src="https://www.pinestrawmag.com/wp-content/uploads/2017/07/4yrcs2zo.png" style="height: 45px; width: 45px; position: absolute; right: 14px; top: 14px;">
+                      <% if !request.helper_id.nil? %>
+                        <% if request.helper.photo.attached? %>
+                          <%= link_to (cl_image_tag request.helper.photo.key, class: "helper-avatar"), other_profile_path(request.helper_id) %>
+                        <% else %>
+                          <%= link_to image_tag("waldo.png", class: "helper-avatar"), other_profile_path(request.helper_id) %>
+                        <% end %>
                       <% end %>
                       <h3><%= request.title %></h3>
                       <div class="date">
@@ -139,10 +145,12 @@
               <div class="cards">
                 <% @done_help_requests.each do |request| %>
                   <div class="request-card">
-                    <% if !request.helper_id.nil? && request.helper.photo.attached? %>
-                      <%= link_to (cl_image_tag request.helper.photo.key, class: "helper-avatar"), other_profile_path(request.helper_id) %>
-                    <% else %>
-                      <img class="rounded-circle mx-auto mb-3" src="https://www.pinestrawmag.com/wp-content/uploads/2017/07/4yrcs2zo.png" style="height: 45px; width: 45px; position: absolute; right: 14px; top: 14px;">
+                    <% if !request.helper_id.nil? %>
+                      <% if request.helper.photo.attached? %>
+                        <%= link_to (cl_image_tag request.helper.photo.key, class: "helper-avatar"), other_profile_path(request.helper_id) %>
+                      <% else %>
+                        <%= link_to image_tag("waldo.png", class: "helper-avatar"), other_profile_path(request.helper_id) %>
+                      <% end %>
                     <% end %>
                     <h3><%= request.title %></h3>
                     <div class="date">

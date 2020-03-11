@@ -39,7 +39,8 @@ class RequestsController < ApplicationController
   def destroy
     @request = Request.find(params[:id])
     authorize @request
-    @request.destroy
+    @request.status = 3
+    @request.save
     redirect_to requests_path, notice: "Successfully cancelled your request"
   end
 
