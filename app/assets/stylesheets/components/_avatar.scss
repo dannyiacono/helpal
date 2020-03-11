@@ -37,6 +37,11 @@
   border: white 1px solid;
 }
 
-.waldo-img {
-  content: url("https://www.pinestrawmag.com/wp-content/uploads/2017/07/4yrcs2zo.png");
+.creator-avatar {
+  height: 45px;
+  width: 45px;
+  position: absolute;
+  right: 14px;
+  top: 14px;
+  border-radius: 50%;
 }

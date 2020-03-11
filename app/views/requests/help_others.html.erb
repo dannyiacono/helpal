@@ -21,7 +21,15 @@
     <div class="cards">
       <% @pending_requests.first(3).each do |request| %>
         <div class="request-card">
-          <p id="request-status"><%= request.status.capitalize %></p>
+          <% if request.creator.photo.attached? %>
+              <%= link_to other_profile_path(request.creator) do %>
+                <%= cl_image_tag request.creator.photo.key, class: "creator-avatar" %>
+              <% end %>
+            <% else %>
+              <%= link_to other_profile_path(request.creator) do %>
+                <%= image_tag("waldo.png", class: "creator-avatar") %>
+              <% end %>
+            <% end %>
           <h3><%= request.title.truncate(42) %></h3>
           <div class="date">
             <p><i class="fas fa-map-marker-alt"></i> <%= request.city %></p>
@@ -44,7 +52,15 @@
       <div class="cards">
         <% @filtered_requests.each do |request| %>
           <div class="request-card">
-            <p id="request-status"><%= request.status.capitalize %></p>
+            <% if request.creator.photo.attached? %>
+              <%= link_to other_profile_path(request.creator) do %>
+                <%= cl_image_tag request.creator.photo.key, class: "creator-avatar" %>
+              <% end %>
+            <% else %>
+              <%= link_to other_profile_path(request.creator) do %>
+                <%= image_tag("waldo.png", class: "creator-avatar") %>
+              <% end %>
+            <% end %>
             <h3><%= request.title.truncate(42) %></h3>
             <div class="date">
               <p><i class="fas fa-map-marker-alt"></i> <%= request.city %></p>
