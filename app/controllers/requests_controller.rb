@@ -27,9 +27,10 @@ class RequestsController < ApplicationController
 
   def create
     @request = Request.new(request_params)
+    @request.city = params[:request][:city].split.first
     @request.creator_id = current_user.id
     authorize @request
-     if @request.save
+    if @request.save
       redirect_to request_path(@request), notice: "Successfully saved your request"
      else
       redirect_to categories_path, notice: "Title and description can not be empty"
@@ -86,6 +87,6 @@ class RequestsController < ApplicationController
   end
 
   def request_params
-    params.require(:request).permit(:description, :title, :due_date, :creator_id, :category_id, :city, :status)
+    params.require(:request).permit(:description, :title, :due_date, :creator_id, :category_id, :status)
   end
 end
