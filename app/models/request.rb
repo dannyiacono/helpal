@@ -9,7 +9,6 @@ class Request < ApplicationRecord
   validates :due_date, :city, :category_id, presence: true
   validates :title, presence: true, length: { minimum: 4 }
   validates :description, presence: true, length: { in: 5..1000 }
-  validates :city, presence: true
 
   def expire
     self.status = 2

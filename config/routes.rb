@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'profiles/edit'
   get '/my_profile/', to: "profiles#my_profile", as: :my_profile
   get '/profiles/:id', to: "profiles#other_profile", as: :other_profile
+  get '/help_others', to: "requests#help_others", as: :help_others
   # post '/reviews', to: "reviews#create", as: :create_review
 
   devise_for :users
