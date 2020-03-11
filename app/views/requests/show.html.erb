@@ -22,14 +22,13 @@
     <div class="request-description-field">
       <%= @request.description%>
     </div>
-
-    <% if @helper.present? %>
+    <% if @request.helper.present? && current_user != @request.creator %>
         <h3>Assigned to:</h3>
         <div class="assigned-to-avatar">
           <div class="pending-messages">
-            <% if @helper.photo.attached? %>
-              <%= link_to conversations_path do %>
-                <%= cl_image_tag @helper.photo.key, class: "avatar-large" %>
+            <% if @request.helper.photo.attached? %>
+              <%= link_to conversation_path(@helper_conversation) do %>
+                <%= cl_image_tag @request.helper.photo.key, class: "avatar-large" %>
               <% end %>
             <% else %>
               <%= link_to conversations_path do %>
@@ -37,23 +36,19 @@
               <% end %>
             <% end %>
           </div>
-          <%= link_to conversations_path(@helper_conversation) do %>
-            <p class="helper-name"><%= @helper.first_name %> <%=@helper.last_name %></p>
-          <% end %>
+            <p class="helper-name"><%= @request.helper.first_name %> <%=@request.helper.last_name %></p>
         </div>
     <% else %>
-      <% if @request.creator == current_user %>
+      <% if @request.creator == current_user && @request.status != "inactive" %>
         <div class="pending-messages">
           <%= link_to conversations_path do %>
             <h3>Pending inbox messages: <%= @conversation_count%></h3>
           <% end %>
         </div>
-        <% if @request.status != "inactive" %>
-          <div class="request-show-btn">
-            <a href="#" class="btn btn-primary edit-btn rounder">Edit</a>
-            <%= link_to "Cancel", request_path, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-outline-danger rounder" %>
-          </div>
-        <% end %>
+        <div class="request-show-btn">
+          <a href="#" class="btn btn-primary edit-btn rounder">Edit</a>
+          <%= link_to "Cancel", request_path, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-outline-danger rounder" %>
+        </div>
       <% else %>
         <% if @helper_conversation.present? %>
           <%= link_to "Go to conversation", conversation_path(@helper_conversation), class: "btn btn-outline-secondary request-conversation-btn rounder"%>
@@ -66,7 +61,6 @@
                 <%= f.input :request_id, input_html: {value: @request.id}, :as => :hidden%>
                 <%= f.button :submit, "Start a conversation", class: "btn btn-primary" %>
               <% end %>
-              <%= link_to "View all open requests", requests_path, class: "btn btn-primary"%>
             </div>
           <% end %>
         <% end %>
