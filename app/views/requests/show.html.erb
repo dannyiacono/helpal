@@ -22,7 +22,7 @@
     <div class="request-description-field">
       <%= @request.description%>
     </div>
-    <% if @request.helper.present? && current_user != @request.creator %>
+    <% if @request.helper.present? && current_user == @request.creator %>
         <h3>Assigned to:</h3>
         <div class="assigned-to-avatar">
           <div class="pending-messages">
