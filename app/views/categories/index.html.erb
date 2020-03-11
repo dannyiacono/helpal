@@ -4,7 +4,7 @@
       <h1><strong>We are here to help</strong></h1>
       <h2>Select the category you need help with and connect with pals who can help you</h2>
     </div>
-    <div class="search-bar">
+     <div class="search-bar">
       <div class="search-city-input">
       <%= form_tag categories_path, method: :get, class: "form-inline" do %>
         <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
@@ -13,8 +13,9 @@
       <div class="search-submit">
         <%= submit_tag "Search", class: "btn btn-primary" %>
       </div>
+      <% end %>
     </div>
-    <% end %>
+
   </div>
 
   <div class="wrapper">
