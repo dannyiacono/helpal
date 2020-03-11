@@ -45,8 +45,8 @@
                     <p><%= link_to "Open conversation: There is no message yet", conversation_path(conversation)%></p>
                   <% else %>
                     <p class="request-title"><%= link_to conversation.request.title.truncate(42), conversation_path(conversation)%></p>
+                    <p class="message-text-preview"><%= conversation.messages.last.body.truncate(42)%></p>
                   <% end %>
-                  <p class="message-text-preview"><%= conversation.messages.last.body.truncate(42)%></p>
                 </div>
                 <div id="conversation-status-details">
                   <% if conversation.unread_messages? %>
