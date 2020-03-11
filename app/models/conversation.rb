@@ -6,8 +6,8 @@ class Conversation < ApplicationRecord
   belongs_to :request
   validates :request_id, presence: true
 
-  def unread_messages?
-    @unread_messages = self.messages.where(read: false)
+  def has_unread_messages(current_user)
+    @unread_messages = self.messages.where.not(read: true, user: current_user)
     @unread_messages.count > 0 ? true : false
   end
 
