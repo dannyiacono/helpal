@@ -6,21 +6,12 @@
   height: 100%;
   background-color: white;
   margin-top: 60px;
-  margin-bottom: 60px;
   padding: 15px 30px 15px;
 }
 
 .request-status-info {
   display: flex;
   justify-content: flex-end;
-}
-
-.status {
-  border: 1px solid #F94C50;
-  border-radius: 25px;
-  margin-left: 10px;
-  padding: 0px 3px ;
-  color: #F94C50;
 }
 
 .request-title-show-wrapper {
@@ -61,13 +52,6 @@
   margin-bottom: 60px;
 }
 
-.request-show-buttons {
-  display: flex;
-  justify-content: flex-end;
-  margin-left: 10px;
-  align-content: baseline;
-}
-
 .edit-btn {
   margin-right: 10px;
   margin-left: 30px;
@@ -95,20 +79,30 @@
 
 .pending-messages {
   display:flex;
+  a {
+    color: $black-text;
+    text-decoration: none;
+    &:hover {
+      color: #737774;
+      text-decoration: none;
+    }
+  }
+  h3 {
+    margin: 0px;
+  }
 }
 
-.pending-messages a{
-color: $black-text;
-text-decoration: none;
+.request-helper-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
 }
 
-.pending-messages a:hover {
-color: #737774;
-text-decoration: none;
-}
-
-.request-all-btn {
+.request-show-btn {
   display: flex;
   justify-content: flex-end;
-  margin-bottom: 60px;
+}
+
+.request-conversation-btn {
+  margin-top: 16px;
 }
