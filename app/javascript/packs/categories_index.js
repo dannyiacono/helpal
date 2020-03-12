@@ -18,7 +18,7 @@ const categoriesIndex = () => {
     });
   });
   if(catSelect.innerText === "") {
-    catSelect.insertAdjacentHTML("afterend","<span class='no-category-selected'>Please select a category before continuing.</span>");
+    catSelect.insertAdjacentHTML("afterend","<span class='no-category-selected'>Please select a category.</span>");
   }
 
 };
