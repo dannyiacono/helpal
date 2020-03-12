@@ -1,5 +1,7 @@
 .container-show-request {
   margin-top: 60px;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .wrapper-request {
@@ -8,6 +10,7 @@
   margin-top: 60px;
   padding: 15px 30px 15px;
   border-radius: 4px;
+  width: 50%;
 }
 
 .request-status-info {
@@ -116,4 +119,13 @@
 .request-show-buttons {
   display: flex;
   justify-content: flex-end;
+}
+
+.creator-show {
+  margin-top: 60px;
+  padding: 15px;
+  background-color: white;
+  border-radius: 5px;
+  width: 25%;
+  height: fit-content;
 }

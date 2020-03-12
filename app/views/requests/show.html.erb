@@ -65,5 +65,20 @@
       <% end %>
     </div>
   </div>
+  <div class="creator-show">
+    <div class="creator-info">
+      <h3>Request creator</h3>
+      <% if @request.creator.photo.attached? %>
+            <%= link_to other_profile_path(@request.creator) do %>
+              <%= cl_image_tag @request.creator.photo.key, class: "avatar-large" %>
+            <% end %>
+          <% else %>
+            <%= link_to other_profile_path(@request.creator) do %>
+                <%= image_tag("waldo.png", class: "avatar-large") %>
+              <% end %>
+          <% end %>
+          <%= @request.creator.first_name %>
+    </div>
+  </div>
 </div>
 
