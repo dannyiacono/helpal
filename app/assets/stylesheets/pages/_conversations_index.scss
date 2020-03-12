@@ -21,6 +21,8 @@
   border-radius: 5px;
   margin-left: 30px;
   width: 75%;
+  height: 686px;
+  overflow: auto;
 }
 
 .conversations-box ul {
@@ -94,3 +96,33 @@
   width: 10px;
   height: 10px;
 }
+
+/*--------MEDIA--------*/
+
+@media (min-width: 100px) and (max-width: 575px) {
+
+  .conversations {
+    display: block;
+    margin: 15px 0px;
+  }
+
+  .conversation-filter {
+    width: 100%;
+    padding: 15px;
+  }
+
+  .conversations-box {
+    width: 100%;
+    height: auto;
+    margin: 30px 0px 0px 0px;
+  }
+
+  .message-box {
+    display: block;
+  }
+
+  #conversation-status-details {
+    justify-content: flex-end;
+  }
+}
+

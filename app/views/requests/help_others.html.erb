@@ -1,6 +1,6 @@
 <div class="container">
 
-  <h3 class="page-title">Look if you can help somebody around the world</h3>
+  <h3 class="page-title">Help pals around the world</h3>
   <div class="search-bar">
     <div class="search-city-input">
     <%= form_tag help_others_path, method: :get, class: "form-inline" do %>
@@ -17,7 +17,7 @@
   <% end %>
 
   <% unless @filtered_requests %>
-    <h3 class="small-title">Recent help requests worldwide</h3>
+    <h3 class="small-title">New help requests</h3>
     <div class="cards">
       <% @pending_requests.first(3).each do |request| %>
         <div class="request-card">
@@ -81,7 +81,7 @@
 
   <% if @filtered_requests %>
     <% if @filtered_requests.empty? %>
-      <p class="no-results">No pending help requests in this city yet</p>
+      <p class="no-results">No current help requests in this city</p>
     <% end %>
   <% end %>
 

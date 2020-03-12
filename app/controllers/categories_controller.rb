@@ -7,7 +7,7 @@ class CategoriesController < ApplicationController
     end
     @categories = policy_scope(Category)
     @request = Request.new
-    if params[:commit] && params[:commit] != "Search"
+    if params[:commit] && (params[:commit] != "Search" && "Select location" && "Confirm location")
       @user_category_selection = params[:commit]
       @category = Category.find_by(name: @user_category_selection)
       @request = Request.new(city: @location)
