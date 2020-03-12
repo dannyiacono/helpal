@@ -100,8 +100,8 @@
     <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
       <div class="cards-wrapper">
           <% if @helping_requests.present? %>
-            <h1>Your help input to others</h1>
-            <h3>Assigned to me</h3>
+            <h1>Pals you are helping</h1>
+            <h3>Helping these pals</h3>
               <% if @ongoing_help_requests.present? %>
                 <div class="cards">
                   <% @ongoing_help_requests.each do |request| %>

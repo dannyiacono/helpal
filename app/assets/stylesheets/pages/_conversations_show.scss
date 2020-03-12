@@ -87,8 +87,6 @@
   align-items: baseline;
   padding: 25px;
   margin-bottom: 15px;
-  position: relative;
-  padding-top: 65px;
   padding-bottom: 7px;
   border-radius: 5px;
   a {
@@ -100,7 +98,8 @@
 }
 
 
-.conversation-request-card-status {
+.conversation-avatar-status-div {
+  display: flex;
 }
 
 .messages_box {
