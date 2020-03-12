@@ -1,6 +1,9 @@
 .page-title {
   margin-top: 60px;
   text-align: center;
+  &.margin-fix {
+  margin-top: 10px;
+  }
 }
 
 .container .small-title {
