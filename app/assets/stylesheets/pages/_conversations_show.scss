@@ -50,6 +50,8 @@
 
 .not-blue {
   padding: 10px;
+  background-color: #F4F4F4;
+  border-radius: 6px;
   margin-bottom: 10px;
 }
 
@@ -185,4 +187,10 @@
 .pal-image {
   margin-right: 10px;
   padding-top: 12px;
+}
+
+.pal-details {
+  h4 {
+    margin-bottom: 0px;
+  }
 }

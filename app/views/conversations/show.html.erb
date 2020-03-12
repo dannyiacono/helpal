@@ -16,12 +16,12 @@
           <li>
             <% if message.body %>
               <% if current_user != message.user %>
-              <div class="blue">
+              <div class="not-blue">
                 <div><strong><%= message.user.first_name %></strong> <%= message.created_at.strftime("%H:%M (%B %d)") %></div>
                 <p><%= message.body %></p>
               <% else %>
-              <div class="not-blue">
-                <div><strong><%= message.user.first_name %></strong> <%= message.created_at.strftime("%H:%M (%B %d)") %></div>
+              <div class="blue">
+                <div><strong>You</strong> <%= message.created_at.strftime("%H:%M (%B %d)") %></div>
                 <p><%= message.body %></p>
             <% end %>
               </div>
@@ -71,7 +71,10 @@
     <% end %>
     <% if @request.helper.present? %>
       <div class="pal-confirmed">
-        <h4>Your new pal: <%= @other_user.first_name %></h4>
+        <div class="pal-details">
+          <h4>Your new pal</h4>
+          <%= @other_user.first_name %>
+        </div>
         <div class="pal-image">
           <% if @other_user.photo.attached? %>
             <%= link_to (cl_image_tag @other_user.photo.key, class: "avatar"), other_profile_path(@other_user) %>
