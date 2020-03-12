@@ -18,9 +18,11 @@ const categoriesIndex = () => {
         catEmpty.classList.add("d-none")
       });
     });
+
     if(catSelect.innerText === "") {
       catSelect.insertAdjacentHTML("afterend","<span class='no-category-selected'>Please select a category before continuing.</span>");
     }
+
   }
 
 };

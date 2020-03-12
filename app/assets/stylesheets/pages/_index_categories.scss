@@ -47,6 +47,14 @@
   align-items: center;
 }
 
+.category-card:hover {
+  box-shadow: 2px 2px 2px rgba(94, 97, 95, 0.8);
+}
+
+.category-card span {
+  text-align: center;
+}
+
 .title-index {
   text-align: center;
   color: white;
@@ -71,9 +79,6 @@
   margin-top: 60px;
 }
 
-.category-card span {
-  text-align: center;
-}
 
 .change-border-color {
   border: 2px solid rgba(249, 76, 80, 0.7);
@@ -83,3 +88,79 @@
 .name_cat_card {
   padding-left: 8px;
 }
+
+
+/*----------CSS MEDIA----------*/
+/*-----------------------------*/
+
+@media (max-width: 960px) {
+  /* For a screen < 960px, this CSS will be read */
+
+}
+@media (max-width: 720px) {
+  /* For a screen < 720px, this CSS will be read */
+  .category-card {
+    width: 100%;
+  }
+  .container-category-cards {
+  justify-items: center;
+
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 540px) {
+  /* For a screen < 540px, this CSS will be read */
+  #category-request-page {
+    display: block;
+  }
+
+  .title-index h1 {
+    font-size: 24px;
+  }
+
+  .title-index h2 {
+    font-size: 16px;
+  }
+  .category-card {
+    width: 100%;
+    height: 50px;
+  }
+
+  .container-category-cards {
+  justify-items: center;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-row-gap: 2px;
+  grid-auto-rows: minmax(35%, auto);
+  padding-left: 5px;
+  padding-right: 5px;
+  }
+
+  #category-index-body {
+  background-color: #9AD7E9;
+  width: 100%;
+  }
+
+  #cat-submit {
+    margin-left: 11px;
+  }
+  .search-bar-cat {
+    display: block;
+
+}
+  .search-input {
+    width: 100px;
+  }
+
+  #form-city {
+    width: 100%;
+  }
+}
+
+
