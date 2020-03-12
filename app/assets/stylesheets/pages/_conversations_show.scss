@@ -36,6 +36,7 @@
   padding: 10px 15px;
   border-radius: 5px;
   text-align: center;
+  align-self: flex-start;
 }
 
 .blue {
@@ -84,7 +85,6 @@
   background-color: white;
   display: flex;
   flex-direction: column;
-  align-items: baseline;
   padding: 25px;
   margin-bottom: 15px;
   padding-bottom: 7px;
@@ -100,6 +100,7 @@
 
 .conversation-avatar-status-div {
   display: flex;
+  justify-content: space-between;
 }
 
 .messages_box {
