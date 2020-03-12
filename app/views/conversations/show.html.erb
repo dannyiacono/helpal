@@ -39,7 +39,11 @@
   <div class="request-container">
     <div class="conversation-request-card">
       <div class="conversation-request-card-status">
-        <p id="request-status"><%= @request.status.capitalize %></p>
+        <% if @request.status == "ongoing" %>
+          <p id="request-status" style="background-color: #6DC6A4; color: white;"><%= @request.status.capitalize %></p>
+        <% else %>
+          <p id="request-status"><%= @request.status.capitalize %></p>
+        <% end %>
       </div>
       <h2><strong><%= @request.title %></strong></h2>
       <p><%= @request.due_date.strftime("%B %d, %Y") %></p>
@@ -67,11 +71,11 @@
     <% end %>
     <% if @request.helper.present? %>
       <div class="pal-confirmed">
-        <h4>Pal confirmed:</h4>
+        <h4>Your new pal:</h4>
         <% if @other_user.photo.attached? %>
-            <%= link_to (cl_image_tag @other_user.photo.key, class: "avatar-profile"), other_profile_path(@other_user) %>
+            <%= link_to (cl_image_tag @other_user.photo.key, class: "avatar"), other_profile_path(@other_user) %>
           <% else %>
-          <%= link_to image_tag("waldo.png", class: "avatar-profile"), other_profile_path(@other_user) %>
+          <%= link_to image_tag("waldo.png", class: "avatar"), other_profile_path(@other_user) %>
           <% end %>
       </div>
     <% end %>
