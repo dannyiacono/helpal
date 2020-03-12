@@ -16,12 +16,12 @@
           <li>
             <% if message.body %>
               <% if current_user != message.user %>
-              <div class="not-blue">
+              <div class="blue conversation-message">
                 <div><strong><%= message.user.first_name %></strong> <%= message.created_at.strftime("%H:%M (%B %d)") %></div>
                 <p><%= message.body %></p>
               <% else %>
-              <div class="blue">
-                <div><strong>You</strong> <%= message.created_at.strftime("%H:%M (%B %d)") %></div>
+              <div class="not-blue conversation-message">
+                <div><strong><%= message.user.first_name %></strong> <%= message.created_at.strftime("%H:%M (%B %d)") %></div>
                 <p><%= message.body %></p>
             <% end %>
               </div>
