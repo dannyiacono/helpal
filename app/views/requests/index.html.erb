@@ -15,7 +15,7 @@
         <div class="align-btn">
         <%= link_to "Add new help request", categories_path, class: "btn btn-primary" %>
         </div>
-        <h1 class="h1-exception">Overview of my help requests</h1>
+        <h3 class="page-title margin-fix">Overview of my help requests</h3>
         <div class="status-overview">
           <div class="status-column">
             <h3 class="h3-status-overview">Pending</h3>
@@ -30,15 +30,22 @@
             <p><%= @done_req_count %></p>
           </div>
         </div>
-          <h3>Requests looking for helpal</h3>
+          <h3 class="small-title">Requests looking for helpal</h3>
             <div class="cards">
               <% @pending_requests.each do |request| %>
                 <div class="request-card">
-                  <p class="request-status"><%= request.status.capitalize %></p>
+                  <div class="avatar-status">
+                    <% if request.creator.photo.attached? %>
+                      <%= link_to (cl_image_tag request.creator.photo.key, class: "creator-avatar change"), other_profile_path(request.creator_id) %>
+                    <% else %>
+                      <%= link_to image_tag("waldo.png", class: "creator-avatar change"),   other_profile_path(request.creator_id) %>
+                    <% end %>
+                    <p class="request-status"><%= request.status.capitalize %></p>
+                  </div>
                   <h3><%= request.title.truncate(42) %></h3>
                   <div class="date">
                     <p><i class="fas fa-map-marker-alt"></i> <%= request.city %></p>
-                    <p><%= request.due_date.strftime('%B %d, %Y') %></p>
+                    <p><i class="far fa-calendar"></i> <%= request.due_date.strftime('%B %d, %Y') %></p>
                   </div>
                   <div class="user-category-tags">
                     <span><%= Category.find_by(id: request.category_id).name %></span>
@@ -51,16 +58,23 @@
                 <% end %>
             </div>
 
-        <h3>Assigned to helpal</h3>
+        <h3 class="small-title">Assigned to helpal</h3>
         <% if @ongoing_requests.present? %>
           <div class="cards">
             <% @ongoing_requests.each do |request| %>
               <div class="request-card">
-                <p class="request-status ongoing"><%= request.status.capitalize %></p>
+                <div class="avatar-status">
+                  <% if request.creator.photo.attached? %>
+                    <%= link_to (cl_image_tag request.creator.photo.key, class: "creator-avatar change"), other_profile_path(request.creator_id) %>
+                  <% else %>
+                    <%= link_to image_tag("waldo.png", class: "creator-avatar change"),   other_profile_path(request.creator_id) %>
+                  <% end %>
+                  <p class="request-status ongoing"><%= request.status.capitalize %></p>
+                </div>
                 <h3><%= request.title %></h3>
                 <div class="date">
                   <p><i class="fas fa-map-marker-alt"></i> <%= request.city %></p>
-                  <p><%= request.due_date.strftime('%B %d, %Y') %></p>
+                  <p><i class="far fa-calendar"></i> <%= request.due_date.strftime('%B %d, %Y') %></p>
                 </div>
                 <div class="user-category-tags">
                   <span><%= Category.find_by(id: request.category_id).name %></span>
@@ -76,16 +90,23 @@
           <p class="not-assigned">Nothing assigned yet</p>
         <% end %>
 
-        <h3>Completed</h3>
+        <h3 class="small-title">Completed</h3>
         <% if @done_requests.present? %>
           <div class="cards">
             <% @done_requests.each do |request| %>
               <div class="request-card">
-                <p class="request-status done"><%= request.status.capitalize %></p>
+                <div class="avatar-status">
+                  <% if request.creator.photo.attached? %>
+                    <%= link_to (cl_image_tag request.creator.photo.key, class: "creator-avatar change"), other_profile_path(request.creator_id) %>
+                  <% else %>
+                    <%= link_to image_tag("waldo.png", class: "creator-avatar change"),   other_profile_path(request.creator_id) %>
+                  <% end %>
+                  <p class="request-status done"><%= request.status.capitalize %></p>
+                </div>
                 <h3><%= request.title %></h3>
                 <div class="date">
                   <p><i class="fas fa-map-marker-alt"></i> <%= request.city %></p>
-                  <p><%= request.due_date.strftime('%B %d, %Y') %></p>
+                  <p><i class="far fa-calendar"></i> <%= request.due_date.strftime('%B %d, %Y') %></p>
                 </div>
                 <div class="user-category-tags">
                   <span><%= Category.find_by(id: request.category_id).name %></span>
@@ -116,22 +137,24 @@
     <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
       <div class="cards-wrapper">
           <% if @helping_requests.present? %>
-            <h1>Your help input</h1>
-            <h3>Assigned to me</h3>
+            <h3 class="page-title">Your help input</h3>
+            <h3 class="small-title">Assigned to me</h3>
               <% if @ongoing_help_requests.present? %>
                 <div class="cards">
                   <% @ongoing_help_requests.each do |request| %>
                     <div class="request-card">
-                      <% if request.creator.photo.attached? %>
-                        <%= link_to (cl_image_tag request.creator.photo.key, class: "creator-avatar"), other_profile_path(request.creator_id) %>
-                      <% else %>
-                        <%= link_to image_tag("waldo.png", class: "creator-avatar"),   other_profile_path(request.creator_id) %>
-                      <% end %>
-                      <p class="request-status ongoing"><%= request.status.capitalize %></p>
+                      <div class="avatar-status">
+                        <% if request.creator.photo.attached? %>
+                          <%= link_to (cl_image_tag request.creator.photo.key, class: "creator-avatar"), other_profile_path(request.creator_id) %>
+                        <% else %>
+                          <%= link_to image_tag("waldo.png", class: "creator-avatar"),   other_profile_path(request.creator_id) %>
+                        <% end %>
+                        <p class="request-status ongoing"><%= request.status.capitalize %></p>
+                      </div>
                       <h3><%= request.title %></h3>
                       <div class="date">
                         <p><i class="fas fa-map-marker-alt"></i> <%= request.city %></p>
-                        <p><%= request.due_date.strftime('%B %d, %Y') %></p>
+                        <p><i class="far fa-calendar"></i> <%= request.due_date.strftime('%B %d, %Y') %></p>
                       </div>
                       <div class="user-category-tags">
                         <span><%= Category.find_by(id: request.category_id).name %></span>
@@ -147,21 +170,23 @@
             <p class="not-assigned">Nothing assigned yet</p>
           <% end %>
 
-          <h3>Completed</h3>
+          <h3 class="small-title">Completed</h3>
             <% if @done_help_requests.present? %>
               <div class="cards">
                 <% @done_help_requests.each do |request| %>
                   <div class="request-card">
-                    <% if request.creator.photo.attached? %>
-                        <%= link_to (cl_image_tag request.creator.photo.key, class: "creator-avatar"), other_profile_path(request.creator_id) %>
-                    <% else %>
-                      <%= link_to image_tag("waldo.png", class: "creator-avatar"),   other_profile_path(request.creator_id) %>
-                    <% end %>
-                    <p class="request-status done"><%= request.status.capitalize %></p>
+                    <div class="avatar-status">
+                      <% if request.creator.photo.attached? %>
+                          <%= link_to (cl_image_tag request.creator.photo.key, class: "creator-avatar change"), other_profile_path(request.creator_id) %>
+                      <% else %>
+                        <%= link_to image_tag("waldo.png", class: "creator-avatar change"),   other_profile_path(request.creator_id) %>
+                      <% end %>
+                      <p class="request-status done"><%= request.status.capitalize %></p>
+                    </div>
                     <h3><%= request.title %></h3>
                     <div class="date">
                       <p><i class="fas fa-map-marker-alt"></i> <%= request.city %></p>
-                      <p><%= request.due_date.strftime('%B %d, %Y') %></p>
+                      <p><i class="far fa-calendar"></i> <%= request.due_date.strftime('%B %d, %Y') %></p>
                     </div>
                     <div class="user-category-tags">
                       <span><%= Category.find_by(id: request.category_id).name %></span>

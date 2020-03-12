@@ -21,6 +21,7 @@
     <div class="cards">
       <% @pending_requests.first(3).each do |request| %>
         <div class="request-card">
+          <div class="avatar-status">
           <% if request.creator.photo.attached? %>
               <%= link_to other_profile_path(request.creator) do %>
                 <%= cl_image_tag request.creator.photo.key, class: "creator-avatar" %>
@@ -30,10 +31,11 @@
                 <%= image_tag("waldo.png", class: "creator-avatar") %>
               <% end %>
             <% end %>
+          </div>
           <h3><%= request.title.truncate(42) %></h3>
           <div class="date">
             <p><i class="fas fa-map-marker-alt"></i> <%= request.city %></p>
-            <p><%= request.due_date.strftime('%B %d, %Y') %></p>
+            <p><i class="far fa-calendar"></i> <%= request.due_date.strftime('%B %d, %Y') %></p>
           </div>
           <div class="user-category-tags">
             <span><%= Category.find_by(id: request.category_id).name %></span>
@@ -64,7 +66,7 @@
             <h3><%= request.title.truncate(42) %></h3>
             <div class="date">
               <p><i class="fas fa-map-marker-alt"></i> <%= request.city %></p>
-              <p><%= request.due_date.strftime('%B %d, %Y') %></p>
+              <p><i class="far fa-calendar"></i> <%= request.due_date.strftime('%B %d, %Y') %></p>
             </div>
             <div class="user-category-tags">
               <span><%= Category.find_by(id: request.category_id).name %></span>
