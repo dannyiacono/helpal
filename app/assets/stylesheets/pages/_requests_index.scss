@@ -1,9 +1,44 @@
+ // PAGE CTA & DESCRIPTION
+
+.align-btn {
+  margin-top: 30px;
+  text-align: end;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 60px;
+  &.h1-exception {
+  margin-top: 24px;
+  }
+}
+
+ // CARDS
+
 .cards-wrapper {
   margin-bottom: 60px;
 }
 
 .cards-wrapper h3 {
-margin-top: 60px;
+  margin-top: 60px;
+}
+
+.request-status {
+  text-align: right;
+  background-color: $light-gray;
+  padding: 7px;
+  border-radius: 5px;
+  position: absolute;
+  right: 14px;
+  top: 14px;
+  &.ongoing {
+  background-color: $status-green;
+  color: $white;
+  }
+  &.done {
+  background-color: $black-text;
+  color: $white;
+  }
 }
 
 .cards {
