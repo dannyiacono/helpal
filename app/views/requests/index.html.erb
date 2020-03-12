@@ -122,6 +122,11 @@
                 <div class="cards">
                   <% @ongoing_help_requests.each do |request| %>
                     <div class="request-card">
+                      <% if request.creator.photo.attached? %>
+                        <%= link_to (cl_image_tag request.creator.photo.key, class: "creator-avatar"), other_profile_path(request.creator_id) %>
+                      <% else %>
+                        <%= link_to image_tag("waldo.png", class: "creator-avatar"),   other_profile_path(request.creator_id) %>
+                      <% end %>
                       <p class="request-status ongoing"><%= request.status.capitalize %></p>
                       <h3><%= request.title %></h3>
                       <div class="date">
@@ -147,6 +152,11 @@
               <div class="cards">
                 <% @done_help_requests.each do |request| %>
                   <div class="request-card">
+                    <% if request.creator.photo.attached? %>
+                        <%= link_to (cl_image_tag request.creator.photo.key, class: "creator-avatar"), other_profile_path(request.creator_id) %>
+                    <% else %>
+                      <%= link_to image_tag("waldo.png", class: "creator-avatar"),   other_profile_path(request.creator_id) %>
+                    <% end %>
                     <p class="request-status done"><%= request.status.capitalize %></p>
                     <h3><%= request.title %></h3>
                     <div class="date">
