@@ -23,17 +23,21 @@
     </div>
 
     <% if @request.helper.present? && current_user == @request.creator %>
-      <% if @request.helper.photo.attached? %>
-        <h3>Assigned to:</h3>
+        <h3>Your new pal:</h3>
         <div class="assigned-to-avatar">
           <div class="pending-messages">
+            <% if @request.helper.photo.attached? %>
             <%= link_to conversation_path(@helper_conversation) do %>
               <%= cl_image_tag @request.helper.photo.key, class: "avatar-large" %>
+            <% end %>
+            <% else %>
+              <%= link_to conversation_path(@helper_conversation) do %>
+                <%= image_tag("waldo.png", class: "avatar-large") %>
+              <% end %>
             <% end %>
           </div>
             <p class="helper-name"><%= @request.helper.first_name %> <%=@request.helper.last_name %></p>
         </div>
-        <% end %>
     <% elsif @helper_unconfirmed_conversation %>
       <%= link_to "Go to conversation", conversation_path(@helper_unconfirmed_conversation), class: "btn btn-outline-secondary request-conversation-btn rounder"%>
     <% elsif current_user == @request.helper %>
