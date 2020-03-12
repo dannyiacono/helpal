@@ -11,27 +11,31 @@
   <div class="tab-content" id="pills-tabContent">
     <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
       <div class="cards-wrapper">
-      <% if @requests.present? %>
-        <h3>Requests looking for helpal</h3>
-          <div class="cards">
-            <% @pending_requests.each do |request| %>
-              <div class="request-card">
-                <p class="request-status"><%= request.status.capitalize %></p>
-                <h3><%= request.title.truncate(42) %></h3>
-                <div class="date">
-                  <p><i class="fas fa-map-marker-alt"></i> <%= request.city %></p>
-                  <p><%= request.due_date.strftime('%B %d, %Y') %></p>
+        <% if @requests.present? %>
+        <div class="align-btn">
+        <%= link_to "Add new help request", categories_path, class: "btn btn-primary" %>
+        </div>
+        <h1 class="h1-exception">Overview of my help requests</h1>
+          <h3>Requests looking for helpal</h3>
+            <div class="cards">
+              <% @pending_requests.each do |request| %>
+                <div class="request-card">
+                  <p class="request-status"><%= request.status.capitalize %></p>
+                  <h3><%= request.title.truncate(42) %></h3>
+                  <div class="date">
+                    <p><i class="fas fa-map-marker-alt"></i> <%= request.city %></p>
+                    <p><%= request.due_date.strftime('%B %d, %Y') %></p>
+                  </div>
+                  <div class="user-category-tags">
+                    <span><%= Category.find_by(id: request.category_id).name %></span>
+                  </div>
+                  <div class="links">
+                    <%= link_to "View details", request_path(request), class: "details-btn" %>
+                    <%= link_to "Cancel", request_path(request), method: :delete, data: { confirm: "Are you sure?" }, class: "delete-btn" %>
+                  </div>
                 </div>
-                <div class="user-category-tags">
-                  <span><%= Category.find_by(id: request.category_id).name %></span>
-                </div>
-                <div class="links">
-                  <%= link_to "View details", request_path(request), class: "details-btn" %>
-                  <%= link_to "Cancel", request_path(request), method: :delete, data: { confirm: "Are you sure?" }, class: "delete-btn" %>
-                </div>
-              </div>
-              <% end %>
-          </div>
+                <% end %>
+            </div>
 
         <h3>Assigned to helpal</h3>
         <% if @ongoing_requests.present? %>
@@ -96,6 +100,7 @@
     <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
       <div class="cards-wrapper">
           <% if @helping_requests.present? %>
+            <h1>Your help input to others</h1>
             <h3>Assigned to me</h3>
               <% if @ongoing_help_requests.present? %>
                 <div class="cards">

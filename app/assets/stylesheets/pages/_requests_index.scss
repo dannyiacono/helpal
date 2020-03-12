@@ -1,9 +1,26 @@
+ // PAGE CTA & DESCRIPTION
+
+.align-btn {
+  margin-top: 30px;
+  text-align: end;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 60px;
+  &.h1-exception {
+  margin-top: 24px;
+  }
+}
+
+ // CARDS
+
 .cards-wrapper {
   margin-bottom: 60px;
 }
 
 .cards-wrapper h3 {
-margin-top: 60px;
+  margin-top: 60px;
 }
 
 .request-status {
