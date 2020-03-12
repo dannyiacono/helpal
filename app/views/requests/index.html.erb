@@ -16,6 +16,20 @@
         <%= link_to "Add new help request", categories_path, class: "btn btn-primary" %>
         </div>
         <h1 class="h1-exception">Overview of my help requests</h1>
+        <div class="status-overview">
+          <div class="status-column">
+            <h3 class="h3-status-overview">Pending</h3>
+            <p><%= @pending_req_count %></p>
+          </div>
+          <div class="status-column">
+            <h3 class="h3-status-overview">Ongoing</h3>
+            <p><%= @ongoing_req_count %></p>
+          </div>
+          <div class="status-column">
+            <h3 class="h3-status-overview">Done</h3>
+            <p><%= @done_req_count %></p>
+          </div>
+        </div>
           <h3>Requests looking for helpal</h3>
             <div class="cards">
               <% @pending_requests.each do |request| %>
@@ -97,22 +111,18 @@
       </div>
     </div>
 
+
+
     <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
       <div class="cards-wrapper">
           <% if @helping_requests.present? %>
-            <h1>Your help input to others</h1>
+            <h1>Your help input</h1>
             <h3>Assigned to me</h3>
               <% if @ongoing_help_requests.present? %>
                 <div class="cards">
                   <% @ongoing_help_requests.each do |request| %>
                     <div class="request-card">
-                      <% if !request.helper_id.nil? %>
-                        <% if request.helper.photo.attached? %>
-                          <%= link_to (cl_image_tag request.helper.photo.key, class: "helper-avatar"), other_profile_path(request.helper_id) %>
-                        <% else %>
-                          <%= link_to image_tag("waldo.png", class: "helper-avatar"), other_profile_path(request.helper_id) %>
-                        <% end %>
-                      <% end %>
+                      <p class="request-status ongoing"><%= request.status.capitalize %></p>
                       <h3><%= request.title %></h3>
                       <div class="date">
                         <p><i class="fas fa-map-marker-alt"></i> <%= request.city %></p>
@@ -137,13 +147,7 @@
               <div class="cards">
                 <% @done_help_requests.each do |request| %>
                   <div class="request-card">
-                    <% if !request.helper_id.nil? %>
-                      <% if request.helper.photo.attached? %>
-                        <%= link_to (cl_image_tag request.helper.photo.key, class: "helper-avatar"), other_profile_path(request.helper_id) %>
-                      <% else %>
-                        <%= link_to image_tag("waldo.png", class: "helper-avatar"), other_profile_path(request.helper_id) %>
-                      <% end %>
-                    <% end %>
+                    <p class="request-status done"><%= request.status.capitalize %></p>
                     <h3><%= request.title %></h3>
                     <div class="date">
                       <p><i class="fas fa-map-marker-alt"></i> <%= request.city %></p>
