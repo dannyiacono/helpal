@@ -1,6 +1,18 @@
 <div class="container container-show-request">
   <div class="wrapper-request">
     <div class="request-status-info">
+      <div class="creator-info">
+      <% if @request.creator.photo.attached? %>
+            <%= link_to other_profile_path(@request.creator) do %>
+              <%= cl_image_tag @request.creator.photo.key, class: "avatar" %>
+            <% end %>
+          <% else %>
+            <%= link_to other_profile_path(@request.creator) do %>
+                <%= image_tag("waldo.png", class: "avatar") %>
+              <% end %>
+          <% end %>
+          <%= @request.creator.first_name %>
+    </div>
       <div class="conversation-request-card-status">
         <p id="request-status-show"><%= @request.status.capitalize%></p>
       </div>
@@ -63,21 +75,6 @@
         <a href="#" class="btn btn-primary edit-btn rounder">Edit</a>
         <%= link_to "Cancel", request_path, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-outline-danger rounder" %>
       <% end %>
-    </div>
-  </div>
-  <div class="creator-show">
-    <div class="creator-info">
-      <h3>Request creator</h3>
-      <% if @request.creator.photo.attached? %>
-            <%= link_to other_profile_path(@request.creator) do %>
-              <%= cl_image_tag @request.creator.photo.key, class: "avatar-large" %>
-            <% end %>
-          <% else %>
-            <%= link_to other_profile_path(@request.creator) do %>
-                <%= image_tag("waldo.png", class: "avatar-large") %>
-              <% end %>
-          <% end %>
-          <%= @request.creator.first_name %>
     </div>
   </div>
 </div>
