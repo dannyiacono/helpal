@@ -16,7 +16,7 @@
     <ul>
       <% if @user_conversations.empty? %>
         <div class="message-box">
-          <p><em>Sorry you have no messages yet.</em></p>
+          <p><em>Sorry, you have no conversations yet.</em></p>
         </div>
       <% else %>
         <%  @user_conversations.sort_by(&:updated_at).reverse.each do |conversation| %>
