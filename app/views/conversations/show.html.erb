@@ -71,12 +71,21 @@
     <% end %>
     <% if @request.helper.present? %>
       <div class="pal-confirmed">
-        <h4>Your new pal:</h4>
-        <% if @other_user.photo.attached? %>
+        <div class="pal-details">
+          <h4>Your new pal</h4>
+          <%= @other_user.first_name %>
+        </div>
+        <div class="pal-image">
+          <% if @other_user.photo.attached? %>
             <%= link_to (cl_image_tag @other_user.photo.key, class: "avatar"), other_profile_path(@other_user) %>
           <% else %>
           <%= link_to image_tag("waldo.png", class: "avatar"), other_profile_path(@other_user) %>
           <% end %>
+          <div class="avatar-check-mark">
+            <i class="far fa-check-circle"></i>
+          </div>
+
+        </div>
       </div>
     <% end %>
   </div>
