@@ -10,7 +10,7 @@
   margin-top: 60px;
   padding: 15px 30px 15px;
   border-radius: 4px;
-  width: 50%;
+  width: 70%;
 }
 
 .request-status-info {
@@ -78,7 +78,7 @@
 
 .assigned-to-avatar {
   display: flex;
-  align-items: center;
+  align-items: baseline;
 }
 
 .helper-name {
@@ -119,4 +119,11 @@
 .request-show-buttons {
   display: flex;
   justify-content: flex-end;
+}
+
+.pal-confirmed-req {
+
+  h4 {
+    font-size: 1.2rem;
+  }
 }

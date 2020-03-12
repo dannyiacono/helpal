@@ -11,7 +11,9 @@
                 <%= image_tag("waldo.png", class: "avatar") %>
               <% end %>
           <% end %>
-          <%= @request.creator.first_name %>
+          <% if current_user != @request.creator %>
+            <%= @request.creator.first_name %>
+          <% end %>
     </div>
       <div class="conversation-request-card-status">
         <p id="request-status-show"><%= @request.status.capitalize%></p>
@@ -35,21 +37,23 @@
     </div>
 
     <% if @request.helper.present? && current_user == @request.creator %>
-        <h3>Your new pal:</h3>
+      <div class="pal-confirmed-req">
+        <h4>Your new pal:</h4>
         <div class="assigned-to-avatar">
           <div class="pending-messages">
             <% if @request.helper.photo.attached? %>
             <%= link_to conversation_path(@helper_conversation) do %>
-              <%= cl_image_tag @request.helper.photo.key, class: "avatar-large" %>
+              <%= cl_image_tag @request.helper.photo.key, class: "avatar" %>
             <% end %>
             <% else %>
               <%= link_to conversation_path(@helper_conversation) do %>
-                <%= image_tag("waldo.png", class: "avatar-large") %>
+                <%= image_tag("waldo.png", class: "avatar") %>
               <% end %>
             <% end %>
           </div>
             <p class="helper-name"><%= @request.helper.first_name %> <%=@request.helper.last_name %></p>
         </div>
+      </div>
     <% elsif @helper_unconfirmed_conversation %>
       <%= link_to "Go to conversation", conversation_path(@helper_unconfirmed_conversation), class: "btn btn-outline-secondary request-conversation-btn rounder"%>
     <% elsif current_user == @request.helper %>
