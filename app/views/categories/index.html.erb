@@ -22,7 +22,7 @@
          <% @categories.each do |category| %>
             <div class="category-card" id="<%= category.name %>">
               <span class="name_cat_card"><%=category.name  %></span>
-              <span class="name_cat_id d-none"><%=category.id %></span>
+              <span class="name_cat_id" style="color: white"><%=category.id %></span>
 
             </div>
           <% end %>
