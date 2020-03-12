@@ -127,3 +127,56 @@
     font-size: 1.2rem;
   }
 }
+
+@media (min-width: 100px) and (max-width: 575px) {
+  #request-status-show {
+    right: 2px;
+    top: 2px;
+    margin: 0;
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  #button-edit {
+    margin: 0px 2px 0px 0px;
+  }
+
+  .rounder {
+    width: 25vw;
+    padding: 1px;
+    margin:0px 5px 0px 0px;
+
+  }
+
+  .wrapper-request {
+    width: 90%;
+    height: 60%;
+    margin-top: 20px;
+    padding: 8px;
+  }
+
+  .fa-map-marker-alt {
+    margin-right: 1px;
+  }
+
+  .request-category {
+    margin: 0;
+  }
+
+  .request-category p {
+    padding: 0;
+  }
+  .request-category-tag {
+    width: 30vw;
+    height: 5vh;
+    padding: 0px;
+    margin: 5px 0px;
+  }
+
+  .request-show-buttons {
+    justify-content: flex-start;
+  }
+}
+
