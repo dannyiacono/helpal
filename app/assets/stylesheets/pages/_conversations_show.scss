@@ -22,9 +22,6 @@
   background-color: $light-gray;
   padding: 7px;
   border-radius: 5px;
-  position: absolute;
-  right: 14px;
-  top: 14px;
 }
 
 #request-avatar {
@@ -104,7 +101,6 @@
 
 
 .conversation-request-card-status {
-  align-self: flex-end;
 }
 
 .messages_box {
@@ -199,4 +195,9 @@
   h4 {
     margin-bottom: 0px;
   }
+}
+
+.creator-info-conversation {
+  align-items: baseline;
+  display: flex;
 }

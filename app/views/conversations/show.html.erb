@@ -16,12 +16,12 @@
           <li>
             <% if message.body %>
               <% if current_user != message.user %>
-              <div class="blue conversation-message">
+              <div class="not-blue conversation-message">
                 <div><strong><%= message.user.first_name %></strong> <%= message.created_at.strftime("%H:%M (%B %d)") %></div>
                 <p><%= message.body %></p>
               <% else %>
-              <div class="not-blue conversation-message">
-                <div><strong><%= message.user.first_name %></strong> <%= message.created_at.strftime("%H:%M (%B %d)") %></div>
+              <div class="blue conversation-message">
+                <div><strong>You</strong> <%= message.created_at.strftime("%H:%M (%B %d)") %></div>
                 <p><%= message.body %></p>
             <% end %>
               </div>
@@ -38,12 +38,28 @@
   </div>
   <div class="request-container">
     <div class="conversation-request-card">
-      <div class="conversation-request-card-status">
-        <% if @request.status == "ongoing" %>
-          <p id="request-status" style="background-color: #6DC6A4; color: white;"><%= @request.status.capitalize %></p>
-        <% else %>
-          <p id="request-status"><%= @request.status.capitalize %></p>
-        <% end %>
+      <div class="conversation-avatar-status-div">
+        <div class="creator-info-conversation">
+          <% if @request.creator.photo.attached? %>
+            <%= link_to other_profile_path(@request.creator) do %>
+              <%= cl_image_tag @request.creator.photo.key, class: "avatar" %>
+            <% end %>
+          <% else %>
+            <%= link_to other_profile_path(@request.creator) do %>
+                <%= image_tag("waldo.png", class: "avatar") %>
+              <% end %>
+          <% end %>
+          <% if current_user != @request.creator %>
+            <%= @request.creator.first_name %>
+          <% end %>
+        </div>
+        <div class="conversation-request-card-status">
+          <% if @request.status == "ongoing" %>
+            <p id="request-status" style="background-color: #6DC6A4; color: white;"><%= @request.status.capitalize %></p>
+          <% else %>
+            <p id="request-status"><%= @request.status.capitalize %></p>
+          <% end %>
+        </div>
       </div>
       <h3><strong><%= link_to @conversation.request.title.truncate(42), request_path(@conversation.request)%></strong></h3>
       <p><%= @request.due_date.strftime("%B %d, %Y") %></p>
