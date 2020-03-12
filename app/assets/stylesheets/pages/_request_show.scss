@@ -128,15 +128,14 @@
   }
 }
 
+
+/*---- RESPONSIVENESS ---*/
+
 @media (min-width: 100px) and (max-width: 575px) {
   #request-status-show {
     right: 2px;
     top: 2px;
     margin: 0;
-  }
-
-  .cards {
-    grid-template-columns: 1fr;
   }
 
   #button-edit {
@@ -147,7 +146,6 @@
     width: 25vw;
     padding: 1px;
     margin:0px 5px 0px 0px;
-
   }
 
   .wrapper-request {
