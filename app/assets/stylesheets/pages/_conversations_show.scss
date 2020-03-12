@@ -50,6 +50,8 @@
 
 .not-blue {
   padding: 10px;
+  background-color: #F4F4F4;
+  border-radius: 6px;
   margin-bottom: 10px;
 }
 
@@ -158,4 +160,37 @@
 .rounder {
   border-radius: 8px;
   padding: 6px 20px;
+}
+
+.pal-confirmed {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 90px;
+  padding: 15px;
+  background-color: white;
+  border-radius: 5px;
+  border: 2px solid #6DC6A4;
+  h4 {
+    font-size: 1.25rem;
+  }
+}
+
+.fa-check-circle {
+  color: #6DC6A4;
+  font-size: 16px;
+  position: relative;
+  top: -45px;
+  right: -30px;
+}
+
+.pal-image {
+  margin-right: 10px;
+  padding-top: 12px;
+}
+
+.pal-details {
+  h4 {
+    margin-bottom: 0px;
+  }
 }

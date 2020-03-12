@@ -16,12 +16,12 @@
           <li>
             <% if message.body %>
               <% if current_user != message.user %>
-              <div class="blue">
+              <div class="not-blue">
                 <div><strong><%= message.user.first_name %></strong> <%= message.created_at.strftime("%H:%M (%B %d)") %></div>
                 <p><%= message.body %></p>
               <% else %>
-              <div class="not-blue">
-                <div><strong><%= message.user.first_name %></strong> <%= message.created_at.strftime("%H:%M (%B %d)") %></div>
+              <div class="blue">
+                <div><strong>You</strong> <%= message.created_at.strftime("%H:%M (%B %d)") %></div>
                 <p><%= message.body %></p>
             <% end %>
               </div>
@@ -39,7 +39,11 @@
   <div class="request-container">
     <div class="conversation-request-card">
       <div class="conversation-request-card-status">
-        <p id="request-status"><%= @request.status.capitalize %></p>
+        <% if @request.status == "ongoing" %>
+          <p id="request-status" style="background-color: #6DC6A4; color: white;"><%= @request.status.capitalize %></p>
+        <% else %>
+          <p id="request-status"><%= @request.status.capitalize %></p>
+        <% end %>
       </div>
       <h2><strong><%= @request.title %></strong></h2>
       <p><%= @request.due_date.strftime("%B %d, %Y") %></p>
@@ -63,6 +67,25 @@
             <%= form.button :submit, "Confirm pal", class: "btn btn-primary rounder", id: "confirm-button"%>
             <%= form.button :submit, "Decline", class: "btn rounder inverted", id: "decline-button" %>
           <% end %>
+      </div>
+    <% end %>
+    <% if @request.helper.present? %>
+      <div class="pal-confirmed">
+        <div class="pal-details">
+          <h4>Your new pal</h4>
+          <%= @other_user.first_name %>
+        </div>
+        <div class="pal-image">
+          <% if @other_user.photo.attached? %>
+            <%= link_to (cl_image_tag @other_user.photo.key, class: "avatar"), other_profile_path(@other_user) %>
+          <% else %>
+          <%= link_to image_tag("waldo.png", class: "avatar"), other_profile_path(@other_user) %>
+          <% end %>
+          <div class="avatar-check-mark">
+            <i class="far fa-check-circle"></i>
+          </div>
+
+        </div>
       </div>
     <% end %>
   </div>

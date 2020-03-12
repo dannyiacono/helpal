@@ -27,9 +27,8 @@ class RequestsController < ApplicationController
     @new_request = Category.find(@request.category_id).name
     authorize @request
     @conversation_count = @request.conversations.count
-    @id = @request.helper_id
-    @id ? @helper = User.find(@id) : @helper = nil
-    @helper_conversation = Conversation.find_by(request_id: @request.id, helper_id: current_user.id, creator_id: @request.creator_id)
+    @helper_conversation = Conversation.find_by(request_id: @request.id, helper_id: @request.helper, creator_id: @request.creator_id)
+    @helper_unconfirmed_conversation = Conversation.where(helper_id: current_user.id, request_id: params[:id]).first
     @conversation = Conversation.new
   end
 
