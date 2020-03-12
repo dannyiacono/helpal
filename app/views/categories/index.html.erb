@@ -20,10 +20,23 @@
     <div class="wrapper">
       <div class="container-category-cards">
          <% @categories.each do |category| %>
+
             <div class="category-card" id="<%= category.name %>">
+              <% if category.name == "Tech" %>
+                  <i class="fas fa-laptop"></i>
+                <% elsif category.name == "Business" %>
+                  <i class="fas fa-briefcase"></i>
+                <% elsif category.name == "Legal" %>
+                  <i class="fas fa-balance-scale-right"></i>
+                <% elsif category.name == "Travel" %>
+                  <i class="fas fa-plane"></i>
+                <% elsif category.name == "Housing" %>
+                  <i class="fas fa-home"></i>
+                <% else %>
+                  <i class="fas fa-heartbeat"></i>
+              <% end %>
               <span class="name_cat_card"><%=category.name  %></span>
               <span class="name_cat_id" style="color: white"><%=category.id %></span>
-
             </div>
           <% end %>
       </div>
