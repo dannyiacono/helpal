@@ -3,9 +3,13 @@
   height: 100vh;
 }
 
+.request-new-wrapper {
+  width: 50vw !important;
+}
+
 #category-index-body {
   background-color: #9AD7E9;
-  width: 60%;
+  width: 50%;
   height: 100vh;
 }
 
@@ -81,7 +85,7 @@
 
 
 .change-border-color {
-  border: 2px solid rgba(249, 76, 80, 0.7);
+  border: 2px solid black;
   border-radius: 5px;
  }
 
