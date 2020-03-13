@@ -11,7 +11,4 @@ class Conversation < ApplicationRecord
     @unread_messages.count > 0 ? true : false
   end
 
-  def includes_unread_messages?
-    self.messages.where(read: false).present? ? true : false
-  end
 end
