@@ -21,7 +21,7 @@
           <% if current_user.unread_messages.present? %>
             <%= link_to conversations_path, class: "nav-link notification" do %>
               <span>Messages</span>
-              <span class="badge">#</span>
+              <span class="badge"><%= current_user.unread_messages.count %></span>
             <% end %>
           <% else %>
             <%= link_to "Messages", conversations_path, class: "nav-link" %>
