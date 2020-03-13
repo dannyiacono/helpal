@@ -18,6 +18,21 @@
   }
 }
 
+#v-pills-tab {
+  .nav-link.active {
+    border-bottom: 4px solid #9AD7E9;
+  }
+}
+
+#v-pills-confirmed-tab {
+  color: black;
+}
+
+#v-pills-all-tab {
+  color: black;
+  margin-top: 15px;
+}
+
 .conversations-box {
   background-color: white;
   border-radius: 5px;

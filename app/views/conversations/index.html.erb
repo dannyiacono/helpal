@@ -4,7 +4,7 @@
     <span>Unread messages (<%= current_user.unread_messages.count %>)</span>
     <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
       <a class="nav-link active" id="v-pills-all-tab" data-toggle="pill" href="#v-pills-all" role="tab" aria-controls="v-pills-all" aria-selected="true">All Conversations (<%= @user_conversations.count %>)</a>
-      <a class="nav-link" id="v-pills-confirmed-tab" data-toggle="pill" href="#v-pills-confirmed" role="tab" aria-controls="v-pills-confirmed" aria-selected="false">Confirmed conversations (<%= @confirmed_conversations.count %>)</a>
+      <a class="nav-link" id="v-pills-confirmed-tab" data-toggle="pill" href="#v-pills-confirmed" role="tab" aria-controls="v-pills-confirmed" aria-selected="false">Confirmed (<%= @confirmed_conversations.count %>)</a>
     </div>
   </div>
   <div class="conversations-box">
