@@ -1,68 +1,116 @@
 <div class="container conversations">
   <div class="conversation-filter">
     <h1>Conversations</h1>
-    <div class="dropdown">
-      <a class="btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown">
-        Unread messages (<%= current_user.unread_messages.count %>)
-      </a>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-        <a class="dropdown-item" href="#">All Conversations (<%= @user_conversations.count %>)</a>
-        <a class="dropdown-item" href="#">Confirmed</a>
-        <a class="dropdown-item" href="#">Pending</a>
-      </div>
+    <span>Unread messages (<%= current_user.unread_messages.count %>)</span>
+    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+      <a class="nav-link active" id="v-pills-all-tab" data-toggle="pill" href="#v-pills-all" role="tab" aria-controls="v-pills-all" aria-selected="true">All Conversations (<%= @user_conversations.count %>)</a>
+      <a class="nav-link" id="v-pills-confirmed-tab" data-toggle="pill" href="#v-pills-confirmed" role="tab" aria-controls="v-pills-confirmed" aria-selected="false">Confirmed conversations (<%= @confirmed_conversations.count %>)</a>
     </div>
   </div>
   <div class="conversations-box">
-    <ul>
-      <% if @user_conversations.empty? %>
-        <div class="message-box">
-          <p><em>Sorry, you have no conversations yet.</em></p>
-        </div>
-      <% else %>
-        <%  @user_conversations.sort_by(&:updated_at).reverse.each do |conversation| %>
-          <li>
-            <% if current_user.id == conversation.creator_id %>
-              <% other_user = User.find(conversation.helper_id) %>
-            <% else %>
-              <% other_user = User.find(conversation.creator_id) %>
-            <% end %>
-              <div class="message-box">
-                <div class="message-user-avatar">
-                  <% if other_user.photo.attached? %>
-                    <%= link_to (cl_image_tag other_user.photo.key, class: "avatar-middle"), other_profile_path(other_user) %>
-                  <% else %>
-                    <%= link_to image_tag("waldo.png", class: "avatar-middle"), other_profile_path(other_user) %>
-                  <% end %>
-                  <div class="user-name-and-time">
-                    <p><%= other_user.first_name %></p>
-                    <% if conversation.messages.empty? %>
-                      <p><%= conversation.created_at.strftime("%B %d, %Y") %></p>
-                    <% else %>
-                      <p><%= conversation.messages.last.created_at.strftime("%B %d, %Y") %></p>
-                    <% end %>
+    <div class="tab-content" id="v-pills-tabContent">
+      <div class="tab-pane fade show active" id="v-pills-all" role="tabpanel" aria-labelledby="v-pills-all-tab">
+        <ul>
+          <% if @user_conversations.empty? %>
+            <div class="message-box">
+              <p><em>Sorry, you have no conversations yet.</em></p>
+            </div>
+          <% else %>
+            <%  @user_conversations.sort_by(&:updated_at).reverse.each do |conversation| %>
+              <li>
+                <% if current_user.id == conversation.creator_id %>
+                  <% other_user = User.find(conversation.helper_id) %>
+                <% else %>
+                  <% other_user = User.find(conversation.creator_id) %>
+                <% end %>
+                  <div class="message-box">
+                    <div class="message-user-avatar">
+                      <% if other_user.photo.attached? %>
+                        <%= link_to (cl_image_tag other_user.photo.key, class: "avatar-middle"), other_profile_path(other_user) %>
+                      <% else %>
+                        <%= link_to image_tag("waldo.png", class: "avatar-middle"), other_profile_path(other_user) %>
+                      <% end %>
+                      <div class="user-name-and-time">
+                        <p><%= other_user.first_name %></p>
+                        <% if conversation.messages.empty? %>
+                          <p><%= conversation.created_at.strftime("%B %d, %Y") %></p>
+                        <% else %>
+                          <p><%= conversation.messages.last.created_at.strftime("%B %d, %Y") %></p>
+                        <% end %>
+                      </div>
+                    </div>
+                    <div class="message-body">
+                      <% if conversation.messages.empty? %>
+                        <p><%= link_to "Open conversation: There is no message yet", conversation_path(conversation)%></p>
+                      <% else %>
+                        <p class="request-title"><%= link_to conversation.request.title.truncate(42), conversation_path(conversation)%></p>
+                        <p class="message-text-preview"><%= conversation.messages.last.body.truncate(42)%></p>
+                      <% end %>
+                    </div>
+                    <div id="conversation-status-details">
+                      <% if conversation.has_unread_messages(current_user) %>
+                        <p class="conversation-status"><%= conversation.status.capitalize %></p><p class="badged">#</p>
+                      <% else %>
+                        <p class="conversation-status"><%= conversation.status.capitalize %></p>
+                      <% end %>
+                    </div>
                   </div>
-                </div>
-                <div class="message-body">
-                  <% if conversation.messages.empty? %>
-                    <p><%= link_to "Open conversation: There is no message yet", conversation_path(conversation)%></p>
-                  <% else %>
-                    <p class="request-title"><%= link_to conversation.request.title.truncate(42), conversation_path(conversation)%></p>
-                    <p class="message-text-preview"><%= conversation.messages.last.body.truncate(42)%></p>
-                  <% end %>
-                </div>
-                <div id="conversation-status-details">
-                  <% if conversation.has_unread_messages(current_user) %>
-                    <p class="conversation-status"><%= conversation.status.capitalize %></p><p class="badged">#</p>
-                  <% else %>
-                    <p class="conversation-status"><%= conversation.status.capitalize %></p>
-                  <% end %>
-                </div>
-              </div>
-          </li>
-        <% end %>
-
-
-      <% end %>
-    </ul>
+              </li>
+            <% end %>
+          <% end %>
+        </ul>
+      </div>
+      <div class="tab-pane fade show active" id="v-pills-confirmed" role="tabpanel" aria-labelledby="v-pills-confirmed-tab">
+        <ul>
+          <% if @confirmed_conversations.empty? %>
+            <div class="message-box">
+              <p><em>Sorry, you have no confirmed conversations yet.</em></p>
+            </div>
+          <% else %>
+            <%  @confirmed_conversations.sort_by(&:updated_at).reverse.each do |conversation| %>
+              <li>
+                <% if current_user.id == conversation.creator_id %>
+                  <% other_user = User.find(conversation.helper_id) %>
+                <% else %>
+                  <% other_user = User.find(conversation.creator_id) %>
+                <% end %>
+                  <div class="message-box">
+                    <div class="message-user-avatar">
+                      <% if other_user.photo.attached? %>
+                        <%= link_to (cl_image_tag other_user.photo.key, class: "avatar-middle"), other_profile_path(other_user) %>
+                      <% else %>
+                        <%= link_to image_tag("waldo.png", class: "avatar-middle"), other_profile_path(other_user) %>
+                      <% end %>
+                      <div class="user-name-and-time">
+                        <p><%= other_user.first_name %></p>
+                        <% if conversation.messages.empty? %>
+                          <p><%= conversation.created_at.strftime("%B %d, %Y") %></p>
+                        <% else %>
+                          <p><%= conversation.messages.last.created_at.strftime("%B %d, %Y") %></p>
+                        <% end %>
+                      </div>
+                    </div>
+                    <div class="message-body">
+                      <% if conversation.messages.empty? %>
+                        <p><%= link_to "Open conversation: There is no message yet", conversation_path(conversation)%></p>
+                      <% else %>
+                        <p class="request-title"><%= link_to conversation.request.title.truncate(42), conversation_path(conversation)%></p>
+                        <p class="message-text-preview"><%= conversation.messages.last.body.truncate(42)%></p>
+                      <% end %>
+                    </div>
+                    <div id="conversation-status-details">
+                      <% if conversation.has_unread_messages(current_user) %>
+                        <p class="conversation-status"><%= conversation.status.capitalize %></p><p class="badged">#</p>
+                      <% else %>
+                        <p class="conversation-status"><%= conversation.status.capitalize %></p>
+                      <% end %>
+                    </div>
+                  </div>
+              </li>
+            <% end %>
+          <% end %>
+        </ul>
+      </div>
+    </div>
   </div>
 </div>
