@@ -7,7 +7,6 @@ class ConversationsController < ApplicationController
       @user_conversations << conversation if (conversation.creator_id == current_user.id || conversation.helper_id == current_user.id)
     end
     @user_conversations
-    @unread_messages = Message.where.not(read: true, user: current_user)
   end
 
   def show
