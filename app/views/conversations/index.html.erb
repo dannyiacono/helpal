@@ -62,11 +62,6 @@
       </div>
       <div class="tab-pane fade show active" id="v-pills-confirmed" role="tabpanel" aria-labelledby="v-pills-confirmed-tab">
         <ul>
-          <% if @confirmed_conversations.empty? %>
-            <div class="message-box">
-              <p><em>Sorry, you have no confirmed conversations yet.</em></p>
-            </div>
-          <% else %>
             <%  @confirmed_conversations.sort_by(&:updated_at).reverse.each do |conversation| %>
               <li>
                 <% if current_user.id == conversation.creator_id %>
@@ -108,7 +103,6 @@
                   </div>
               </li>
             <% end %>
-          <% end %>
         </ul>
       </div>
     </div>
