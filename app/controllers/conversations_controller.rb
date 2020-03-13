@@ -7,6 +7,9 @@ class ConversationsController < ApplicationController
       @user_conversations << conversation if (conversation.creator_id == current_user.id || conversation.helper_id == current_user.id)
     end
     @user_conversations
+    @unread_user_conversations = []
+    @user_conversations.each { |conversation| @unread_user_conversations << conversation if conversation.includes_unread_messages?}
+    raise
   end
 
   def show
