@@ -200,4 +200,7 @@
 .creator-info-conversation {
   align-items: baseline;
   display: flex;
+  a {
+    padding-right: 8px;
+  }
 }
