@@ -13,7 +13,24 @@
   padding: 30px;
   border-radius: 5px;
   height: max-content;
+  h1 {
+    font-size: 2.0rem;
+  }
+}
 
+#v-pills-tab {
+  .nav-link.active {
+    border-bottom: 4px solid #9AD7E9;
+  }
+}
+
+#v-pills-confirmed-tab {
+  color: black;
+}
+
+#v-pills-all-tab {
+  color: black;
+  margin-top: 15px;
 }
 
 .conversations-box {

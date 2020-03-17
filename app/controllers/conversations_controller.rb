@@ -7,6 +7,9 @@ class ConversationsController < ApplicationController
       @user_conversations << conversation if (conversation.creator_id == current_user.id || conversation.helper_id == current_user.id)
     end
     @user_conversations
+
+    @active_rec_user_conversations = Conversation.where(id: @user_conversations.map(&:id))
+    @confirmed_conversations = @active_rec_user_conversations.where(status: "confirmed")
   end
 
   def show
